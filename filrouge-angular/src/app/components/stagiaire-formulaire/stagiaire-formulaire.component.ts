@@ -17,6 +17,7 @@ import { FooterComponent } from "../../commons/footer/footer.component";
 })
 
 export class StagiaireFormulaireComponent {
+  // Validateurs pour les champs du formulaire
   stagiairesForm: FormGroup = this.formBuider.group({
     nom: ['', Validators.required],
     prenom: ['', Validators.required],
@@ -31,26 +32,36 @@ export class StagiaireFormulaireComponent {
     ]],
   })
 
+  // Soumission du formulaire "false" de base
   submitted: boolean = false;
 
+  // Tableau de stagiaires
   stagiaires: any[] = [];
+  // Un seul stagiaire
   stagiaire!: Stagiaires;
 
+  // Constructeur du formulaire
   constructor(private formBuider: FormBuilder, private stagiaireService: StagiaireServiceService) {};
 
+  // Méthode pour ajouter un stagiaire
   addStagiaire(): void {
+    // On push les valeurs des inputs du formulaire
     this.stagiaires.push(this.stagiairesForm.value);
   
+    // Appel du service pour la création
     this.stagiaireService.createStagiaire(this.stagiairesForm.value)
       .subscribe({
         next: (stagiairesForm) => {
+          // Si c'est un succès le stagiaire est enregistré
           this.stagiaire = stagiairesForm;
           alert("Stagiaire créé avec succès !");
         },
         error: (error) => {
           if (error.status === 409) {
+            // Envoi une erreur "conflict" si l'email enregistré existe déjà en BDD
             alert("Erreur lors de la création du stagiaire : Email déjà utilisé.");
           } else {
+            // Envoi une erreur si la création échoue
             alert("Erreur lors de la création du stagiaire");
             console.log(error);
           }
@@ -62,19 +73,24 @@ export class StagiaireFormulaireComponent {
   }
   
   onSubmit() {
+    // A la soumission on passe le submit à "true"
     this.submitted = true;
 
     if(this.stagiairesForm.invalid) {
+      // Si le formulaire est invalide(ex: champs vide), retourne "false"
       return false;
     } else {
+      // Sinon on ajoute le stagiaire et le "submit" repasse à false
       this.addStagiaire();
       this.submitted = false;
+      // Reset du formulaire
       this.stagiairesForm.reset();
       return true;
     }
     
   }
 
+  // Pour contrôler les validators
   get form() {
     return this.stagiairesForm.controls;
   }

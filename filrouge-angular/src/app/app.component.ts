@@ -15,8 +15,10 @@ import { AdminNavbarComponent } from "./commons/admin-navbar/admin-navbar.compon
 export class AppComponent {
   title = 'filrouge';
 
+  // Constructeur
   constructor(private router: Router) {}
 
+  // Méthode pour vérifier si l'URL contient "Dashboard"
   isDashboardRoute(): boolean {
     return this.router.url.includes('/dashboard');
   }
