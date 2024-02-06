@@ -1,10 +1,10 @@
-package frequipefilrouge.filrougeSpring;
+package fr.equipefilrouge.filrougeSpring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FilrougeSpringApplicationTests {
+class FilrougeApplicationTests {
 
 	@Test
 	void contextLoads() {
