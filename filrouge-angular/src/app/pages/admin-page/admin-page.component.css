@@ -1,0 +1,36 @@
+.content {
+    flex: 1;
+    background-color: #F2EEE4;
+    height: 93vh;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    width: 18rem;
+    height: 17rem;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.card-body {
+    text-align: center;
+    background-color: #5065a8;
+}
+
+p {
+    margin-top: 50px;
+    font-size: 3.5rem;
+}
+  
+.card-title {
+    font-size: 1.5em;
+}
+
+span {
+    font-style: italic;
+}
