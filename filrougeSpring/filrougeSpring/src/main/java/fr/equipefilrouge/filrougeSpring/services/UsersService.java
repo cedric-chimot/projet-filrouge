@@ -42,6 +42,25 @@ public class UsersService {
     }
 
     /**
+     * Méthode pour vérifier les identifiants au moment de la connexion
+     * @param email l'email à vérifier
+     * @param password le mot de passe à vérifier
+     * @return true si les informations sont valides
+     */
+    public boolean areIdsValid(String email, String password) {
+        // Récupération de l'utilisateur à partir d l'email fourni
+        Users user = usersRepository.findByEmail(email);
+        // Vérification de l'existence de l'utilisateur
+        if (user != null) {
+            // Utilisation de "BCryptPasswordEncoder" pour vérifier si le mdp fourni est identique à celui stocké en BDD
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            // Renvoie "true" si c'est le cas
+            return passwordEncoder.matches(password, user.getMdp());
+        }
+        return false;
+    }
+
+    /**
      * Méthode pour trouver des utilisateurs par leur rôle
      * @param role le rôles recherché
      * @return le nombre d'utilisateurs avec le rôle correspondant

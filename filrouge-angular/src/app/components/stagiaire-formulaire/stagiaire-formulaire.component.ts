@@ -18,7 +18,7 @@ import { FooterComponent } from "../../commons/footer/footer.component";
 
 export class StagiaireFormulaireComponent {
   // Validateurs pour les champs du formulaire
-  stagiairesForm: FormGroup = this.formBuider.group({
+  stagiairesForm: FormGroup = this.formBuilder.group({
     nom: ['', Validators.required],
     prenom: ['', Validators.required],
     telephone: ['', Validators.required],
@@ -41,7 +41,7 @@ export class StagiaireFormulaireComponent {
   stagiaire!: Stagiaires;
 
   // Constructeur du formulaire
-  constructor(private formBuider: FormBuilder, private stagiaireService: StagiaireServiceService) {};
+  constructor(private formBuilder: FormBuilder, private stagiaireService: StagiaireServiceService) {}; 
 
   // Méthode pour ajouter un stagiaire
   addStagiaire(): void {
