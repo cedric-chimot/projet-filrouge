@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavBarComponent } from "../../commons/navbar/nav-bar.component";
 import { FooterComponent } from "../../commons/footer/footer.component";
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { FooterComponent } from "../../commons/footer/footer.component";
     standalone: true,
     templateUrl: './stagiaire-formulaire.component.html',
     styleUrls: ['./stagiaire-formulaire.component.css'],
-    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, NavBarComponent, FooterComponent]
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, NavBarComponent, FooterComponent, RouterModule]
 })
 
 export class StagiaireFormulaireComponent {

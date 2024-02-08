@@ -12,5 +12,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
-  img =  './../../../assets/LOGO1.png';
+  img =  './../../../assets/images/logo.png';
 }

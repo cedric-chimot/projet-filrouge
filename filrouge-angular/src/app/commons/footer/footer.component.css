@@ -1,4 +1,35 @@
-.btn-contact {
-    background-color: #5065A8;
-    color: #F2EEE4;
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: small;
+}  
+
+.footer1{
+    background-color: rgba(213, 238, 241, 0.6);
+    position:static;
+    display: flex;
+}
+
+.certificat{
+    margin-left: 70px;
+}
+
+.icone{
+    margin-left: 50px;
+}
+
+h4{
+    margin-left: 30px;
+    color:#5065A8
+}
+
+.search-container input[type=text] {
+    margin: 20px;
+    padding: 20px;
+    font-size: 15px;
+    border: none;
+    border-color: #436cf1;
+    border-radius: 10px;
 }

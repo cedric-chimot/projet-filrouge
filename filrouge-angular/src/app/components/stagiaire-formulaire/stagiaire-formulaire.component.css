@@ -1,0 +1,35 @@
+body{
+    background-image: url(./../../../assets/images/bac.jpg);
+    background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone de fond */
+    background-position: center; /* Centre l'image par rapport à la fenêtre du navigateur */
+    background-repeat: no-repeat; 
+    margin: 0;
+    padding: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+   } 
+
+h1{
+    padding: 15px;
+    align-items: center;
+    color: #F2EEE4;
+}
+.form-label{
+    color: #F2EEE4;
+}
+.btn {
+    padding: 10px 10px;
+    text-align: center;
+    display: inline-block;
+    background-color:#F2EEE4;
+    color:#5065A8;
+    border: 0.2em; 
+    border-radius: 5px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+.row {
+    color: #5065A8;
+}
+.btn:hover{
+   background-color:#90a3e2;
+}

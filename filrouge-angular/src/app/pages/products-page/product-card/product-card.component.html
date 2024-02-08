@@ -1,0 +1,40 @@
+<div class="container">
+    <mat-card class="card">
+        <mat-card-header>
+            <div mat-card-avatar class="header-image"></div>
+            <mat-card-title class="title">
+                {{ product.nom | slice: 0:18 }}
+
+                @if (product.nom.length > 18) {
+                    <span>...</span>
+                }
+            </mat-card-title> 
+        </mat-card-header>
+        <hr>
+
+        @if (!product.img) {
+            <img
+                class="cover"
+                mat-card-image
+                src="" 
+                alt="ITraining"
+            /><!-- ToDo Mettre une image par défaut ITraining -->
+        }
+        @if (product.img) {
+            <img class="cover" mat-card-image [src]="product.img" [alt]="product.nom">
+        }
+
+        @if (product.description) {
+            <mat-card-content>
+                <p> {{ product.description | slice: 0:140}}...</p>
+            </mat-card-content>
+        }
+
+        <mat-card-actions>
+            @if (product) {
+                <button mat-button routerLink="/products/formations/{{ product.id }}">Details</button>
+            }
+            
+        </mat-card-actions>
+    </mat-card>    
+</div>

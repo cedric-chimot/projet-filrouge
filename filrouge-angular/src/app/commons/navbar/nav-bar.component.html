@@ -1,13 +1,34 @@
 <mat-toolbar>
 
-    <img [src]="img">
-
-    <button mat-button routerLink="/home" class="nav-button">Accueil</button>
-    <button mat-button routerLink="/formations" class="nav-button">Formations</button>
-    <button mat-button routerLink="/aPropos" class="nav-button">A propos</button>
-    <div class="right-buttons">
-        <button mat-button routerLink="/inscription" class="nav-button">Inscription</button>
-        <button mat-button routerLink="/connexion" class="nav-button">Connexion</button>
-    </div>
+    <nav>
+        <div class="logo">
+            <h2>
+                <img [src]="img" width="60px" height="60px">
+                IT-Training
+            </h2>
+        </div>    
+        <ul>
+            <li>
+                <a routerLink="/home" >Accueil</a>
+            </li>
+            <li>
+                <a routerLink="/aPropos" >A Propos </a>
+            </li>
+            <li>
+                <a routerLink="/products" >NOS Formations</a>
+            </li>
+            <li>
+                <a routerLink="/contacter" >Contactez-Nous</a>
+            </li>
+            <ul class="right-buttons">
+                <li>
+                    <button routerLink="/inscription">Inscription</button>
+                </li>
+                <li>
+                    <button routerLink="/connexion">Connexion</button>
+                </li>
+            </ul>            
+        </ul>      
+    </nav>
      
 </mat-toolbar>
