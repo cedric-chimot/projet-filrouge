@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SessionFormations } from '../../models/sessionFormations.model';
 import { Formations } from '../../models/formations.model';
 import { SessionFormationServiceService } from '../../services/sessionFormation/session-formation-service.service';
+import { FormationServiceService } from '../../services/formation/formation-service.service';
 
 @Component({
   selector: 'app-admin-formation',
@@ -32,11 +33,8 @@ export class AdminFormationComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private sessionFormationService: SessionFormationServiceService,
-    private formationService: SessionFormationServiceService
+    private formationService: FormationServiceService
   ){};
-
-
-   
 
   ngOnInit(): void {
       this.formationService.getFormations()
@@ -47,7 +45,6 @@ export class AdminFormationComponent implements OnInit {
   
       };
 
-    
   onSubmit(): void {
     this.submitted = true;
     if (this.sessionFormationForm.invalid) {
