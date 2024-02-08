@@ -12,6 +12,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/sessionFormations")
+@CrossOrigin
 public class SessionFormationController {
 
     /**
