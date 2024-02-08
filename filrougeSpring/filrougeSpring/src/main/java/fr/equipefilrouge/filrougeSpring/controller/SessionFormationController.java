@@ -53,8 +53,8 @@ public class SessionFormationController {
      * @return la liste des sessions formations
      */
     @GetMapping("/all")
-    public List<SessionReduitDTO> getAllSessions() {
-        return sessionFormationService.findAllSessionReduit();
+    public List<SessionFormation> getAllSessions() {
+        return sessionFormationService.findAll();
     }
 
     /**

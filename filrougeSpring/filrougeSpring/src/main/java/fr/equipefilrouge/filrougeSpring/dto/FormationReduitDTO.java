@@ -8,5 +8,6 @@ import java.util.List;
 public class FormationReduitDTO {
     private Long id;
     private String nom;
-    private List<SessionReduitDTO> sessions;
+    private int prix;
+    private String description;
 }

@@ -22,14 +22,21 @@ public class SessionFormationServiceImpl implements AllServices<SessionFormation
      * Le repository de la session de formation
      */
     private final SessionFormationRepository sessionFormationRepository;
+
+    private final FormationServiceImpl formationService;
+
+    private final CentreFormationServiceImpl centreFormationService;
+
     private final ObjectMapper objectMapper;
 
     /**
      * Le constructeur du service
      * @param sessionFormationRepository le repository correspondant
      */
-    public SessionFormationServiceImpl(SessionFormationRepository sessionFormationRepository, ObjectMapper objectMapper) {
+    public SessionFormationServiceImpl(SessionFormationRepository sessionFormationRepository, FormationServiceImpl formationService, CentreFormationServiceImpl centreFormationService, ObjectMapper objectMapper) {
         this.sessionFormationRepository = sessionFormationRepository;
+        this.formationService = formationService;
+        this.centreFormationService = centreFormationService;
         this.objectMapper = objectMapper;
     }
 
@@ -71,6 +78,7 @@ public class SessionFormationServiceImpl implements AllServices<SessionFormation
     public SessionFormation create(SessionFormation newObj) {
         return sessionFormationRepository.save(newObj);
     }
+
 
     /**
      * Méthode pour mettre à jour une session de formation selon l'id recherché

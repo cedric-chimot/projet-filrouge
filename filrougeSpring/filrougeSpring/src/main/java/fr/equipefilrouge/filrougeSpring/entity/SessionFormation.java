@@ -36,11 +36,11 @@ public class SessionFormation {
     private String statut;
 
     @ManyToOne
-    @JoinColumn(name = "formation_id", nullable = false)
+    @JoinColumn(name = "formation_id")
     private Formation formation;
 
     @ManyToOne
-    @JoinColumn(name = "centre_formation_id", nullable = true)
+    @JoinColumn(name = "centre_formation_id")
     private CentreFormation centreFormation;
 
     @OneToMany(mappedBy = "session", fetch = FetchType.EAGER)

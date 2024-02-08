@@ -1,18 +1,14 @@
 package fr.equipefilrouge.filrougeSpring;
 
-import fr.equipefilrouge.filrougeSpring.entity.CentreFormation;
-import fr.equipefilrouge.filrougeSpring.entity.Formateur;
-import fr.equipefilrouge.filrougeSpring.entity.Formation;
-import fr.equipefilrouge.filrougeSpring.entity.Stagiaire;
+import fr.equipefilrouge.filrougeSpring.entity.*;
 import fr.equipefilrouge.filrougeSpring.enums.UserRole;
-import fr.equipefilrouge.filrougeSpring.services.impl.CentreFormationServiceImpl;
-import fr.equipefilrouge.filrougeSpring.services.impl.FormateurServiceImpl;
-import fr.equipefilrouge.filrougeSpring.services.impl.FormationServiceImpl;
-import fr.equipefilrouge.filrougeSpring.services.impl.StagiaireServiceImpl;
+import fr.equipefilrouge.filrougeSpring.services.impl.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
@@ -23,16 +19,19 @@ public class FilrougeSpringApplication {
 	private static StagiaireServiceImpl stagiaireService;
 	private static CentreFormationServiceImpl centreFormationService;
 	private static FormationServiceImpl formationService;
+	private static SessionFormationServiceImpl sessionFormationService;
 
 	public FilrougeSpringApplication(
 			FormateurServiceImpl formateurService,
 			CentreFormationServiceImpl centreFormationService,
 			FormationServiceImpl formationService,
-			StagiaireServiceImpl stagiaireService){
+			StagiaireServiceImpl stagiaireService,
+			SessionFormationServiceImpl sessionFormationService){
 		FilrougeSpringApplication.formateurService = formateurService;
 		FilrougeSpringApplication.centreFormationService = centreFormationService;
 		FilrougeSpringApplication.formationService = formationService;
 		FilrougeSpringApplication.stagiaireService = stagiaireService;
+		FilrougeSpringApplication.sessionFormationService = sessionFormationService;
 	}
 
 	public static void main(String[] args) {
@@ -56,8 +55,21 @@ public class FilrougeSpringApplication {
 		formationService.create(formation);
 		System.out.println(formation);
 
+		Date debutSession = new Date(2024-1900, Calendar.MARCH, 8);
+		Date finSession = new Date(2024-1900, Calendar.JUNE, 8);
+		SessionFormation sessionFormation = new SessionFormation(debutSession, finSession, "en cours",
+				formationService.findById(1L), centreFormationService.findById(1L));
+		sessionFormationService.create(sessionFormation);
+		System.out.println(sessionFormation);
+
 		List<CentreFormation> centre = centreFormationService.findAll();
 		System.out.println(centre);
+
+		Formation formation1 = formationService.findById(1L);
+		System.out.println(formation1);
+
+		SessionFormation sessionFormation1 = sessionFormationService.findById(1L);
+		System.out.println(sessionFormation1);
 
 	}
 }

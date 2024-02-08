@@ -10,5 +10,6 @@ public class SessionReduitDTO {
     private Long id;
     private Date dateDebut;
     private Date dateFin;
+    private String statut;
     private CentreFormation centreFormation;
 }

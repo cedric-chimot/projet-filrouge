@@ -31,10 +31,10 @@ public class Formation {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "formation", fetch = FetchType.EAGER)
+    @OneToMany
     private List<SessionFormation> sessionsFormation = new ArrayList<>();
 
-    @OneToMany(mappedBy = "formations", fetch = FetchType.EAGER)
+    @OneToMany
     private List<FormationSousThemes> formationSousThemes = new ArrayList<>();
 
     /**

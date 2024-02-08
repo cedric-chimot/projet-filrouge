@@ -27,7 +27,7 @@ public class CentreFormation {
     @Column(name = "adresse", nullable = false)
     private String adresse;
 
-    @OneToMany(mappedBy = "centreFormation")
+    @OneToMany
     private List<SessionFormation> sessionsFormation;
 
     /**
