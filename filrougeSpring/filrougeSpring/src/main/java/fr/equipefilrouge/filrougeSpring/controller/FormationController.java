@@ -12,6 +12,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/formations")
+@CrossOrigin
 public class FormationController {
 
     /**
