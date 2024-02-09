@@ -5,3 +5,7 @@
 _- Front avec angular_
 
 _- Back avec Spring boot_
+
+_- Refacto du code_
+
+_- Simplification de la BDD_
