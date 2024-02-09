@@ -25,8 +25,8 @@ public class Formateur extends Users{
     @Column(name = "noteMoyenne")
     private double noteMoyenne;
 
-    @OneToMany(mappedBy = "formateur", fetch = FetchType.EAGER)
-    private List<ExperienceFormateur> experienceFormateurs = new ArrayList<>();
+//    @OneToMany(mappedBy = "formateur", fetch = FetchType.EAGER)
+//    private List<ExperienceFormateur> experienceFormateurs = new ArrayList<>();
 
     @OneToMany(mappedBy = "animateur", fetch = FetchType.EAGER)
     private List<Participation> participations = new ArrayList<>();

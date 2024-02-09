@@ -8,19 +8,19 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Classe SessionFormation pour gérer une session de formation et toutes ses données
+ * Classe Bootcamp pour gérer une session de formation et toutes ses données
  */
 @Getter
 @Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "sessionFormation")
-public class SessionFormation {
+@Table(name = "bootcamp")
+public class Bootcamp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idSession")
+    @Column(name = "idBootcamp")
     private Long id;
 
     @Column(name = "date_debut", nullable = false)
@@ -35,15 +35,10 @@ public class SessionFormation {
     @Column(name = "statut", nullable = false)
     private String statut;
 
-    @ManyToOne
-    @JoinColumn(name = "formation_id")
-    private Formation formation;
+    @OneToMany(mappedBy = "bootcamp")
+    private List<Lier> liens;
 
-    @ManyToOne
-    @JoinColumn(name = "centre_formation_id")
-    private CentreFormation centreFormation;
-
-    @OneToMany(mappedBy = "session", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "bootcamp", fetch = FetchType.EAGER)
     private List<Participation> participations = new ArrayList<>();
 
     /**
@@ -51,15 +46,11 @@ public class SessionFormation {
      * @param dateDebut, date de début de la session
      * @param dateFin, date de fin de la session
      * @param statut, le statut
-     * @param formation, la formation concernée
-     * @param centreFormation, le centre de formation lié s'il y en a un
      */
-    public SessionFormation(Date dateDebut, Date dateFin, String statut, Formation formation, CentreFormation centreFormation) {
+    public Bootcamp(Date dateDebut, Date dateFin, String statut) {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.statut = statut;
-        this.formation = formation;
-        this.centreFormation = centreFormation;
     }
 
     /**
@@ -68,15 +59,12 @@ public class SessionFormation {
      */
     @Override
     public String toString() {
-        return "SessionFormation{" +
-                "idSession=" + id +
+        return "Bootcamp{" +
+                "id=" + id +
                 ", dateDebut=" + dateDebut +
                 ", dateFin=" + dateFin +
                 ", statut='" + statut + '\'' +
-                ", formation=" + formation +
-                ", centreFormation=" + centreFormation +
                 '}';
     }
-
 }
 

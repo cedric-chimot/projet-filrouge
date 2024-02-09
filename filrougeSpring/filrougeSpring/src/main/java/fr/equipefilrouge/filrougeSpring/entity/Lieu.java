@@ -13,30 +13,30 @@ import java.util.List;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "centreFormation")
-public class CentreFormation {
+@Table(name = "lieu")
+public class Lieu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JoinColumn(name = "idCentre")
+    @JoinColumn(name = "idLieu")
     private Long id;
 
-    @Column(name = "nomCentre", nullable = false)
-    private String nom;
+    @Column(name = "raisonSociale", nullable = false)
+    private String raisonSociale;
 
     @Column(name = "adresse", nullable = false)
     private String adresse;
 
-    @OneToMany
-    private List<SessionFormation> sessionsFormation;
+    @OneToMany(mappedBy = "lieu")
+    private List<Lier> liens;
 
     /**
      * Constructeur du centre de formation
-     * @param nom, le nom du centre
+     * @param raisonSociale, le nom du centre
      * @param adresse, l'adresse du centre
      */
-    public CentreFormation(String nom, String adresse) {
-        this.nom = nom;
+    public Lieu(String raisonSociale, String adresse) {
+        this.raisonSociale = raisonSociale;
         this.adresse = adresse;
     }
 
@@ -47,8 +47,8 @@ public class CentreFormation {
     @Override
     public String toString() {
         return "CentreFormation{" +
-                "idCentre=" + id +
-                ", nom='" + nom + '\'' +
+                "idLieu=" + id +
+                ", raisonSociale='" + raisonSociale + '\'' +
                 ", adresse='" + adresse + '\'' +
                 '}';
     }
