@@ -31,8 +31,8 @@ public class Formation {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @OneToMany
-    private List<SessionFormation> sessionsFormation = new ArrayList<>();
+    @OneToMany(mappedBy = "formation")
+    private List<Lier> liens;
 
     /**
      * Constructeur pour une formation

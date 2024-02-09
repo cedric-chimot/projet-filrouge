@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SessionFormations } from '../../models/sessionFormations.model';
+import { Bootcamp } from '../../models/bootcampmodel';
 import { Formations } from '../../models/formations.model';
-import { SessionFormationServiceService } from '../../services/sessionFormation/session-formation-service.service';
+import { BootcampServiceService } from '../../services/bootcamp/bootcamp-service.service';
 import { FormationServiceService } from '../../services/formation/formation-service.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { FormationServiceService } from '../../services/formation/formation-serv
 })
 export class AdminFormationComponent implements OnInit {
 
-  sessionFormationForm: FormGroup = this.formBuilder.group({
+  bootcampForm: FormGroup = this.formBuilder.group({
     dateDebut: ['', Validators.required],
     dateFin: ['', Validators.required],
     centreFormation: ['', Validators.required],
@@ -28,11 +28,11 @@ export class AdminFormationComponent implements OnInit {
 
   submitted = false;
   formations: Formations[] = [];
-  sessionsFormation: SessionFormations[] = [];
+  bootcamps: Bootcamp[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
-    private sessionFormationService: SessionFormationServiceService,
+    private bootcampService: BootcampServiceService,
     private formationService: FormationServiceService
   ){};
 
@@ -40,18 +40,18 @@ export class AdminFormationComponent implements OnInit {
       this.formationService.getFormations()
         .subscribe((formations: Formations[]) => this.formations = formations); 
 
-      this.sessionFormationService.getSessionsFormation()
-        .subscribe((SessionFormationServiceService: SessionFormations[]) => this.sessionsFormation = SessionFormationServiceService); 
+      this.bootcampService.getBootcamp()
+        .subscribe((BootcampServiceService: Bootcamp[]) => this.bootcamps = BootcampServiceService); 
   
       };
 
   onSubmit(): void {
     this.submitted = true;
-    if (this.sessionFormationForm.invalid) {
+    if (this.bootcampForm.invalid) {
       return;
     }
     // Soumission du formulaire de session de formation
-    console.log(this.sessionFormationForm.value);
+    console.log(this.bootcampForm.value);
   }
 
   onSubmitFormation(): void {
@@ -66,6 +66,6 @@ export class AdminFormationComponent implements OnInit {
   }
 
   get sessionFormationFormControls(): any {
-    return this.sessionFormationForm.controls;
+    return this.bootcampForm.controls;
   }
 }

@@ -1,4 +1,4 @@
-import { SessionFormations } from "./sessionFormations.model";
+import { Bootcamp } from "./bootcampmodel";
 
 export class Formations {
   id!: number;

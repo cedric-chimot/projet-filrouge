@@ -3,16 +3,14 @@ package fr.equipefilrouge.filrougeSpring.controller;
 import fr.equipefilrouge.filrougeSpring.entity.Formateur;
 import fr.equipefilrouge.filrougeSpring.services.impl.FormateurServiceImpl;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controller pour un formateur
  */
 @RestController
 @RequestMapping("/formateurs")
+@CrossOrigin
 public class FormateurController {
 
     /**
