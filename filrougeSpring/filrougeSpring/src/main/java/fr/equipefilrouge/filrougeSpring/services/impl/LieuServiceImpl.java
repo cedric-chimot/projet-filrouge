@@ -30,7 +30,7 @@ public class LieuServiceImpl implements AllServices<Lieu, Long> {
     }
 
     /**
-     * @return tous les objets existants
+     * @return tous les objets lieux existants
      */
     @Override
     public List<Lieu> findAll() {
@@ -38,9 +38,9 @@ public class LieuServiceImpl implements AllServices<Lieu, Long> {
     }
 
     /**
-     * Méthode pour trouver un objet par son identifiant
+     * Méthode pour trouver un objet lieu par son identifiant
      * @param id l'identifiant recherché
-     * @return l'objet recherché
+     * @return l'objet lieu recherché
      */
     @Override
     public Lieu findById(Long id) {
@@ -49,9 +49,9 @@ public class LieuServiceImpl implements AllServices<Lieu, Long> {
     }
 
     /**
-     * Méthode pour créer un nouvel objet
+     * Méthode pour créer un nouvel objet lieu
      * @param newObj le nouvel objet
-     * @return l'objet nouvellement créé
+     * @return l'objet lieu nouvellement créé
      */
     @Override
     public Lieu create(Lieu newObj) {
@@ -71,7 +71,7 @@ public class LieuServiceImpl implements AllServices<Lieu, Long> {
     }
 
     /**
-     * Méthode pour supprimer un centre de formation selon l'id recherché
+     * Méthode pour supprimer un lieu selon l'id recherché
      * @param id l'identifiant recherché
      * @return l'objet à supprimer
      */
@@ -83,7 +83,7 @@ public class LieuServiceImpl implements AllServices<Lieu, Long> {
     }
 
     /**
-     * Méthode pour supprimer tous les centres de formation
+     * Méthode pour supprimer tous les lieux
      */
     @Override
     public void deleteAll() {

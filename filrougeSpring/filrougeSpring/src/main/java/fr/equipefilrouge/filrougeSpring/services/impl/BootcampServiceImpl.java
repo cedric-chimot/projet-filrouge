@@ -19,7 +19,7 @@ import java.util.List;
 public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
 
     /**
-     * Le repository de la session de formation
+     * Le repository du bootcamp
      */
     private final BootcampRepository bootcampRepository;
 
@@ -43,9 +43,9 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
     }
 
     /**
-     * Méthode pour retourner toutes les formations avec les informations choisies
+     * Méthode pour retourner tous les bootcamps avec les informations choisies
      *
-     * @return la liste des formations
+     * @return la liste des bootcamps
      */
     public List<BootcampReduitDTO> findAllBootcampReduit() {
         List<Bootcamp> bootcamps = bootcampRepository.findAll();
@@ -56,17 +56,17 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
 
     /**
      * @param id l'identifiant recherché
-     * @return la session de formation correspondante
+     * @return le bootcamp correspondant
      */
     @Override
     public Bootcamp findById(Long id) {
         return bootcampRepository.findById(id)
-                .orElseThrow(() -> new CustomException("SessionFormation", "id", id));
+                .orElseThrow(() -> new CustomException("Bootcamp", "id", id));
     }
 
     /**
-     * @param newObj le nouvel objet session de formation
-     * @return la session de formation nouvellement créée
+     * @param newObj le nouvel objet bootcamp
+     * @return le bootcamp nouvellement créée
      */
     @Override
     public Bootcamp create(Bootcamp newObj) {
@@ -75,9 +75,9 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
 
 
     /**
-     * Méthode pour mettre à jour une session de formation selon l'id recherché
+     * Méthode pour mettre à jour un bootcamp selon l'id recherché
      * @param bootcamp l'objet à mettre à jour
-     * @return la session mise à jour
+     * @return le bootcamp
      */
     @Override
     public Bootcamp update(Bootcamp bootcamp) {
@@ -89,9 +89,9 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
     }
 
     /**
-     * Méthode pour supprimer une  session de formation selon l'id recherché
+     * Méthode pour supprimer un bootcamp selon l'id recherché
      * @param id l'identifiant recherché
-     * @return la session de formation à supprimer
+     * @return le bootcamp à supprimer
      */
     @Override
     public Bootcamp deleteById(Long id) {
@@ -101,7 +101,7 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
     }
 
     /**
-     * Méthode pour supprimer toutes les sessions de formation
+     * Méthode pour supprimer tous bootcamps
      */
     @Override
     public void deleteAll() {

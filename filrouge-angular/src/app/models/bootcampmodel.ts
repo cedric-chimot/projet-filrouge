@@ -1,4 +1,4 @@
-export class SessionFormations{
+export class Bootcamp{
     id!: number;
     dateDebut!: string;
     dateFin!: string;

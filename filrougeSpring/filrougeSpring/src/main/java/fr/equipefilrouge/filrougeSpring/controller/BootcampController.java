@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Controller pour une session de formation
+ * Controller pour un bootcamp de formation
  */
 @RestController
 @RequestMapping("/bootcamps")
@@ -15,22 +15,22 @@ import java.util.List;
 public class BootcampController {
 
     /**
-     * Appel du service session de formation
+     * Appel du service bootcamp
      */
     private final BootcampServiceImpl bootcampService;
 
     /**
      * Constructeur du controller
-     * @param bootcampService le service de la session de formation
+     * @param bootcampService le service du bootcamp
      */
     public BootcampController(BootcampServiceImpl bootcampService) {
         this.bootcampService = bootcampService;
     }
 
     /**
-     * Méthode pour créer une session de formation
-     * @param bootcamp la session de formation à créer
-     * @return la session de formation nouvellement créée
+     * Méthode pour créer un bootcamp
+     * @param bootcamp le bootcamp à créer
+     * @return le bootcamp nouvellement créé
      */
     @PostMapping("/create")
     public Bootcamp createBootcamp(@RequestBody Bootcamp bootcamp) {
@@ -39,7 +39,7 @@ public class BootcampController {
 
 
     /**
-     * Méthode pour mettre à jour une session de formation
+     * Méthode pour mettre à jour un bootcamp
      * @param bootcamp la session de formation à mettre à jour
      * @return la session de formation mis à jour
      */
@@ -49,8 +49,8 @@ public class BootcampController {
     }
 
     /**
-     * Affiche toutes les sessions de formations
-     * @return la liste des sessions formations
+     * Affiche tous les bootcamps
+     * @return la liste des bootcamps
      */
     @GetMapping("/all")
     public List<Bootcamp> getAllBootcamps() {
@@ -58,9 +58,9 @@ public class BootcampController {
     }
 
     /**
-     * Méthode pour rechercher une session avec son identifiant
-     * @param id l'identifiant de la session
-     * @return la session recherchée
+     * Méthode pour rechercher un bootcamp avec son identifiant
+     * @param id l'identifiant du bootcamp
+     * @return le bootcamp recherchée
      */
     @GetMapping("/{id}")
     public Bootcamp getBootcampById(@PathVariable Long id) {
@@ -68,7 +68,7 @@ public class BootcampController {
     }
 
     /**
-     * Supprimer une session de formation selon son id
+     * Supprimer un bootcamp selon son id
      * @param id l'identifiant de la session
      * @return la session supprimée
      */
@@ -78,7 +78,7 @@ public class BootcampController {
     }
 
     /**
-     * Supprimer toutes les sessions de formation
+     * Supprimer tous les bootcamps
      */
     @DeleteMapping("/delete/all")
     public void deleteAllBootcamps() {

@@ -30,12 +30,22 @@ public class Lier {
     @JoinColumn(name = "lieu_id")
     private Lieu lieu;
 
+    /**
+     * Constructeur pour la classe de liaison
+     * @param bootcamp la session de formation
+     * @param formation la formation liée
+     * @param lieu le lieu où elle se déroule
+     */
     public Lier(Bootcamp bootcamp, Formation formation, Lieu lieu) {
         this.bootcamp = bootcamp;
         this.formation = formation;
         this.lieu = lieu;
     }
 
+    /**
+     * Affichage de la table de liaison
+     * @return les données de la table
+     */
     @Override
     public String toString() {
         return "Lier{" +

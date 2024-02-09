@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Classe Bootcamp pour gérer une session de formation et toutes ses données
+ * Classe Bootcamp pour gérer un bootcamp et toutes ses données
  */
 @Getter
 @Setter
@@ -43,8 +43,8 @@ public class Bootcamp {
 
     /**
      * Constructeur pour une session de formation
-     * @param dateDebut, date de début de la session
-     * @param dateFin, date de fin de la session
+     * @param dateDebut, date de début du bootcamp
+     * @param dateFin, date de fin du bootcamp
      * @param statut, le statut
      */
     public Bootcamp(Date dateDebut, Date dateFin, String statut) {
@@ -54,8 +54,8 @@ public class Bootcamp {
     }
 
     /**
-     * Méthode pour afficher une session de formation
-     * @return la session de formation
+     * Méthode pour afficher un bootcamp
+     * @return le bootcamp
      */
     @Override
     public String toString() {

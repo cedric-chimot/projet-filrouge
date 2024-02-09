@@ -2,16 +2,14 @@ package fr.equipefilrouge.filrougeSpring.controller;
 
 import fr.equipefilrouge.filrougeSpring.entity.Lieu;
 import fr.equipefilrouge.filrougeSpring.services.impl.LieuServiceImpl;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controller pour un centre de formation
  */
 @RestController
 @RequestMapping("/lieu")
+@CrossOrigin
 public class LieuController {
 
     /**
