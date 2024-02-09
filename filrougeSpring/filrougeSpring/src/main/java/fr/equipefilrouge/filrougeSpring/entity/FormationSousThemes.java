@@ -13,7 +13,6 @@ import lombok.Setter;
 @Setter
 @RequiredArgsConstructor
 @Entity
-@Table(name = "couvrir")
 public class FormationSousThemes {
 
     @Id

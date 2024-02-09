@@ -34,9 +34,6 @@ public class Formation {
     @OneToMany
     private List<SessionFormation> sessionsFormation = new ArrayList<>();
 
-    @OneToMany
-    private List<FormationSousThemes> formationSousThemes = new ArrayList<>();
-
     /**
      * Constructeur pour une formation
      * @param nom, l'intitulé de la formation

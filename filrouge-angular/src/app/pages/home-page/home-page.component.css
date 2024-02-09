@@ -100,16 +100,20 @@
 }
 
 .circle {
-    width: 80px;
-    height: 70px;
+    width: 120px; 
+    height: 120px; 
     margin: 20px 20px 20px 20px;
     padding: 30px;
     border-radius: 70%;
     border-color: rgba(213, 238, 241, 0.6);
-    background-color:rgba(5, 70, 79, 0.6) ; 
+    background-color: rgba(5, 70, 79, 0.6); 
     border: 0.5em; 
-    margin:35px;
+    margin: 35px;
     align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.5; 
 }
   
 .circle:nth-child(1) {

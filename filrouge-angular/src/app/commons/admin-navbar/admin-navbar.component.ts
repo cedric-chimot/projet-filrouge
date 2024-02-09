@@ -12,5 +12,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './admin-navbar.component.css'
 })
 export class AdminNavbarComponent {
-  img =  './../../../assets/avatar.png';
+  img =  '../../../assets/images/avatar.png';
 }

@@ -34,9 +34,6 @@ public class SousTheme {
     @OneToMany(mappedBy = "sousTheme", fetch = FetchType.EAGER)
     private List<Theme> themes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "sousThemes", fetch = FetchType.EAGER)
-    private List<FormationSousThemes> formationSousThemes = new ArrayList<>();
-
     @OneToMany(mappedBy = "sousTheme", fetch = FetchType.EAGER)
     private List<ExperienceFormateur> experiencesSousThemes = new ArrayList<>();
 
