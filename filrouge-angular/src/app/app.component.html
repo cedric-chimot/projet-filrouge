@@ -1,14 +1,7 @@
-<!-- S'il y a dashboard dans l'URL on affiche la navbar admin -->
-@if(isDashboardRoute()) {
-    <app-admin-navbar></app-admin-navbar>
-    <router-outlet />
-}
 
-<!-- Sinon on affiche la navbar classique et le footer -->
-@if(!isDashboardRoute()) {
     <app-nav-bar></app-nav-bar>
     
     <router-outlet />
     
     <app-footer></app-footer>
-}
+

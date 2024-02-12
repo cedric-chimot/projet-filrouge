@@ -12,8 +12,8 @@ import { RouterModule } from '@angular/router';
 @Component({
     selector: 'app-stagiaire-formulaire',
     standalone: true,
-    templateUrl: './stagiaire-formulaire.component.html',
-    styleUrls: ['./stagiaire-formulaire.component.css'],
+    templateUrl: './inscription-page.component.html',
+    styleUrls: ['./inscription-page.component.css'],
     imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, NavBarComponent, FooterComponent, RouterModule]
 })
 

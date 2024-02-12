@@ -9,11 +9,11 @@ import { Router, RouterModule } from '@angular/router';
 import { LoginServiceService } from '../../services/login/login-service.service';
 
 @Component({
-  selector: 'app-login-form',
+  selector: 'app-connexion-page',
   standalone: true, 
   imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, NavBarComponent, FooterComponent, CommonModule, RouterModule],
-  templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.css'
+  templateUrl: './connexion-page.component.html',
+  styleUrl: './connexion-page.component.css'
 })
 
 export class LoginFormComponent {
