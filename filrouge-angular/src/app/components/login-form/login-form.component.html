@@ -3,49 +3,35 @@
         <div class="color"></div>
         <div class="color"></div>
         <div class="color"></div>
-    
         <div class="container">
-            <div class="form">
-                <h2>Connectez-vous</h2>
-                <div class="row justify-content-center">
-                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                        <fieldset>
-                            <div class="form-group">
-                                <div class="row justify-content-center">
-                                    
-                                        <label class="form-label">Email </label>
-                                        <input  type="email" formControlName="email" class="form-control">
-                                        @if (submitted && !form['email'].valid) {
-                                            <span class="text-danger small">*L'email est invalide ou n'existe pas</span>
-                                        }
-                                    </div>
+        <div class="form">
+            <h2>Connectez-vous</h2>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <div class="input-group" >
+                                <input  type="email" formControlName="email" placeholder="Email">
+                                @if (submitted && !form['email'].valid) {
+                                    <span class="text-danger small">*L'email est invalide ou n'existe pas</span>
+                                }
                                 </div>
-                                <div class="row justify-content-center">
-        
-                                        <label class="form-label">Mot de passe </label>
-                                        <input type="text" formControlName="mdp" class="form-control">
-                                        @if (submitted && !form['mdp'].valid){
-                                            <span class="text-danger small">
-                                                *Le mot de passe est incorrect
-                                            </span>
-                                        }
-                                    </div>
-                                
-                            
-                            <div class="text-center">
+                        <div class="input-group">
+                            <input type="text" formControlName="mdp" placeholder="Mot de passe">
+                            @if (submitted && !form['mdp'].valid){
+                            <span class="text-danger small">
+                            *Le mot de passe est incorrect
+                            </span>}
+                            </div>
+                            <div class="input-group">
                                 <button type="submit" class="btn btn-success m-4 p-2">Se connecter</button>
                                 <button type="reset" class="btn btn-danger p-2 mb-4">Annuler</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                    <div class="row justify-content-center">
-                        <p class="row justify-content-center">
+                        <p>
                             Vous n'avez pas encore de compte ?
                         </p>
-                        <button routerLink="/inscription">Inscrivez-vous</button>
-                    </div>
+                                <button  class="btn btn-success" routerLink="/inscription">Inscrivez-vous</button>
+                            </div>
                 </div>
+            </form>
             </div>
-        </div>
+            </div>
     </section>
 </body>
