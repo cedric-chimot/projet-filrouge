@@ -1,69 +1,62 @@
 {
-    "Stagiaires": [
+    "users": [
         {
-            "nom": "Dupont",
-            "prenom": "Jean",
-            "telephone": "0123456789",
-            "email": "jean.dupont@example.com",
-            "pseudo": "jdupont",
-            "mdp": "motdepasse123",
-            "role": "stagiaire"
-        },
-        {
-            "nom": "Martin",
-            "prenom": "Marie",
-            "telephone": "0987654321",
-            "email": "marie.martin@example.com",
-            "pseudo": "mmartin",
-            "mdp": "motdepasse456",
-            "role": "stagiaire"
-        },
-        {
-            "nom": "Leroy",
-            "prenom": "Pierre",
-            "telephone": "0112233445",
-            "email": "pierre.leroy@example.com",
-            "pseudo": "pleroy",
-            "mdp": "motdepasse789",
-            "role": "stagiaire"
-        },
-        {
-            "nom": "Petit",
-            "prenom": "Sophie",
-            "telephone": "0555666777",
-            "email": "sophie.petit@example.com",
-            "pseudo": "spetit",
-            "mdp": "motdepasse012",
-            "role": "stagiaire"
-        },
-        {
+            "note_moyenne": 4.2,
+            "id": 3,
+            "type": "F",
+            "email": "user2@example.com",
+            "mdp": "motdepasse",
             "nom": "Lefevre",
-            "prenom": "Lucas",
-            "telephone": "0667788990",
-            "email": "lucas.lefevre@example.com",
-            "pseudo": "llefevre",
-            "mdp": "motdepasse345",
-            "role": "stagiaire"
+            "prenom": "Marie",
+            "pseudo": "mlefevre",
+            "telephone": "0123456789"
         },
         {
+            "note_moyenne": 3.9,
+            "id": 4,
+            "type": "S",
+            "email": "user3@example.com",
+            "mdp": "motdepasse",
+            "nom": "Petit",
+            "prenom": "Paul",
+            "pseudo": "ppetit",
+            "telephone": "0987654321"
+        },
+        {
+            "note_moyenne": 4.7,
+            "id": 5,
+            "type": "A",
+            "email": "admin2@example.com",
+            "mdp": "motdepasse",
+            "nom": "Roux",
+            "prenom": "Sophie",
+            "pseudo": "sroux",
+            "telephone": "0123456789"
+        },
+        {
+            "note_moyenne": 4.1,
+            "id": 6,
+            "type": "F",
+            "email": "user4@example.com",
+            "mdp": "motdepasse",
             "nom": "Moreau",
-            "prenom": "Emma",
-            "telephone": "0778899001",
-            "email": "emma.moreau@example.com",
-            "pseudo": "emoreau",
-            "mdp": "motdepasse678",
-            "role": "stagiaire"
+            "prenom": "Lucas",
+            "pseudo": "lmoreau",
+            "telephone": "0987654321"
         },
         {
-            "nom": "Fournier",
-            "prenom": "Hugo",
-            "telephone": "0889900112",
-            "email": "hugo.fournier@example.com",
-            "pseudo": "hfournier",
-            "mdp": "motdepasse901",
-            "role": "stagiaire"
+            "note_moyenne": 4.3,
+            "id": 7,
+            "type": "S",
+            "email": "user5@example.com",
+            "mdp": "motdepasse",
+            "nom": "Girard",
+            "prenom": "Emma",
+            "pseudo": "egirard",
+            "telephone": "0123456789"
         }
     ],
+
     "Formations": [ 
         {
             "id": 1,
