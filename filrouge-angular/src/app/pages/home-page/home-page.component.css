@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
     padding: 0.5px 0.5px 0.5px 0.5px;
-    grid-gap:8px;
+    grid-gap:5px;
     width:cover;
     height: 500px;
     background:#f7f7f7;
@@ -95,11 +95,16 @@ box-shadow: -15px -15px 15px rgb(255, 255,255,0.2),
 }
 
 .text{
+    margin: 15px;
     color: #5065A8;
     text-align: center;
     font-size:large;
 }
 
+.map{
+    padding-left: 20px ;
+    margin: 10px;
+}
 .text2{
     color: #5065A8;
     padding-top: 15px;
