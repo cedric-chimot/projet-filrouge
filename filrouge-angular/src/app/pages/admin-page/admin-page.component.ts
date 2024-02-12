@@ -1,59 +1,71 @@
-import { Component } from '@angular/core';
-import { AdminNavbarComponent } from "../../commons/admin-navbar/admin-navbar.component";
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
-import { StagiaireServiceService } from '../../services/stagiaires/stagiaire-service.service';
-
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Bootcamp } from '../../models/bootcampmodel';
+import { Formations } from '../../models/formations.model';
+import { BootcampServiceService } from '../../services/bootcamp/bootcamp-service.service';
+import { FormationServiceService } from '../../services/formation/formation-service.service';
 
 @Component({
-    selector: 'app-admin-page',
-    standalone: true,
-    templateUrl: './admin-page.component.html',
-    styleUrl: './admin-page.component.css',
-    imports: [AdminNavbarComponent, MatToolbarModule, MatIconModule, MatButtonModule, RouterModule]
+  selector: 'app-admin-formation',
+  templateUrl: './admin-page.component.html',
+  styleUrls: ['./admin-page.component.css']
 })
-export class AdminPageComponent {
-    // Variables pour compter les stagiaires et candidats
-    nbStagiaires: number = 0; 
-    nbCandidats: number = 0;
+export class AdminFormationComponent implements OnInit {
 
-    // Constructeur
-    constructor(private stagiaireService: StagiaireServiceService) {}
+  bootcampForm: FormGroup = this.formBuilder.group({
+    dateDebut: ['', Validators.required],
+    dateFin: ['', Validators.required],
+    centreFormation: ['', Validators.required],
+    formation: ['', Validators.required],
+    statut: ['', Validators.required]
+  });
+  formationForm: FormGroup = this.formBuilder.group({
+    nom: ['', Validators.required],
+    prix: ['', Validators.required],
+    description: ['', Validators.required]
+  });
+
+
+  submitted = false;
+  formations: Formations[] = [];
+  bootcamps: Bootcamp[] = [];
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private bootcampService: BootcampServiceService,
+    private formationService: FormationServiceService
+  ){};
+
+  ngOnInit(): void {
+      this.formationService.getFormations()
+        .subscribe((formations: Formations[]) => this.formations = formations); 
+
+      this.bootcampService.getBootcamp()
+        .subscribe((BootcampServiceService: Bootcamp[]) => this.bootcamps = BootcampServiceService); 
   
-    ngOnInit(): void {
-    // on récupère depuis le service la méthode pour trouver les stagiaires
-      this.stagiaireService.getNbStagiaires()
-        .subscribe({
-            next: (nbStagiaires: number) => {
-                // on va afficher le nombre de stagiaires enregistrés en BDD
-                this.nbStagiaires = nbStagiaires;
-            },
-            error: (error) => {
-                // message d'erreur en cas d'échec
-                console.error('Erreur lors de la récupération du nombre de stagiaires', error);
-            },
-            complete: () => {
-                console.log("Récupération complète");
-            }
-        });
+      };
 
-    // on récupère depuis le service la méthode pour trouver les candidats
-        this.stagiaireService.getNbCandidats()
-        .subscribe({
-            next: (nbCandidats: number) => {
-                // on va afficher le nombre de candidats enregistrés en BDD
-                this.nbCandidats = nbCandidats;
-            },
-            error: (error) => {
-                // message d'erreur en cas d'échec
-                console.error('Erreur lors de la récupération du nombre de stagiaires', error);
-            },
-            complete: () => {
-                console.log("Récupération complète");
-            }
-        });
+  onSubmit(): void {
+    this.submitted = true;
+    if (this.bootcampForm.invalid) {
+      return;
     }
+    // Soumission du formulaire de session de formation
+    console.log(this.bootcampForm.value);
+  }
 
+  onSubmitFormation(): void {
+    this.submitted = true;
+    if (this.formationForm.invalid) {
+      return;
+    }
+  }
+
+  get formationFormControls(): any {
+    return this.formationForm.controls;
+  }
+
+  get sessionFormationFormControls(): any {
+    return this.bootcampForm.controls;
+  }
 }
