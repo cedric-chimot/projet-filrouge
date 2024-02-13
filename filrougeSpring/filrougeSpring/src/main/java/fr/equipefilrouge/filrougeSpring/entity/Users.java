@@ -93,4 +93,11 @@ public abstract class Users {
                 .add("role=" + role)
                 .toString();
     }
+
+    /* Méthode de récupération du type
+     * @return le type d'utilisateur
+    */
+    public String getType() {
+        return this.getClass().getAnnotation(DiscriminatorValue.class).value();
+    }
 }

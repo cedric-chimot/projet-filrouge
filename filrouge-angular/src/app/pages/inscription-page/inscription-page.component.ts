@@ -24,7 +24,6 @@ export class StagiaireFormulaireComponent {
     prenom: ['', Validators.required],
     telephone: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    role: ['', Validators.required],//Todo disparute
     pseudo: ['', Validators.required],
     mdp: ['', [
       Validators.required,
