@@ -39,25 +39,9 @@ section.color:nth-child(3){
     height:500px;
     background:#5065A8;
 }
-
-.box{
-    position:absolute;
-}
-
-.box .square{
-    position:absolute;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 0.3px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2) ;
-
-
-}
-
 .container{
     position:relative;
-    width: 600px;
+    width: 400px;
     min-height: 400px;
     background:rgba(213, 238, 241, 0.1) ;
     border-radius: 10px;
@@ -75,45 +59,55 @@ section.color:nth-child(3){
 .form {
     position: relative;
     width: 100%;
+    padding: 40px;
 }
 
 .form h2{
     position:relative;
     color:#90a3e2;
+    font-size: 24px;
     font-weight: 600px;
     letter-spacing: 1px;
+    margin-bottom: 40px;
 }
 
 .form h2::before{
-position: absolute;
-left:0;
-bottom:-10px;
-width: 80px;
-height: 4px;
-background:#F2EEE4;
+    content: '';
+    position: absolute;
+    left:0;
+    bottom:-10px;
+    width: 80px;
+    height: 4px;
+    background:#F2EEE4;
 }
 
-.form .inputBox{
+.form .input-group{
 width: 100%;
-margin-top: 20px;
+align-items: center;
+margin: 10px;
 }
 
-.form .form-Control input{
+.form .form-group{
+    color: #5065A8;
     width:100%;
-    background:rgba(255, 255, 255, 0.5);
     border: none;
     outline: none;
-    padding: 10px 20px;
-    border-radius: 35px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 0.3px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2) ;
-    font-size: 16px;
+    border-radius: 20px;
+    font-size: 15px;
     letter-spacing: 1px;
+    align-items: center;
     color: #F2EEE4; 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
+.form input{
+    align-items: center;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 15px;
+}
 .row{
     color:#5065A8;
 }
@@ -123,6 +117,8 @@ margin-top: 20px;
     background:rgba(255, 255, 255, 0.5);
     border: none;
     outline: none;
+    padding: 8px;
+    margin: 5px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 0.3px solid rgba(255, 255, 255, 0.2);
