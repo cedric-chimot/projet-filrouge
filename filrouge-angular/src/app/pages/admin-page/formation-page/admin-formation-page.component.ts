@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Bootcamp } from '../../../models/bootcampmodel';
-import { Formations } from '../../../models/formations.model';
-import { BootcampServiceService } from '../../../services/bootcamp/bootcamp-service.service';
-import { FormationServiceService } from '../../../services/formation/formation-service.service';
+import Formation  from '../../../models/formation.model';
+import { BootcampService } from '../../../services/bootcamp/bootcamp.service';
+import { FormationService } from '../../../services/formation/formation.service';
+import { RouterModule } from '@angular/router';
+import { ProductAdminListComponent } from '../../products-page/product-admin-list/product-admin-list.component';
+
 
 @Component({
   selector: 'app-admin-formation',
   templateUrl: './admin-formation-page.component.html',
-  styleUrls: ['./admin-formation-page.component.css']
+  styleUrls: ['./admin-formation-page.component.css'],
+  standalone: true,
+  imports: [ProductAdminListComponent, RouterModule]
 })
 export class AdminFormationComponent implements OnInit {
 
@@ -27,18 +32,18 @@ export class AdminFormationComponent implements OnInit {
 
 
   submitted = false;
-  formations: Formations[] = [];
+  formations: Formation[] = [];
   bootcamps: Bootcamp[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
-    private bootcampService: BootcampServiceService,
-    private formationService: FormationServiceService
+    private bootcampService: BootcampService,
+    private formationService: FormationService
   ){};
 
   ngOnInit(): void {
       this.formationService.getFormations()
-        .subscribe((formations: Formations[]) => this.formations = formations); 
+        .subscribe((formations: Formation[]) => this.formations = formations); 
 
       this.bootcampService.getBootcamp()
         .subscribe((BootcampServiceService: Bootcamp[]) => this.bootcamps = BootcampServiceService); 

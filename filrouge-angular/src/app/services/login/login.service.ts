@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginServiceService {
+export class LoginService{
   private apiUrl = 'http://localhost:8080';
 
   // Pour suivre l'état de la connexion (true or false)

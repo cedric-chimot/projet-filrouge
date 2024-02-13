@@ -6,7 +6,7 @@ import { Stagiaires } from '../../models/stagiaires.model';
 @Injectable({
   providedIn: 'root'
 })
-export class StagiaireServiceService {
+export class StagiaireService {
   // Récupération de l'URL de Spring
   private apiUrl = 'http://localhost:8080';
 

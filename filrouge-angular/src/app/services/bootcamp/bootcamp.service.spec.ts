@@ -1,17 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BootcampServiceService } from './bootcamp-service.service';
+import { BootcampService } from './bootcamp.service';
 
 describe('BootcampService', () => {
-  let service: BootcampServiceService;
+  let service: BootcampService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(BootcampServiceService);
+    service = TestBed.inject(BootcampService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 });
+
 
