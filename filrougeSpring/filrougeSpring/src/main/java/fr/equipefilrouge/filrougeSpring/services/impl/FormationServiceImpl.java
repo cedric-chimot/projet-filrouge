@@ -82,6 +82,15 @@ public class FormationServiceImpl implements AllServices<Formation, Long> {
     }
 
     /**
+     * Méthode pour ajouter une liste de formations
+     * @param formations la liste des formations à ajouter
+     * @return la liste des formations
+     */
+    public List<Formation> createListe(List<Formation> formations) {
+        return formationRepository.saveAll(formations);
+    }
+
+    /**
      * Méthode pour mettre à jou une formation
      * @param formation l'objet à mettre à jour
      * @return la formation mise à jour
