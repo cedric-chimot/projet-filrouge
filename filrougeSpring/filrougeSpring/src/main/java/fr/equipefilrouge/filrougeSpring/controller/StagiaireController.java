@@ -51,29 +51,6 @@ public class StagiaireController {
     }
 
     /**
-     * Endpoint pour gérer la connexion
-     * @param identifiants les identifiants de connexion
-     * @return une réponse ok ou erreur au moment de la validation
-     */
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Map<String, String> identifiants) {
-        // Extraire l'e-mail et le mot de passe à partir du corps de la requête
-        String email = identifiants.get("email");
-        String mdp = identifiants.get("mdp");
-
-        // Vérifier les informations d'identification
-        if (usersService.areIdsValid(email, mdp)) {
-            System.out.println("connexion réussie !");
-            // Si les informations d'identification sont valides, renvoyer une réponse 200 OK avec un message de succès
-            return ResponseEntity.ok("Connexion réussie !");
-        } else {
-            System.out.println("connexion impossible !");
-            // Si les informations d'identification ne sont pas valides, renvoyer une réponse 401 Unauthorized avec un message d'erreur
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Identifiants incorrects !");
-        }
-    }
-
-    /**
      * Mettre à jour un stagiaire
      * @param stagiaire le stagiaire à mettre à jour
      * @return le stagiaire mis à jour
@@ -100,23 +77,6 @@ public class StagiaireController {
     @GetMapping("/{id}")
     public StagiaireCompletDTO getStagiaireById(@PathVariable Long id) {
         return stagiaireServiceImpl.stagiaireById(id);
-    }
-
-    /**
-     * Renvoyer le nombre de stagiaires en BDD
-     * @return le nombre de stagiaire
-     */
-    @GetMapping("/nbStagiaires")
-    public Long nbStagiaires() {
-        return usersService.countUsersByRole(UserRole.STAGIAIRE);
-    }
-    /**
-     * Renvoyer le nombre de candidats en BDD
-     * @return le nombre de candidats
-     */
-    @GetMapping("/nbCandidats")
-    public Long nbCandidats() {
-        return usersService.countUsersByRole(UserRole.CANDIDAT);
     }
 
     /**

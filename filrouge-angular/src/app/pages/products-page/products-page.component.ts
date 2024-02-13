@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductListComponent } from "./product-list/product-list.component";
-import { Formations } from '../../models/formations.model';
-import { FormationServiceService } from '../../services/formation/formation-service.service';
-
+import Formation from '../../models/formation.model';
+import { FormationService } from '../../services/formation/formation.service';
 
 @Component({
     selector: 'app-products-page',
@@ -13,10 +12,9 @@ import { FormationServiceService } from '../../services/formation/formation-serv
 })
 export class ProductsPageComponent {
 
-  formations: Formations[] = []
+  formations: Formation[] = []
 
-  constructor(private formationService: FormationServiceService) {}//, private albumService: AlbumService
-
+  constructor(private formationService: FormationService) {}
   ngOnInit(): void {
     this.formationService.getFormations().subscribe((formations) => {this.formations = formations;});
   }

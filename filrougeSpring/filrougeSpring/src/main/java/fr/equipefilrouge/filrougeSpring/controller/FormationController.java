@@ -39,6 +39,17 @@ public class FormationController {
     }
 
     /**
+     * Création d'une liste de formations
+     * @param formations la liste des formations à créer
+     * @return la liste des formations nouvellement créée
+     */
+    @PostMapping("/createFormations")
+    public List<Formation> listFormations(@RequestBody List<Formation> formations) {
+        return formationServiceImpl.createListe(formations);
+    }
+
+
+    /**
      * Méthode pour mettre à jour une formation
      * @param formation la formation à mettre à jour
      * @return la formation mis à jour

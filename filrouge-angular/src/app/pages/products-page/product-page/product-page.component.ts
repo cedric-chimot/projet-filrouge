@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { ProductsPageComponent } from '../products-page.component';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProductDetailsComponent } from "../product-details/product-details.component";
+import Formation from '../../../models/formation.model';
+import { FormationService } from '../../../services/formation/formation.service';
 import { ProductCardComponent } from "../product-card/product-card.component";
-import { FormationServiceService } from '../../../services/formation/formation-service.service';
-import { Formations } from '../../../models/formations.model';
 
 @Component({
     selector: 'app-product-page',
@@ -15,18 +14,17 @@ import { Formations } from '../../../models/formations.model';
 })
 export class ProductPageComponent {
 
- 
-  product!: Formations ;
+
+  product!: Formation ;
 
   constructor(
       private router: Router, 
       private route:ActivatedRoute, 
-      private formationService: FormationServiceService 
-
+      private formationService: FormationService 
   ) {}
 
   private subscribeFormation(id: number): void {
-    this.formationService.getFormationById(id).subscribe({
+    this.formationService.getFormation(id).subscribe({
       next: (formation) => this.product = formation,
       error: (err) => console.error('Erreur au chargement', err)
     });

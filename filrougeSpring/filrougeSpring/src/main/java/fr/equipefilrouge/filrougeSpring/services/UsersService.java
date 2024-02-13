@@ -7,6 +7,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class UsersService {
@@ -61,14 +63,15 @@ public class UsersService {
     }
 
     /**
-     * Méthode pour trouver des utilisateurs par leur rôle
-     * @param role le rôles recherché
-     * @return le nombre d'utilisateurs avec le rôle correspondant
+     * Compte le nombre d'utilisateurs de type spécifié.
+     * @param type Le type d'utilisateur pour lequel compter.
+     * @return Le nombre d'utilisateurs de ce type.
      */
-    public Long countUsersByRole(UserRole role) {
-        return usersRepository.countByRole(role);
+    public Long countUsersByType(String type) {
+        List<Users> allUsers = usersRepository.findAll();
+        return allUsers.stream()
+                .filter(users -> users.getType().equals(type))
+                .count();
     }
-
-
 
 }

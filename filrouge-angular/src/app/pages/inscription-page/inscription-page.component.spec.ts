@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StagiaireFormulaireComponent } from './admin-formation.component';
+import { StagiaireFormulaireComponent } from './inscription-page.component';
 
 describe('StagiaireFormulaireComponent', () => {
   let component: StagiaireFormulaireComponent;

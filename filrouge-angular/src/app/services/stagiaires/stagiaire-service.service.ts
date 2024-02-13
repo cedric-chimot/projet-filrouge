@@ -14,22 +14,26 @@ export class StagiaireServiceService {
 
   // Récupère tous les stagiaires
   getStagiaires(): Observable<Stagiaires[]>{
-    return this.httpClient.get<Stagiaires[]>(`${this.apiUrl}/stagiaires/all`);
+    return this.httpClient.get<Stagiaires[]>(`${this.apiUrl}/users/all`);
   }
 
   // Récupère le nombre de stagiaires
   getNbStagiaires(): Observable<number> {
-    return this.httpClient.get<number>(`${this.apiUrl}/stagiaires/nbStagiaires`);
+    return this.httpClient.get<number>(`${this.apiUrl}/users/nbStagiaires`);
   }
   
   // Récupère le nombre de candidats
   getNbCandidats(): Observable<number> {
-    return this.httpClient.get<number>(`${this.apiUrl}/stagiaires/nbCandidats`);
+    return this.httpClient.get<number>(`${this.apiUrl}/users/nbCandidats`);
+  }
+
+  getNbUsersByType(type: string): Observable<number> {
+    return this.httpClient.get<number>(`${this.apiUrl}/users/count/${type}`)
   }
   
   // Création d'un stagiaire
   createStagiaire(stagiaire: Stagiaires): Observable<Stagiaires>{
-    return this.httpClient.post<Stagiaires>(`${this.apiUrl}/stagiaires/create`, stagiaire);
+    return this.httpClient.post<Stagiaires>(`${this.apiUrl}/users/create`, stagiaire);
   }
 
 }

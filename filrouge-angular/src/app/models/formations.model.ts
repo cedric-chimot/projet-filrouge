@@ -1,4 +1,3 @@
-import { Bootcamp } from "./bootcampmodel";
 
 export class Formations {
   id!: number;

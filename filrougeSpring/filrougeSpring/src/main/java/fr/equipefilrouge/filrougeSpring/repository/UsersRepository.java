@@ -15,12 +15,4 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
     @Query("SELECT u FROM Users u WHERE u.email = :email")
     Users findByEmail(@Param("email") String email);
 
-    /**
-     * Requête pour trouver un user par son rôle
-     * @param role le role de 'utilisateur
-     * @return l'utilisateur trouvé
-     */
-    @Query("SELECT COUNT(DISTINCT u) FROM Users u WHERE :role IN (u.role)")
-    Long countByRole(@Param("role") UserRole role);
-
 }

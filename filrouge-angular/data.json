@@ -1,0 +1,97 @@
+{
+    "users": [
+        {
+            "note_moyenne": 4.2,
+            "id": 3,
+            "type": "F",
+            "email": "user2@example.com",
+            "mdp": "motdepasse",
+            "nom": "Lefevre",
+            "prenom": "Marie",
+            "pseudo": "mlefevre",
+            "telephone": "0123456789"
+        },
+        {
+            "note_moyenne": 3.9,
+            "id": 4,
+            "type": "S",
+            "email": "user3@example.com",
+            "mdp": "motdepasse",
+            "nom": "Petit",
+            "prenom": "Paul",
+            "pseudo": "ppetit",
+            "telephone": "0987654321"
+        },
+        {
+            "note_moyenne": 4.7,
+            "id": 5,
+            "type": "A",
+            "email": "admin2@example.com",
+            "mdp": "motdepasse",
+            "nom": "Roux",
+            "prenom": "Sophie",
+            "pseudo": "sroux",
+            "telephone": "0123456789"
+        },
+        {
+            "note_moyenne": 4.1,
+            "id": 6,
+            "type": "F",
+            "email": "user4@example.com",
+            "mdp": "motdepasse",
+            "nom": "Moreau",
+            "prenom": "Lucas",
+            "pseudo": "lmoreau",
+            "telephone": "0987654321"
+        },
+        {
+            "note_moyenne": 4.3,
+            "id": 7,
+            "type": "S",
+            "email": "user5@example.com",
+            "mdp": "motdepasse",
+            "nom": "Girard",
+            "prenom": "Emma",
+            "pseudo": "egirard",
+            "telephone": "0123456789"
+        }
+    ],
+
+    "formations": [ 
+        {
+            "id": 1,
+            "nom": "Formation JavaScript",
+            "prix": 500,
+            "description": "Apprenez les bases du JavaScript, un langage de programmation essentiel pour le développement web.",
+            "img": "../../../../assets/images/photo6.jpg"
+        },
+        {
+            "id": 2,
+            "nom": "Formation Python",
+            "prix": 600,
+            "description": "Découvrez Python, un langage de programmation puissant et flexible, largement utilisé dans le domaine de la science des données.",
+            "img": "../../../../assets/images/photo5.jpg"
+        },
+        {
+            "id": 3,
+            "nom": "Formation HTML/CSS",
+            "prix": 400,
+            "description": "Maîtrisez les fondamentaux du HTML et du CSS, les technologies de base pour la création de sites web.",
+            "img": "../../../../assets/images/photo4.jpg"
+        },
+        {
+            "id": 4,
+            "nom": "Formation React",
+            "prix": 700,
+            "description": "Apprenez à utiliser React, une bibliothèque JavaScript pour la construction d'interfaces utilisateur modernes et réactives.",
+            "img": "../../../../assets/images/photo3.jpg"
+        },
+        {
+            "id": 5,
+            "nom": "Formation Node.js",
+            "prix": 800,
+            "description": "Explorez Node.js, un environnement d'exécution JavaScript côté serveur pour le développement d'applications web évolutives.",
+            "img": "../../../../assets/images/photo2.jpg"
+        }
+    ]
+}

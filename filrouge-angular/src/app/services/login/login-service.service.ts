@@ -22,7 +22,7 @@ export class LoginServiceService {
     const identite = { email, mdp };
     // Envoi de la requête HTTP POST pour la connexion
     // responseType: 'text' indique que la réponse doit être traitée comme du texte
-    return this.httpClient.post(`${this.apiUrl}/stagiaires/login`, identite, { responseType: 'text' });
+    return this.httpClient.post(`${this.apiUrl}/users/login`, identite, { responseType: 'text' });
   }
 
   // Fonction pour mettre à jour l'état d'authentification
