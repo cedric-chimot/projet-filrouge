@@ -8,12 +8,12 @@ import Formation from '../../models/formation.model';
 })
 export class FormationService {
 
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:8080';
 
   constructor(private httpClient: HttpClient) { }
 
   getFormations(): Observable<Formation[]> {
-    return this.httpClient.get<Formation[]>(`${this.apiUrl}/formations`);
+    return this.httpClient.get<Formation[]>(`${this.apiUrl}/formations/all`);
   }
 
   getFormation(id: number): Observable<Formation> {
