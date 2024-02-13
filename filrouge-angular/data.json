@@ -57,41 +57,41 @@
         }
     ],
 
-    "Formations": [ 
+    "formations": [ 
         {
             "id": 1,
             "nom": "Formation JavaScript",
             "prix": 500,
             "description": "Apprenez les bases du JavaScript, un langage de programmation essentiel pour le développement web.",
-            "img": "chemin/vers/image/javascript.png"
+            "img": "../../../../assets/images/photo6.jpg"
         },
         {
             "id": 2,
             "nom": "Formation Python",
             "prix": 600,
             "description": "Découvrez Python, un langage de programmation puissant et flexible, largement utilisé dans le domaine de la science des données.",
-            "img": "chemin/vers/image/python.png"
+            "img": "../../../../assets/images/photo5.jpg"
         },
         {
             "id": 3,
             "nom": "Formation HTML/CSS",
             "prix": 400,
             "description": "Maîtrisez les fondamentaux du HTML et du CSS, les technologies de base pour la création de sites web.",
-            "img": "chemin/vers/image/html_css.png"
+            "img": "../../../../assets/images/photo4.jpg"
         },
         {
             "id": 4,
             "nom": "Formation React",
             "prix": 700,
             "description": "Apprenez à utiliser React, une bibliothèque JavaScript pour la construction d'interfaces utilisateur modernes et réactives.",
-            "img": "chemin/vers/image/react.png"
+            "img": "../../../../assets/images/photo3.jpg"
         },
         {
             "id": 5,
             "nom": "Formation Node.js",
             "prix": 800,
             "description": "Explorez Node.js, un environnement d'exécution JavaScript côté serveur pour le développement d'applications web évolutives.",
-            "img": "chemin/vers/image/nodejs.png"
+            "img": "../../../../assets/images/photo2.jpg"
         }
     ]
 }

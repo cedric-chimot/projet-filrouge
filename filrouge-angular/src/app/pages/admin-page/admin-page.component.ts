@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AdminNavbarComponent } from "../../commons/admin-navbar/admin-navbar.component";
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -12,16 +11,15 @@ import { StagiaireServiceService } from '../../services/stagiaires/stagiaire-ser
     standalone: true,
     templateUrl: './admin-page.component.html',
     styleUrl: './admin-page.component.css',
-    imports: [AdminNavbarComponent, MatToolbarModule, MatIconModule, MatButtonModule, RouterModule]
+    imports: [MatToolbarModule, MatIconModule, MatButtonModule, RouterModule]
 })
 export class AdminPageComponent {
     nbStagiaires: number = 0; 
     nbCandidats: number = 0;
 
     constructor(private stagiaireService: StagiaireServiceService) {}
-  
     ngOnInit(): void {
-      this.stagiaireService.getNbStagiaires()
+        this.stagiaireService.getNbStagiaires()
         .subscribe({
             next: (nbStagiaires: number) => {
                 this.nbStagiaires = nbStagiaires;

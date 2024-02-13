@@ -16,15 +16,15 @@
             <img
                 class="cover"
                 mat-card-image
-                src="" 
-                alt="ITraining"
-            /><!-- ToDo Mettre une image par défaut ITraining -->
+                src="../../../../assets/images/photo2.jpg"
+                alt="IT-Training"
+            />
         }
         @if (product.img) {
             <img class="cover" mat-card-image [src]="product.img" [alt]="product.nom">
         }
 
-        @if (product.description) {
+        @if (product.synopsis) {
             <mat-card-content>
                 <p> {{ product.description | slice: 0:140}}...</p>
             </mat-card-content>
