@@ -1,71 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Bootcamp } from '../../models/bootcampmodel';
-import { Formations } from '../../models/formations.model';
-import { BootcampServiceService } from '../../services/bootcamp/bootcamp-service.service';
-import { FormationServiceService } from '../../services/formation/formation-service.service';
+import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
+import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
+
 
 @Component({
-  selector: 'app-admin-formation',
-  templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.css']
+    selector: 'app-admin-page',
+    standalone: true,
+    templateUrl: './admin-page.component.html',
+    styleUrl: './admin-page.component.css',
+    imports: [MatToolbarModule, MatIconModule, MatButtonModule, RouterModule]
 })
-export class AdminFormationComponent implements OnInit {
+export class AdminPageComponent {
+    nbStagiaires: number = 0; 
+    nbCandidats: number = 0;
 
-  bootcampForm: FormGroup = this.formBuilder.group({
-    dateDebut: ['', Validators.required],
-    dateFin: ['', Validators.required],
-    centreFormation: ['', Validators.required],
-    formation: ['', Validators.required],
-    statut: ['', Validators.required]
-  });
-  formationForm: FormGroup = this.formBuilder.group({
-    nom: ['', Validators.required],
-    prix: ['', Validators.required],
-    description: ['', Validators.required]
-  });
+    constructor(private stagiaireService: StagiaireService) {}
+    ngOnInit(): void {
+        this.stagiaireService.getNbStagiaires()
+        .subscribe({
+            next: (nbStagiaires: number) => {
+                this.nbStagiaires = nbStagiaires;
+            },
+            error: (error) => {
+                console.error('Erreur lors de la récupération du nombre de stagiaires', error);
+            },
+            complete: () => {
+                console.log("Récupération complète");
+            }
+        });
 
-
-  submitted = false;
-  formations: Formations[] = [];
-  bootcamps: Bootcamp[] = [];
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private bootcampService: BootcampServiceService,
-    private formationService: FormationServiceService
-  ){};
-
-  ngOnInit(): void {
-      this.formationService.getFormations()
-        .subscribe((formations: Formations[]) => this.formations = formations); 
-
-      this.bootcampService.getBootcamp()
-        .subscribe((BootcampServiceService: Bootcamp[]) => this.bootcamps = BootcampServiceService); 
-  
-      };
-
-  onSubmit(): void {
-    this.submitted = true;
-    if (this.bootcampForm.invalid) {
-      return;
+        this.stagiaireService.getNbCandidats()
+        .subscribe({
+            next: (nbCandidats: number) => {
+                this.nbCandidats = nbCandidats;
+            },
+            error: (error) => {
+                console.error('Erreur lors de la récupération du nombre de stagiaires', error);
+            },
+            complete: () => {
+                console.log("Récupération complète");
+            }
+        });
     }
-    // Soumission du formulaire de session de formation
-    console.log(this.bootcampForm.value);
-  }
 
-  onSubmitFormation(): void {
-    this.submitted = true;
-    if (this.formationForm.invalid) {
-      return;
-    }
-  }
-
-  get formationFormControls(): any {
-    return this.formationForm.controls;
-  }
-
-  get sessionFormationFormControls(): any {
-    return this.bootcampForm.controls;
-  }
 }

@@ -31,6 +31,9 @@ public class Formation {
     @Column(name = "description", nullable = false)
     private String description;
 
+    @Column(name = "img", nullable = true)
+    private String img;
+
     @OneToMany(mappedBy = "formation")
     private List<Lier> liens;
 

@@ -2,6 +2,7 @@ package fr.equipefilrouge.filrougeSpring.controller;
 
 import fr.equipefilrouge.filrougeSpring.dto.StagiaireCompletDTO;
 import fr.equipefilrouge.filrougeSpring.dto.StagiaireReduitDTO;
+import fr.equipefilrouge.filrougeSpring.entity.Formation;
 import fr.equipefilrouge.filrougeSpring.entity.Stagiaire;
 import fr.equipefilrouge.filrougeSpring.enums.UserRole;
 import fr.equipefilrouge.filrougeSpring.services.UsersService;
@@ -50,6 +51,10 @@ public class StagiaireController {
         return stagiaireServiceImpl.create(stagiaire);
     }
 
+    @PostMapping("/createUsers")
+    public List<Stagiaire> listStagiaire(@RequestBody List<Stagiaire> stagiaires) {
+        return stagiaireServiceImpl.createListe(stagiaires);
+    }
     /**
      * Endpoint pour gérer la connexion
      * @param identifiants les identifiants de connexion

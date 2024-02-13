@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { StagiaireServiceService } from '../../services/stagiaires/stagiaire-service.service';
+import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
 import { Stagiaires } from '../../models/stagiaires.model';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,7 +24,7 @@ export class StagiaireFormulaireComponent {
     prenom: ['', Validators.required],
     telephone: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    role: ['', Validators.required],
+    role: ['', Validators.required],//Todo disparute
     pseudo: ['', Validators.required],
     mdp: ['', [
       Validators.required,
@@ -42,7 +42,7 @@ export class StagiaireFormulaireComponent {
   stagiaire!: Stagiaires;
 
   // Constructeur du formulaire
-  constructor(private formBuilder: FormBuilder, private stagiaireService: StagiaireServiceService) {}; 
+  constructor(private formBuilder: FormBuilder, private stagiaireService: StagiaireService) {}; 
 
   // Méthode pour ajouter un stagiaire
   addStagiaire(): void {

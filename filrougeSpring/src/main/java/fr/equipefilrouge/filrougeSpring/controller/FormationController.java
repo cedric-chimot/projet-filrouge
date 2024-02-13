@@ -38,6 +38,11 @@ public class FormationController {
         return formationServiceImpl.create(formation);
     }
 
+    @PostMapping("/createFormations")
+    public List<Formation> listFormations(@RequestBody List<Formation> formations) {
+        return formationServiceImpl.createListe(formations);
+    }
+
     /**
      * Méthode pour mettre à jour une formation
      * @param formation la formation à mettre à jour

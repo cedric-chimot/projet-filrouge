@@ -6,7 +6,7 @@ import { NavBarComponent } from "../../commons/navbar/nav-bar.component";
 import { FooterComponent } from "../../commons/footer/footer.component";
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { LoginServiceService } from '../../services/login/login-service.service';
+import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: 'app-connexion-page',
@@ -27,7 +27,7 @@ export class LoginFormComponent {
   submitted: boolean = false;  
 
   constructor(
-    private formBuilder: FormBuilder, private loginService: LoginServiceService, private router: Router
+    private formBuilder: FormBuilder, private loginService: LoginService, private router: Router
   ) {};
 
   // Fonction appelée lors de la soumission du formulaire

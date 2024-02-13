@@ -3,6 +3,7 @@ package fr.equipefilrouge.filrougeSpring.services.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.equipefilrouge.filrougeSpring.dto.StagiaireCompletDTO;
 import fr.equipefilrouge.filrougeSpring.dto.StagiaireReduitDTO;
+import fr.equipefilrouge.filrougeSpring.entity.Formation;
 import fr.equipefilrouge.filrougeSpring.entity.Stagiaire;
 import fr.equipefilrouge.filrougeSpring.exceptions.CustomException;
 import fr.equipefilrouge.filrougeSpring.exceptions.ExistException;
@@ -51,6 +52,11 @@ public class StagiaireServiceImpl implements AllServices<Stagiaire, Long> {
     @Override
     public List<Stagiaire> findAll() {
         return stagiaireRepository.findAll();
+    }
+
+    public List<Stagiaire> createListe(List<Stagiaire> stagiaires) {
+
+        return stagiaireRepository.saveAll(stagiaires);
     }
 
     /**

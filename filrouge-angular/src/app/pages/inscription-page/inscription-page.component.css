@@ -1,5 +1,4 @@
 body{
-    background-image: url(./../../../assets/images/bac.jpg);
     background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la zone de fond */
     background-position: center; /* Centre l'image par rapport à la fenêtre du navigateur */
     background-repeat: no-repeat; 

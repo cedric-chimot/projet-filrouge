@@ -1,24 +1,64 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-<div class="container">
 
-    <div class="container">
-        <h2>Liste des formations</h2>
-        <!-- @for(session of sessionsFormation; track session.id){
-            <p>{{session.id}}</p>
-            <p>{{session.dateDebut}}</p>
-            <p>{{session.dateFin}}</p>
-            <p>{{session.formation}}</p>
-            <p>{{session.statut}}</p>
-
-        }
-             -->
-
-      
-
+<div >
+    <div >
+        <div >
+            <h1 >TABLEAU DE BORD ADMIN</h1>
+            <div >      
+                <div >
+                    <button routerLink="/dashboard/formation" >
+                        <h5 >
+                            Formations
+                        </h5>
+                        <span>(A venir)</span>
+                    </button>
+                </div>
+                <div >
+                    <button routerLink="/dashboard/candidats" >
+                        <h5 >
+                            Candidats
+                        </h5>
+                        <span>(Nb d'inscrits)</span>
+                        <div >
+                            <p>{{ nbCandidats }}</p>
+                        </div>
+                    </button>
+                </div>
+                <div >
+                    <button routerLink="/dashboard/stagiaires" >
+                        <h5 >
+                            Stagiaires
+                        </h5>
+                        <span>(Nb d'inscrits)</span>
+                        <p>{{ nbStagiaires }}</p>
+                    </button>
+                </div>
+                <!-- <div >
+                    <button routerLink="/dashboard/formateurs" >
+                        <h5 >Formateurs</h5>
+                        <span>(Disponible)</span>
+                    </button>
+                </div> -->
+                <!-- <div >
+                    <button routerLink="/dashboard/messages">Messages
+                        <h5 >Messages</h5>
+                        <span>(A venir)</span>
+                    </button>
+                </div> -->
+            </div>
+    </div>    
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+    <!-- <mat-toolbar>
+
+        <img [src]="img" routerLink="/home">
+        <h2>Bonjour admin</h2>
+    
+        <button mat-button routerLink="/home" class="nav-button">Accueil</button>
+        <button mat-button routerLink="/dashboard" class="nav-button">Tableau de bord</button>
+        <button mat-button routerLink="/dashboard/formations" class="nav-button">Formations</button>
+        <button mat-button routerLink="/dashboard/stagiaires" class="nav-button">Stagiaires</button>
+        <button mat-button routerLink="/dashboard/formateurs" class="nav-button">Formateurs</button>
+        <button mat-button routerLink="/dashboard/messages" class="nav-button">Messages</button>
+    
+    </mat-toolbar> -->

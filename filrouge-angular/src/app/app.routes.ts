@@ -8,15 +8,16 @@ import { ProductsPageComponent } from './pages/products-page/products-page.compo
 import { AProposComponent } from './pages/a-propos-page/a-propos.component';
 import { StagiaireFormulaireComponent } from './pages/inscription-page/inscription-page.component';
 import { LoginFormComponent } from './pages/connexion-page/connexion-page.component';
-import { AdminFormationComponent } from './pages/admin-page/admin-page.component';
+import { AdminFormationComponent } from './pages/admin-page/formation-page/admin-formation-page.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 export const routes: Routes = [
     { path:'', redirectTo: 'home', pathMatch: 'full'},
     { path:'home', component: HomePageComponent},
     { path:'inscription', component: StagiaireFormulaireComponent},
     { path:'connexion', component: LoginFormComponent},
-    { path:'dashboard', component: HomePageComponent},
-    { path:'dashboard/formations', component: AdminFormationComponent},
+    { path:'dashboard', component: AdminPageComponent},
+    { path:'dashboard/formation', component: AdminFormationComponent},
     { path:'aPropos', component: AProposComponent},
     { path:'contacter', component: ContactPageComponent },
     { path:'products', component: ProductsPageComponent},
