@@ -35,7 +35,7 @@ public class Bootcamp {
     private Date dateFin;
 
     @Column(name = "statut", nullable = false)
-    private StatutBootcamp statut;
+    private String statut;
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "lieu_id")
@@ -53,7 +53,7 @@ public class Bootcamp {
      * @param dateFin, date de fin du bootcamp
      * @param statut, le statut
      */
-    public Bootcamp(Date dateDebut, Date dateFin, StatutBootcamp statut, Lieu lieu) {
+    public Bootcamp(Date dateDebut, Date dateFin, String statut, Lieu lieu) {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.statut = statut;

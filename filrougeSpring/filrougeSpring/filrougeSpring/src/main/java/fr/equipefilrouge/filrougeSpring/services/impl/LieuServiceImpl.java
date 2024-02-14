@@ -1,5 +1,6 @@
 package fr.equipefilrouge.filrougeSpring.services.impl;
 
+import fr.equipefilrouge.filrougeSpring.entity.Bootcamp;
 import fr.equipefilrouge.filrougeSpring.entity.Lieu;
 import fr.equipefilrouge.filrougeSpring.exceptions.CustomException;
 import fr.equipefilrouge.filrougeSpring.repository.LieuRepository;
@@ -46,6 +47,10 @@ public class LieuServiceImpl implements AllServices<Lieu, Long> {
     public Lieu findById(Long id) {
         return lieuRepository.findById(id)
                 .orElseThrow(() -> new CustomException("Lieu", "id", id));
+    }
+
+    public List<Lieu> findAllById(List<Long> lieuIds) {
+        return lieuRepository.findAllById(lieuIds);
     }
 
     /**

@@ -1,8 +1,10 @@
 package fr.equipefilrouge.filrougeSpring.services.impl;
 
+import fr.equipefilrouge.filrougeSpring.dto.BootcampReduitDTO;
 import fr.equipefilrouge.filrougeSpring.entity.Bootcamp;
 import fr.equipefilrouge.filrougeSpring.entity.Lieu;
 import fr.equipefilrouge.filrougeSpring.entity.Users;
+import fr.equipefilrouge.filrougeSpring.enums.StatutBootcamp;
 import fr.equipefilrouge.filrougeSpring.exceptions.CustomException;
 import fr.equipefilrouge.filrougeSpring.repository.BootcampRepository;
 import fr.equipefilrouge.filrougeSpring.services.AllServices;
@@ -15,6 +17,7 @@ import java.util.List;
 @Service
 @Transactional
 public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
+
     /**
      * Le repository Bootcamp
      */
@@ -27,16 +30,20 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
         this.lieuService = lieuService;
     }
 
+    /**
+     * Méthode pour afficher tous les bootcamps
+     * @return la liste des bootcamps
+     */
     public List<Bootcamp> findAll() {
         return bootcampRepository.findAll();
     }
 
     /**
-     * Methode qui retourne le bootcamp en fonction de l'Id. La methode orElseThrow prend en compte une fonction lambda
-     * cette fonction anonyme "()" créée un nouvel erreur NotFoundException avec le
+     * Methode qui retourne le bootcamp en fonction de l'Id. La methode orElseThrow prend en compte une exception
+     * qui créée une nouvelle erreur NotFoundException avec le
      * message en paramètre
-     * @param id
-     * @return la session complete, ou un message d'erreur si pas trouvé
+     * @param id l'id recherché
+     * @return le bootcamp complet, ou un message d'erreur si pas trouvé
      */
     public Bootcamp findById(Long id){
         return bootcampRepository.findById(id)
@@ -45,43 +52,17 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
 
     /**
      * @param newObj le nouvel objet bootcamp
-     * @return le bootcamp créé
+     * @return le bootcamp nouvellement créé
      */
     @Override
     public Bootcamp create(Bootcamp newObj) {
-        Lieu lieu = newObj.getLieu();
-
-        if (lieu != null && lieu.getId() != null) {
-            // Vérifier si le lieu existe
-            Lieu existingLieu = lieuService.findById(lieu.getId());
-
-            if (existingLieu != null) {
-                // Le lieu existe, associer le Bootcamp existant avec le Lieu
-                newObj.setLieu(existingLieu);
-            } else {
-                // Le lieu n'existe pas, créer un nouveau lieu et l'associer avec le Bootcamp
-                Lieu createdLieu = lieuService.create(lieu);
-                newObj.setLieu(createdLieu);
-            }
-        }
-
-        // Enregistrer le Bootcamp (et potentiellement le Lieu associé)
         return bootcampRepository.save(newObj);
     }
 
-
-
-    public List<Bootcamp> createBootcamps(List<Bootcamp> bootcamps) {
-        List<Bootcamp> saveBootcamps = new ArrayList<>();
-        for (Bootcamp bootcamp : bootcamps) {
-            Lieu lieu = lieuService.findById(bootcamp.getLieu().getId());
-            if (lieu != null) {
-                saveBootcamps.add(new Bootcamp(bootcamp.getDateDebut(), bootcamp.getDateFin(), bootcamp.getStatut(), lieu));
-            } else {
-                throw new CustomException("Bootcamp", "bootcamp", bootcamp);
-            }
-        }
-        return saveBootcamps;
+    public Bootcamp createBootcamp(Bootcamp bootcamp, Long idLieu) {
+        Lieu lieu = lieuService.findById(idLieu);
+        create(new Bootcamp(bootcamp.getDateDebut(), bootcamp.getDateFin(), bootcamp.getStatut(), lieu));
+        return bootcamp;
     }
 
     /**
@@ -111,21 +92,21 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
     }
 
     /**
-     * Methode pour effacer l'ensemble des sessions dans la base de données
-     */
-    public void deleteAll(){
-        bootcampRepository.deleteAll();
-    }
-
-    /**
-     * Methode pour supprimer la session en fonction de l'id passé en paramètre.
-     * @param id
-     * @return la session qui a été supprimée.
+     * Methode pour supprimer le bootcamp en fonction de l'id passé en paramètre.
+     * @param id l'id recherché
+     * @return la bootcamp qui a été supprimée.
      */
     public Bootcamp deleteById(Long id){
         Bootcamp session = findById(id);
         bootcampRepository.deleteById(id);
         return session;
+    }
+
+    /**
+     * Methode pour effacer l'ensemble des sessions dans la base de données
+     */
+    public void deleteAll(){
+        bootcampRepository.deleteAll();
     }
 
 }
