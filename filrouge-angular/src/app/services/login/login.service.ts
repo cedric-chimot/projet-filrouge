@@ -9,7 +9,6 @@ import { Stagiaire } from '../../models/stagiaire.model';
 })
 export class LoginService{
   private apiUrl = 'http://localhost:8080';
-  private user! : Stagiaire | null;
   // Pour suivre l'état de la conneisLoggedxion (true or false)
   private isLogged : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
