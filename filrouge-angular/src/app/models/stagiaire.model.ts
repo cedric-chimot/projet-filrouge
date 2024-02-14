@@ -1,4 +1,4 @@
-export class Stagiaires {
+export class Stagiaire {
     nom!: string;
     prenom!: string;
     telephone!: string;

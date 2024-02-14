@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { Stagiaires } from '../../models/stagiaires.model';
+import { Stagiaire } from '../../models/stagiaire.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,18 @@ export class StagiaireService {
 
   constructor(private httpClient: HttpClient) {}
 
+  getLogin(email: string, mdp: string): Observable<Stagiaire> {
+    const identite2 = { email, mdp };
+    return this.httpClient.get<Stagiaire>(`${this.apiUrl}/stagiaires/login`, { email, mdp })
+  }
   // Récupère tous les stagiaires
-  getStagiaires(): Observable<Stagiaires[]>{
-    return this.httpClient.get<Stagiaires[]>(`${this.apiUrl}/stagiaires/all`);
+  getStagiaires(): Observable<Stagiaire[]>{
+    return this.httpClient.get<Stagiaire[]>(`${this.apiUrl}/stagiaires/all`);
   }
 
+  getStagiairesById(id: number): Observable<Stagiaire> {
+    return this.httpClient.get<Stagiaire>(`${this.apiUrl}/stagiaires/${id}`);
+  }
   // Récupère le nombre de stagiaires
   getNbStagiaires(): Observable<number> {
     return this.httpClient.get<number>(`${this.apiUrl}/stagiaires/nbStagiaires`);
@@ -28,8 +35,8 @@ export class StagiaireService {
   }
   
   // Création d'un stagiaire
-  createStagiaire(stagiaire: Stagiaires): Observable<Stagiaires>{
-    return this.httpClient.post<Stagiaires>(`${this.apiUrl}/stagiaires/create`, stagiaire);
+  createStagiaire(stagiaire: Stagiaire): Observable<Stagiaire>{
+    return this.httpClient.post<Stagiaire>(`${this.apiUrl}/stagiaires/create`, stagiaire);
   }
 
 }

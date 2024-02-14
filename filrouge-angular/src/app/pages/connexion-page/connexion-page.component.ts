@@ -46,6 +46,9 @@ export class LoginFormComponent {
           next: (_) => {
             // Affiche une alerte en cas de connexion réussie
             alert("Connexion réussie !");
+            // met la variable observable a true pour confirmé la connexion et pouvoir vérifié
+            this.loginService.setLogin(true);
+            this.loginService
             // Redirection sur l'accueil en cas de succès
             this.router.navigate(['/home']);
           },
