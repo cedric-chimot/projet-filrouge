@@ -12,9 +12,8 @@ export class StagiaireService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getLogin(email: string, mdp: string): Observable<Stagiaire> {
-    const identite2 = { email, mdp };
-    return this.httpClient.get<Stagiaire>(`${this.apiUrl}/stagiaires/login`, { email, mdp })
+  getStagiaireByLogin(email: string): Observable<Stagiaire>{
+    return this.httpClient.get<Stagiaire>(`${this.apiUrl}/stagiaires/${email}`);
   }
   // Récupère tous les stagiaires
   getStagiaires(): Observable<Stagiaire[]>{

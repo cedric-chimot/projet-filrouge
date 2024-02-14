@@ -2,6 +2,7 @@ package fr.equipefilrouge.filrougeSpring.services.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.equipefilrouge.filrougeSpring.dto.StagiaireCompletDTO;
+import fr.equipefilrouge.filrougeSpring.dto.StagiaireLoginDTO;
 import fr.equipefilrouge.filrougeSpring.dto.StagiaireReduitDTO;
 import fr.equipefilrouge.filrougeSpring.entity.Formation;
 import fr.equipefilrouge.filrougeSpring.entity.Stagiaire;
@@ -89,6 +90,10 @@ public class StagiaireServiceImpl implements AllServices<Stagiaire, Long> {
         Stagiaire stagiaire = stagiaireRepository.findById(id)
                 .orElseThrow(() -> new CustomException("Stagiaire", "id", id));
         return objectMapper.convertValue(stagiaire, StagiaireCompletDTO.class);
+    }
+    public StagiaireLoginDTO stagiaireLoginByMail(String mail) {
+        Stagiaire stagiaire = stagiaireRepository.findByMail(mail);
+        return objectMapper.convertValue(stagiaire, StagiaireLoginDTO.class);
     }
 
     /**

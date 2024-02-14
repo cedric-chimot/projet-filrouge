@@ -13,28 +13,16 @@ import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
 })
 export class AProposComponent implements OnInit{
   isAuthentificated: boolean = false;
-  user!: Stagiaire | null;
+  user!: Stagiaire;
   constructor(private loginService: LoginService, private stagiaireService: StagiaireService) {}
   
   ngOnInit(): void {
-      this.loginService.getLogin.subscribe(
-        isLoggedIn => { if(isLoggedIn){ 
-                            this.isAuthentificated = true;
-                            
-    // param ,je vais t'appliquer le code suivant, voici le code 
-  
-          }else{
-            this.isAuthentificated = false;
-            
-          }
-        }
-      );  //this.user= this.stagiaireService.getStagiaires;
-             // this.stagiaireService.getStagiaires.subscribe(
-            //   () => {
-            //     this.user = user;
-            //   }
-            //   );
-      //this.user = null;
+    this.user = this.loginService.getLoginUser;
+    this.loginService.getLogin.
+    subscribe({
+      next: (isLogged) => this.isAuthentificated = isLogged,
+      error: (err) => console.error('Erreur au chargement', err)
+    });
   }
 
 

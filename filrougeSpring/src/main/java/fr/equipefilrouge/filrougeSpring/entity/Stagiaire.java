@@ -47,4 +47,6 @@ public class Stagiaire extends Users {
                 .add("Users" + super.toString())
                 .toString();
     }
+
+
 }

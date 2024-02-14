@@ -1,6 +1,7 @@
 package fr.equipefilrouge.filrougeSpring.controller;
 
 import fr.equipefilrouge.filrougeSpring.dto.StagiaireCompletDTO;
+import fr.equipefilrouge.filrougeSpring.dto.StagiaireLoginDTO;
 import fr.equipefilrouge.filrougeSpring.dto.StagiaireReduitDTO;
 import fr.equipefilrouge.filrougeSpring.entity.Formation;
 import fr.equipefilrouge.filrougeSpring.entity.Stagiaire;
@@ -61,7 +62,7 @@ public class StagiaireController {
      * @return une réponse ok ou erreur au moment de la validation
      */
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Map<String, String> identifiants) {
+    public StagiaireLoginDTO login(@RequestBody Map<String, String> identifiants) {
         // Extraire l'e-mail et le mot de passe à partir du corps de la requête
         String email = identifiants.get("email");
         String mdp = identifiants.get("mdp");
@@ -70,11 +71,12 @@ public class StagiaireController {
         if (usersService.areIdsValid(email, mdp)) {
             System.out.println("connexion réussie !");
             // Si les informations d'identification sont valides, renvoyer une réponse 200 OK avec un message de succès
-            return ResponseEntity.ok("Connexion réussie !");
+            return stagiaireServiceImpl.stagiaireLoginByMail(email);
         } else {
             System.out.println("connexion impossible !");
             // Si les informations d'identification ne sont pas valides, renvoyer une réponse 401 Unauthorized avec un message d'erreur
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Identifiants incorrects !");
+            //return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Identifiants incorrects !");
+            return null;
         }
     }
 
