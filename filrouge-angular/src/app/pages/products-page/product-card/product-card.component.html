@@ -1,40 +1,34 @@
-<div class="container">
-    <mat-card class="card">
-        <mat-card-header>
-            <div mat-card-avatar class="header-image"></div>
-            <mat-card-title class="title">
-                {{ product.nom | slice: 0:18 }}
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="content">
+                <div class="header-image">
+                    <div class="logo"></div>
+                    <div class="title">
+                        {{ product.nom }}
+                    </div>
+                </div>
+                <hr>
 
-                @if (product.nom.length > 18) {
-                    <span>...</span>
+                @if (!product.img) {
+                    <img class="cover" src="../../../../assets/images/photo2.jpg" alt="IT-Training" />
                 }
-            </mat-card-title> 
-        </mat-card-header>
-        <hr>
+                @if (product.img) {
+                    <img class="cover" [src]="product.img" [alt]="product.nom" />
+                }
 
-        @if (!product.img) {
-            <img
-                class="cover"
-                mat-card-image
-                src="../../../../assets/images/photo2.jpg"
-                alt="IT-Training"
-            />
-        }
-        @if (product.img) {
-            <img class="cover" mat-card-image [src]="product.img" [alt]="product.nom">
-        }
+                @if (product.description) {
+                    <div class="description">
+                        <p> {{ product.description | slice: 0:100 }}...</p>
+                    </div>
+                }
+            </div>
 
-        @if (product.synopsis) {
-            <mat-card-content>
-                <p> {{ product.description | slice: 0:140}}...</p>
-            </mat-card-content>
-        }
-
-        <mat-card-actions>
-            @if (product) {
-                <button mat-button routerLink="/products/formations/{{ product.id }}">Details</button>
-            }
-            
-        </mat-card-actions>
-    </mat-card>    
-</div>
+            <div class="actions">
+                @if (product) {
+                    <button routerLink="/products/formations/{{ product.id }}">Details</button>
+                }
+            </div>
+        </div>
+    </div>
+</body>

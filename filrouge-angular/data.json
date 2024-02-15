@@ -448,102 +448,102 @@
 
     "themes": [
         {
-          "nom_theme": "Réseaux",
+          "nom": "Réseaux",
           "description": "Thème lié aux réseaux informatiques.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Systèmes d’exploitation",
+          "nom": "Systèmes d’exploitation",
           "description": "Thème lié aux systèmes d'exploitation informatiques.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Gestion de projets",
+          "nom": "Gestion de projets",
           "description": "Thème lié à la gestion de projets informatiques.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Langages de développement",
+          "nom": "Langages de développement",
           "description": "Thème lié aux langages de programmation et développement informatique.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Base de données",
+          "nom": "Base de données",
           "description": "Thème lié aux bases de données informatiques.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Sécurité informatique",
+          "nom": "Sécurité informatique",
           "description": "Thème lié à la sécurité informatique.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Intelligence artificielle",
+          "nom": "Intelligence artificielle",
           "description": "Thème lié à l'intelligence artificielle en informatique.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Développement web",
+          "nom": "Développement web",
           "description": "Thème lié au développement web.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Cloud computing",
+          "nom": "Cloud computing",
           "description": "Thème lié au cloud computing.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Analyse de données",
+          "nom": "Analyse de données",
           "description": "Thème lié à l'analyse de données informatiques.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Mobile development",
+          "nom": "Mobile development",
           "description": "Thème lié au développement mobile.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Interface utilisateur",
+          "nom": "Interface utilisateur",
           "description": "Thème lié à la conception d'interfaces utilisateur.",
           "categoryId": 1
         },
         {
-          "nom_theme": "DevOps",
+          "nom": "DevOps",
           "description": "Thème lié à la culture et pratique DevOps.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Blockchain",
+          "nom": "Blockchain",
           "description": "Thème lié à la technologie de la blockchain.",
           "categoryId": 1
         },
         {
-          "nom_theme": "IoT (Internet of Things)",
+          "nom": "IoT (Internet of Things)",
           "description": "Thème lié à l'Internet des objets.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Big Data",
+          "nom": "Big Data",
           "description": "Thème lié au Big Data et aux mégadonnées.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Programmation fonctionnelle",
+          "nom": "Programmation fonctionnelle",
           "description": "Thème lié à la programmation fonctionnelle.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Virtualisation",
+          "nom": "Virtualisation",
           "description": "Thème lié à la virtualisation.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Machine Learning",
+          "nom": "Machine Learning",
           "description": "Thème lié à l'apprentissage automatique.",
           "categoryId": 1
         },
         {
-          "nom_theme": "Cybersécurité",
+          "nom": "Cybersécurité",
           "description": "Thème lié à la cybersécurité.",
           "categoryId": 1
         }
