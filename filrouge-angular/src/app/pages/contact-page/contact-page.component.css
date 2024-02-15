@@ -1,70 +1,71 @@
-
-body{
-            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    body{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
-    section{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height:97vh;
-            background: linear-gradient(to bottom,#F2EEE4,#90a3e2);
-        }
-        
-    section .color{
-            position: absolute;
-            filter: blur(150px);
-        }
-        
-    section.color:nth-child(1){
-            top:-350px;
-            width: 600px;
-            height: 600px;
-            background:#5065A8;
-        }
-        
-        section.color:nth-child(2){
-            bottom: -150px;
-            left: 100px;
-            width: 500px;
-            height: 200px;
-            background:#90a3e2;
-        }
-        
-    section.color:nth-child(3){
-            bottom:50px;
-            right:100px;
-            width:500px;
-            height:500px;
-            background:#F2EEE4;
-        }
+    .contact{
+        position: relative;
+        min-height: 100vh;
+        padding: 50px 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: url(/src/assets/images/contact.jpg);
+        background-size: cover;
+    }
+    .contact .content {
+        max-width: 800px;
+        text-align: center;
 
-        .container{
-            width: 800px;
-            min-height:100px;
-            background:rgba(213, 238, 241, 0.1) ;
-            border-radius: 10px;
-            justify-content: center;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-right: 0.3px solid rgba(255, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2) ;
+    }
+    .contact .content h2{
+        font-size: 36px;
+        font-weight: 500;
+        color:#5065A8;
+    }
+    .contact .content p{
+        font-weight:300px ;
+        color:#5065A8;
+    }
+    .container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+    .container .contactInfo{
+        width:300px;
+        display: flex;
+        flex-direction: column;
+    }
+    .container .contactInfo .box{
+        position: relative;
+        padding: 20px 0;
+        display: flex;
+    }
+    form input{
+        align-items: center;
+        margin-bottom: 10px;
+        width:45%;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 20px;
+        font-size: 15px;
         
+    }
+    form input{
+        margin-bottom: 20px;
+        width: 100%;
+        text-align: center;
         }
-        h2{
-            text-align: center;
-            color:#90a3e2;
-            font-size: 30px;
-            font-weight: 600px;
-            letter-spacing: 2px;
-            margin-bottom: 40px;
-        }
         
-    
-        
-        .form .form-group{
+form{
             color: #5065A8;
-            width:150%;
+            width:100%;
             border: none;
             outline: none;
             border-radius: 20px;
@@ -73,19 +74,6 @@ body{
             align-items: center;
         
         }
-        
-        .form,input,textarea{
-            justify-content: center;
-            align-items: center;
-            width:80%;
-            padding: 10px;
-            border: none;
-            outline: none;
-            border-radius: 20px;
-            font-size: 15px;
-            
-        }
-        
 .btn{
     width:50%;
     background:rgba(255, 255, 255, 0.5);
@@ -99,28 +87,4 @@ body{
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 0.3px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2) ; 
-    
-}
-
-button.btn-success:hover{
-background-color: #5065A8;
-
-}
-
-button.btn-danger:hover{
-    background-color:#F2EEE4;
-}
-
-button.btn-primary:hover{
-    background-color: #5065A8;
-}
-.text-danger{
-    color:red;
-    font-size: 10px;
-}
-p{
-    color: #5065A8;
-    font-size: 15px;
-    padding-top: 15px;
-
-}
+}        

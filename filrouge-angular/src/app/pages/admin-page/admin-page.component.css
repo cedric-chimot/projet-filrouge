@@ -21,8 +21,13 @@ button{
     flex-direction: row;
     justify-content: center;
 }
-span,h3,p{
-   justify-content: center;
+span,h3{
+    margin-top: -20px;
     font-size: large;
     color:aliceblue;
+}
+p{
+    justify-content: center;
+    font-size: x-large;
+    color: aliceblue;
 }

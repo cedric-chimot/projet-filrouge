@@ -4,7 +4,7 @@
         <div class="color"></div>
         <div class="color"></div>
         <div class="container">
-       
+
         <h2>Inscrivez-vous</h2>
         <form [formGroup]="stagiairesForm" (ngSubmit)="onSubmit()">
         <div class="box1">   
@@ -14,22 +14,17 @@
                     <br>
                     @if (submitted && !form['nom'].valid) {
                     <span class="text-danger small">*Nom invalide</span>}
-                </div>
-                <div class="input-group">
+                    
                     <input type="text" formControlName="prenom" placeholder="Prenom">
-                    <br>
                     @if (submitted && !form['prenom'].valid) {
                     <span class="text-danger small">*Prenom invalide</span>}
-                </div>
-                <div class="input-group">
+                    <br>
                     <input type="email" formControlName="telephone" placeholder="Téléphone">
                     <br>
                     @if (submitted && !form['telephone'].valid) {
                     <span class="text-danger small">*Téléphone invalide</span>}
                 </div>
-            </div> 
                 </div>
-            <div class="box1">   
                 <div class="form-group">
                 <div class="input-group">
                     <input type="email" formControlName="email" placeholder="Email">
@@ -47,7 +42,7 @@
                     <input type="text" formControlName="mdp" placeholder="Mot de passe">
                     <br>
                     @if (submitted && !form['mdp'].valid) {
-                    <span class="text-danger small">
+                    <span class="text-danger small"><br>
                     *Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial
                     </span>}
                 </div>
@@ -60,6 +55,10 @@
                         <button  routerLink="/connexion" class="btn btn-success p-3 m-4">Connectez-vous !</button>
                         
                 </div>
-            </div>
-        </div>
-    </form>
+                </div>
+            </div> 
+        </form>
+    </div>
+
+  </section>  
+</body>   

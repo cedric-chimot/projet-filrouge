@@ -1,57 +1,51 @@
-
-    
-
-    <nav class="nav">
-        <div class="logo">
-            <h2>
-                <img [src]="img" width="60px" height="60px"><a routerLink="/home"></a>
-                IT-Training
-            </h2>
-        </div>
-        <ul class="">
+<nav class="nav">
+    <div class="logo">
+        <h2>
+            <img [src]="img" width="60px" height="60px">
+            IT-Training
+        </h2>
+    </div>
+    <ul class="">
+        <li>
+            <a routerLink="/home">Accueil</a>
+        </li>
+        <li>
+            <a routerLink="/aPropos">A Propos</a>
+        </li>
+        <li>
+            <a routerLink="/products">NOS Formations</a>
+        </li>
+        <li>
+            <a routerLink="/contacter">Contactez-Nous</a>
+        </li>
+    </ul>
+    @if(!isAuthentificated){
+    <ul class="d-flex align-items-center">
+        <li>
+            <button routerLink="/inscription">Inscription</button>
+        </li>
+        <li>
+            <button routerLink="/connexion">Connexion</button>
+        </li>
+        <hr>
+    </ul>
+}
+    @if(isAuthentificated){
+    <ul class="d-flex align-items-center">
+        @if(user.role === "ADMINISTRATEUR"){
             <li>
-                <a routerLink="/home">Accueil</a>
+                <a routerLink="/dashboard">Panneau Administrateur</a>
             </li>
+        }
+        @if(user.nom){
             <li>
-                <a routerLink="/aPropos">A Propos</a>
+                <a routerLink="/monProfil">{{user.nom}}</a>
             </li>
-            <li>
-                <a routerLink="/products">NOS Formations</a>
-            </li>
-            <li>
-                <a routerLink="/contacter">Contactez-Nous</a>
-            </li>
-            <!-- ToDo : condition if admin -->
-            <li>
-                <a routerLink="/dashboard">Dashboard</a>
-            </li>
-            <li>
-                <a routerLink="dashboard/formation">Dashboard/formation</a>
-            </li>
-        </ul>
-        <ul class="d-flex align-items-center">
-            <li>
-                <button routerLink="/inscription">Inscription</button>
-            </li>
-            <li>
-                <button routerLink="/connexion">Connexion</button>
-            </li>
-            <hr>
-        </ul>
-    </nav>
-
-    <!-- <mat-toolbar>
-
-        <img [src]="img" routerLink="/home">
-        <h2>Bonjour admin</h2>
-    
-        <button mat-button routerLink="/home" class="nav-button">Accueil</button>
-        <button mat-button routerLink="/dashboard" class="nav-button">Tableau de bord</button>
-        <button mat-button routerLink="/dashboard/formations" class="nav-button">Formations</button>
-        <button mat-button routerLink="/dashboard/stagiaires" class="nav-button">Stagiaires</button>
-        <button mat-button routerLink="/dashboard/formateurs" class="nav-button">Formateurs</button>
-        <button mat-button routerLink="/dashboard/messages" class="nav-button">Messages</button>
-    
-    </mat-toolbar> -->
-    
-
+        }
+        <li>
+            <button (click)="deconnexion()">Deconnexion</button>
+        </li>
+        <hr>
+    </ul>
+    }
+</nav>

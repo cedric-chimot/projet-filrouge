@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { StagiaireServiceService } from '../../services/stagiaires/stagiaire-service.service';
-import { Stagiaires } from '../../models/stagiaires.model';
+import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavBarComponent } from "../../commons/navbar/nav-bar.component";
 import { FooterComponent } from "../../commons/footer/footer.component";
 import { RouterModule } from '@angular/router';
+import { Stagiaire } from '../../models/stagiaire.model';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { RouterModule } from '@angular/router';
     standalone: true,
     templateUrl: './inscription-page.component.html',
     styleUrls: ['./inscription-page.component.css'],
-    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, NavBarComponent, FooterComponent, RouterModule]
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, FooterComponent, RouterModule]
 })
 
 export class StagiaireFormulaireComponent {
@@ -24,6 +25,7 @@ export class StagiaireFormulaireComponent {
     prenom: ['', Validators.required],
     telephone: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
+    role: ['', Validators.required],//Todo disparute
     pseudo: ['', Validators.required],
     mdp: ['', [
       Validators.required,
@@ -38,10 +40,10 @@ export class StagiaireFormulaireComponent {
   // Tableau de stagiaires
   stagiaires: any[] = [];
   // Un seul stagiaire
-  stagiaire!: Stagiaires;
+  stagiaire!: Stagiaire;
 
   // Constructeur du formulaire
-  constructor(private formBuilder: FormBuilder, private stagiaireService: StagiaireServiceService) {}; 
+  constructor(private formBuilder: FormBuilder, private stagiaireService: StagiaireService) {}; 
 
   // Méthode pour ajouter un stagiaire
   addStagiaire(): void {
@@ -94,5 +96,5 @@ export class StagiaireFormulaireComponent {
   get form() {
     return this.stagiairesForm.controls;
   }
- 
+
 }

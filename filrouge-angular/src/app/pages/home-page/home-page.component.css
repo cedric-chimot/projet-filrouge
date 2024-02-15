@@ -10,21 +10,7 @@
     transition: 0.20s;
     
 }
-.presentation{
-width: 1200px;
-margin: 30px;
-display:flex;
-align-items: center;
-text-align: center;
-background:#f7f7f7;
-border: 10px solid var(--clr);
-border-radius: 15px;
-box-shadow: -15px -15px 15px rgb(255, 255,255,0.2),
-            15px 15px 15px rgb(0, 0,0,0.1),
-            inset -15px -15px 15px rgb(255, 255,255,0.2),
-            inset 15px 15px 15px  rgb(0, 0,0,0.1);  
 
-}
 @media screen and (max-width:1280px) {
     /* Styles CSS pour les écrans de petite taille */
     .presentation{
@@ -100,7 +86,18 @@ box-shadow: -15px -15px 15px rgb(255, 255,255,0.2),
     display: flex;
     background:#f7f7f7;
 }
-
+.presentation{
+    display:flex;
+    align-items: center;
+    background:#f7f7f7;
+    border: 10px solid var(--clr);
+    border-radius: 15px;
+    box-shadow: -15px -15px 15px rgb(255, 255,255,0.2),
+                15px 15px 15px rgb(0, 0,0,0.1),
+                inset -15px -15px 15px rgb(255, 255,255,0.2),
+                inset 15px 15px 15px  rgb(0, 0,0,0.1);  
+    
+}
 .text{
     margin: 15px;
     color: #5065A8;
