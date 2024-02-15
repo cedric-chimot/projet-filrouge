@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { StagiaireServiceService } from '../../services/stagiaires/stagiaire-service.service';
+import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class AdminPageComponent {
     nbStagiaires: number = 0; 
     nbCandidats: number = 0;
 
-    constructor(private stagiaireService: StagiaireServiceService) {}
+    constructor(private stagiaireService: StagiaireService) {}
     ngOnInit(): void {
         this.stagiaireService.getNbStagiaires()
         .subscribe({

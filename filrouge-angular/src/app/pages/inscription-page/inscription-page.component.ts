@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { StagiaireServiceService } from '../../services/stagiaires/stagiaire-service.service';
-import { Stagiaires } from '../../models/stagiaires.model';
+import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
+import { Stagiaire } from '../../models/stagiaire.model';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavBarComponent } from "../../commons/navbar/nav-bar.component";
@@ -38,10 +38,10 @@ export class StagiaireFormulaireComponent {
   // Tableau de stagiaires
   stagiaires: any[] = [];
   // Un seul stagiaire
-  stagiaire!: Stagiaires;
+  stagiaire!: Stagiaire;
 
   // Constructeur du formulaire
-  constructor(private formBuilder: FormBuilder, private stagiaireService: StagiaireServiceService) {}; 
+  constructor(private formBuilder: FormBuilder, private stagiaireService: StagiaireService) {}; 
 
   // Méthode pour ajouter un stagiaire
   addStagiaire(): void {
@@ -94,5 +94,5 @@ export class StagiaireFormulaireComponent {
   get form() {
     return this.stagiairesForm.controls;
   }
- 
+
 }

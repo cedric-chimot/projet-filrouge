@@ -11,6 +11,7 @@ import { LoginFormComponent } from './pages/connexion-page/connexion-page.compon
 import { AdminFormationComponent } from './pages/admin-page/formation-page/admin-formation-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
+
 export const routes: Routes = [
     { path:'', redirectTo: 'home', pathMatch: 'full'},
     { path:'home', component: HomePageComponent},
