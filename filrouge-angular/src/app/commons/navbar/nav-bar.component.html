@@ -21,10 +21,6 @@
             <li>
                 <a routerLink="/contacter">Contactez-Nous</a>
             </li>
-            <!-- ToDo : condition if admin -->
-            <li>
-                <a routerLink="/dashboard">Dashboard</a>
-            </li>
         </ul>
         @if(!isAuthentificated){
         <ul class="d-flex align-items-center">
@@ -39,6 +35,16 @@
     }
         @if(isAuthentificated){
         <ul class="d-flex align-items-center">
+            @if(user.role === "ADMINISTRATEUR"){
+                <li>
+                    <a routerLink="/dashboard">Panneau Administrateur</a>
+                </li>
+            }
+            @if(user.nom){
+                <li>
+                    <a routerLink="/monProfil">{{user.nom}}</a>
+                </li>
+            }
             <li>
                 <button (click)="deconnexion()">Deconnexion</button>
             </li>
