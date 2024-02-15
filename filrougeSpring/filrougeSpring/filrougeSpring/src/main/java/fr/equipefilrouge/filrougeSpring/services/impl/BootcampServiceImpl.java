@@ -1,17 +1,14 @@
 package fr.equipefilrouge.filrougeSpring.services.impl;
 
-import fr.equipefilrouge.filrougeSpring.dto.BootcampReduitDTO;
 import fr.equipefilrouge.filrougeSpring.entity.Bootcamp;
 import fr.equipefilrouge.filrougeSpring.entity.Lieu;
 import fr.equipefilrouge.filrougeSpring.entity.Users;
-import fr.equipefilrouge.filrougeSpring.enums.StatutBootcamp;
 import fr.equipefilrouge.filrougeSpring.exceptions.CustomException;
 import fr.equipefilrouge.filrougeSpring.repository.BootcampRepository;
 import fr.equipefilrouge.filrougeSpring.services.AllServices;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
