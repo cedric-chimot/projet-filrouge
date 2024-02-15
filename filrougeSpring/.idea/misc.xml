@@ -15,7 +15,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/filrougeSpring/pom.xml" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/pom.xml" />
+=======
+        <option value="$PROJECT_DIR$/filrougeSpring/filrougeSpring/pom.xml" />
+>>>>>>> cedric
       </list>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />

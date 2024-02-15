@@ -1,0 +1,22 @@
+<table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Note Moyenne</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (formateur of formateurs; track formateurs) {
+            <tr>
+                <td>{{ formateur.nom }}</td>
+                <td>{{ formateur.prenom }}</td>
+                <td>{{ formateur.email }}</td>
+                <td>{{ formateur.telephone }}</td>
+                <td>{{ formateur.noteMoyenne }}</td>
+            </tr>
+        }
+    </tbody>
+</table>

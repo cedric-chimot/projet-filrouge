@@ -10,6 +10,7 @@ import { StagiaireFormulaireComponent } from './pages/inscription-page/inscripti
 import { LoginFormComponent } from './pages/connexion-page/connexion-page.component';
 import { AdminFormationComponent } from './pages/admin-page/formation-page/admin-formation-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { FormateursPageComponent } from './pages/formateurs-page/formateurs-page.component';
 
 
 export const routes: Routes = [
@@ -19,6 +20,7 @@ export const routes: Routes = [
     { path:'connexion', component: LoginFormComponent},
     { path:'dashboard', component: AdminPageComponent},
     { path:'dashboard/formation', component: AdminFormationComponent},
+    { path:'dashboard/formateurs', component: FormateursPageComponent},
     { path:'aPropos', component: AProposComponent},
     { path:'contacter', component: ContactPageComponent },
     { path:'products', component: ProductsPageComponent},
