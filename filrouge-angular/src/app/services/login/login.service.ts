@@ -15,11 +15,9 @@ export class LoginService{
   //private reponseBack!: Observable<any>;
   private user! : Stagiaire;
   
-
   // Observable permettant de surveiller l'état d'authentification
   isAuthenticated$: Observable<boolean> = this.isLogged.asObservable();
   reponseBack!: Observable<Object>;
-
 
   constructor(private httpClient: HttpClient, private stagiaireService: StagiaireService) {}
 
@@ -57,6 +55,8 @@ export class LoginService{
   }
   
   //Todo : créer le unsubscribe pour les observables, pour eviter les fuites de données 
+  
+  
   
   
   
