@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Formateurs } from '../../models/formateurs.model';
-import { FormateurServiceService } from '../../services/users/formateurs/formateur-service.service';
+import { FormateurServiceService } from '../../services/users/formateur-service.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

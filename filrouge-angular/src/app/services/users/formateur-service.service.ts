@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Formateurs } from '../../../models/formateurs.model';
+import { Formateurs } from '../../models/formateurs.model';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({

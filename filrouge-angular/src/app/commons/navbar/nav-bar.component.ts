@@ -1,40 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { LoginService } from '../../services/login/login.service';
-import { Stagiaire } from '../../models/stagiaire.model';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/users/user.service';
+import { LoginFormComponent } from '../../pages/connexion-page/connexion-page.component';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  providers: [Stagiaire],
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, RouterModule],
+  providers: [User],
+  imports: [RouterModule, LoginFormComponent],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent implements OnInit{
   img =  './../../../assets/images/logo.png';
   isAuthentificated!: boolean;
-  user!: Stagiaire;
+  user!: User;
 
-  constructor(private loginService: LoginService,  private stagiaire: Stagiaire) {}
+  constructor(private loginService: LoginService, private userService: UserService) {}
   
   //On s'inscrit à l'observable getLogin pour connaitre l'état de connexion en temps réel (Boolean)
   ngOnInit(): void {
     //On observe si la connexion change
+    //On enregistre le User connecter dans la variable du composant 
+    //(Getter d'un observable ouvert) dans login.service lors de la connexion
+     //ToDo: appel l'objet user lors de la connexion
     this.loginService.getLogin.
     subscribe({
       next: (isLogged) => this.isAuthentificated = isLogged,
       error: (err) => console.error('Erreur au chargement', err)
     });
-    //On enregistre le User connecter dans la variable du composant 
-    //(Getter d'un observable ouvert) dans login.service lors de la connexion
-    //si l'utilisateur est connecté
-    //if(this.isAuthentificated){
-      this.user = this.loginService.getLoginUser; 
-   // }
   }
 
   deconnexion(): void {  
@@ -45,4 +41,11 @@ export class NavBarComponent implements OnInit{
     }
     //ToDo : appeller les fonction de "destroy"
   }
+
+  ngDoCheck():void{
+    if(this.isAuthentificated){
+      this.user = this.loginService.getLoginUser;
+    }
+  }
+
 }

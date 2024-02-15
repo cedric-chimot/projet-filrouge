@@ -34,15 +34,15 @@
         </ul>
     }
         @if(isAuthentificated){
-        <ul class="d-flex align-items-center">
-            @if(user.role === "ADMINISTRATEUR"){
+        <ul >
+            @if(user.role === "CANDIDAT"){
                 <li>
-                    <a routerLink="/dashboard">Panneau Administrateur</a>
+                    <button routerLink="/dashboard">Panneau Administrateur</button>
                 </li>
             }
             @if(user.nom){
                 <li>
-                    <a routerLink="/monProfil">{{user.nom}}</a>
+                    <button routerLink="/monProfil">{{user.nom}} {{user.prenom}}</button>
                 </li>
             }
             <li>

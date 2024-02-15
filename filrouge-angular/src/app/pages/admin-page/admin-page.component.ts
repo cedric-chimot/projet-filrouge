@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
+import { UserService } from '../../services/users/user.service';
 
 
 @Component({
@@ -14,31 +14,31 @@ import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
     imports: [MatToolbarModule, MatIconModule, MatButtonModule, RouterModule]
 })
 export class AdminPageComponent {
-    nbStagiaires: number = 0; 
+    nbUsers: number = 0; 
     nbCandidats: number = 0;
 
-    constructor(private stagiaireService: StagiaireService) {}
+    constructor(private userService: UserService) {}
     ngOnInit(): void {
-        this.stagiaireService.getNbStagiaires()
+        this.userService.getNbUsers()
         .subscribe({
-            next: (nbStagiaires: number) => {
-                this.nbStagiaires = nbStagiaires;
+            next: (nbUsers: number) => {
+                this.nbUsers = nbUsers;
             },
             error: (error) => {
-                console.error('Erreur lors de la récupération du nombre de stagiaires', error);
+                console.error('Erreur lors de la récupération du nombre de users', error);
             },
             complete: () => {
                 console.log("Récupération complète");
             }
         });
 
-        this.stagiaireService.getNbCandidats()
+        this.userService.getNbCandidats()
         .subscribe({
             next: (nbCandidats: number) => {
                 this.nbCandidats = nbCandidats;
             },
             error: (error) => {
-                console.error('Erreur lors de la récupération du nombre de stagiaires', error);
+                console.error('Erreur lors de la récupération du nombre de users', error);
             },
             complete: () => {
                 console.log("Récupération complète");

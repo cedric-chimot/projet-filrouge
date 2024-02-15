@@ -7,7 +7,6 @@ import { FooterComponent } from "../../commons/footer/footer.component";
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { LoginService } from '../../services/login/login.service';
-import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
 
 @Component({
   selector: 'app-connexion-page',
@@ -26,7 +25,6 @@ export class LoginFormComponent {
 
   // Indique si le formulaire a été soumis
   submitted: boolean = false;  
-  user!: StagiaireService ;
   constructor(
     private formBuilder: FormBuilder, private loginService: LoginService, private router: Router
   ) {};
@@ -47,6 +45,7 @@ export class LoginFormComponent {
           next: (_) => {
             // Affiche une alerte en cas de connexion réussie
             alert("Connexion réussie !");
+            
             // met la variable observable a true pour confirmé la connexion et pouvoir vérifié
             this.loginService.setLogin(true);
             // Redirection sur l'accueil en cas de succès

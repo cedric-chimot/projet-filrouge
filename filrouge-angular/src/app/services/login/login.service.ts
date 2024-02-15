@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
-import { Stagiaire } from '../../models/stagiaire.model';
-import { StagiaireService } from '../stagiaires/stagiaire.service';
+import { User } from '../../models/user.model';
+import { UserService } from '../users/user.service';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,23 +15,24 @@ export class LoginService{
   // Pour suivre l'état de la conneisLoggedxion (true or false)
   private isLogged : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   //private reponseBack!: Observable<any>;
-  private user! : Stagiaire;
+  private user! : User;
   
   // Observable permettant de surveiller l'état d'authentification
   isAuthenticated$: Observable<boolean> = this.isLogged.asObservable();
-  reponseBack!: Observable<Object>;
+  reponseBack!: Observable<Object> | null;
 
-  constructor(private httpClient: HttpClient, private stagiaireService: StagiaireService) {}
+  constructor(private httpClient: HttpClient, private userService: UserService) {}
 
   // Fonction pour effectuer la connexion
   login(email: string, mdp: string): Observable<Object>{
+    this.reponseBack = null;
     const identite = { email, mdp };
     // Envoi de la requête HTTP POST pour la connexion
-    // le Back répond par un objet stagiaire donc je définis <Stagiaire> dans la reception de la réponse
-    this.reponseBack =  this.httpClient.post<Stagiaire>(`${this.apiUrl}/stagiaires/login`, identite);
+    // le Back répond par un objet user donc je définis <User> dans la reception de la réponse
+    this.reponseBack =  this.httpClient.post<User>(`${this.apiUrl}/users/login`, identite);
     if(this.reponseBack != null){ // si le réponse n'est pas null alors on créer l'observable user
-      this.httpClient.post<Stagiaire>(`${this.apiUrl}/stagiaires/login`, identite).subscribe({
-        next: (reponse) => this.user = reponse,// un StagiaireLoginDTO (sans mdp) si le serveur répond un stagiaireLoginDTO
+      this.httpClient.post<User>(`${this.apiUrl}/users/login`, identite).subscribe({
+        next: (reponse) => this.user = reponse,// un UserLoginDTO (sans mdp) si le serveur répond un userLoginDTO
         error: (err) => console.error('Erreur au chargement', err)
       });
       

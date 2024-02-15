@@ -40,6 +40,10 @@ public class FilrougeSpringApplication {
 				"ced02830", "Ced@02830", UserRole.CANDIDAT, null);
 		usersService.create(stagiaire);
 		System.out.println(stagiaire);
+		Users stagiaireChaima = new Users("Princesse", "Chaima", "01/01/01/01/01",  "chaima@hotmail.com",
+				"chaima", "Chaima!3", UserRole.CANDIDAT, null);
+		usersService.create(stagiaireChaima);
+		System.out.println(stagiaireChaima);
 
 //		Lieu lieu = new Lieu("IBCegos", "Gare de Lille 59000");
 //		centreFormationService.create(lieu);
