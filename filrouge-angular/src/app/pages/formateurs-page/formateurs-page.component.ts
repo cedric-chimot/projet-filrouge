@@ -8,14 +8,20 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './formateurs-page.component.html',
-  styleUrl: './formateurs-page.component.css'
+  styleUrls: ['./formateurs-page.component.css', "../../../../node_modules/@fortawesome/fontawesome-free/css/all.css"]
 })
 export class FormateursPageComponent {
+supprimerUtilisateur(arg0: any) {
+throw new Error('Method not implemented.');
+}
+modifierUtilisateur(arg0: any) {
+throw new Error('Method not implemented.');
+}
   formateurs!: Formateurs[];
 
   constructor(private formateurService: FormateurServiceService) {}
 
-  onInit(): void {
+  ngOnInit(): void {
     this.findFormateurs();
   }
 

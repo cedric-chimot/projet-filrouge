@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
+import { FormateurServiceService } from '../../services/users/formateurs/formateur-service.service';
 
 
 @Component({
@@ -16,8 +17,10 @@ import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
 export class AdminPageComponent {
     nbStagiaires: number = 0; 
     nbCandidats: number = 0;
+    nbFormateurs: number = 0;
 
-    constructor(private stagiaireService: StagiaireService) {}
+    constructor(private stagiaireService: StagiaireService, private formateurService: FormateurServiceService) {}
+
     ngOnInit(): void {
         this.stagiaireService.getNbStagiaires()
         .subscribe({
@@ -44,6 +47,20 @@ export class AdminPageComponent {
                 console.log("Récupération complète");
             }
         });
+
+        this.formateurService.getNbFormateurs()
+        .subscribe({
+            next: (nbFormateurs: number) => {
+                this.nbFormateurs = nbFormateurs;
+            },
+            error: (error) => {
+                console.error('Erreur lors de la récupération du nombre de stagiaires', error);
+            },
+            complete: () => {
+                console.log("Récupération complète");
+            }
+        });
+
     }
 
 }

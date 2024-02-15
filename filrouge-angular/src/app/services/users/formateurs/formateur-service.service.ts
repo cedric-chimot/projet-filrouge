@@ -16,4 +16,9 @@ export class FormateurServiceService {
     return this.httpClient.get<Formateurs[]>(`${this.apiUrl}/users/all/formateurs`);
   }
 
+  // Récupère le nombre de formateurs
+  getNbFormateurs(): Observable<number> {
+    return this.httpClient.get<number>(`${this.apiUrl}/users/nbFormateurs`);
+  }
+  
 }

@@ -69,7 +69,7 @@ public class BootcampController {
      * @return le bootcamp nouvellement créé
      */
     @PostMapping("/createBootcamp")
-    public Bootcamp createBootcamp(@Validated @RequestBody Bootcamp bootcamp, @RequestParam Long idLieu){
+    public Bootcamp createBootcamp(@Validated @RequestBody Bootcamp bootcamp, Long idLieu){
         return bootcampService.createBootcamp(bootcamp, idLieu);
     }
 

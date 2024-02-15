@@ -15,41 +15,16 @@ import java.util.List;
 public class LieuController {
 
     /**
-     * Appelle le service du centre de formation
+     * Appelle le service du lieu
      */
     private final LieuServiceImpl lieuService;
 
     /**
-     * Constructeur du controller centre de formation
+     * Constructeur du controller lieu
      * @param lieuService, le service centre de formation
      */
     public LieuController(LieuServiceImpl lieuService) {
         this.lieuService = lieuService;
-    }
-
-    /**
-     * Méthode pour créer un nouveau centre de formation
-     * @param lieu, le centre de formation à créer
-     * @return le centre de formation nouvellement créé
-     */
-    @PostMapping("/create")
-    public Lieu createLieu(@RequestBody Lieu lieu) {
-        return lieuService.create(lieu);
-    }
-
-    @PostMapping("/createLieux")
-    public List<Lieu> createLieux(@RequestBody List<Lieu> lieux) {
-        return lieuService.createListe(lieux);
-    }
-
-    /**
-     * Méthode pour mettre à jour un lieu
-     * @param lieu la session de formation à mettre à jour
-     * @return la session de formation mis à jour
-     */
-    @PatchMapping("/update")
-    public Lieu updateLieu(@RequestBody Lieu lieu) {
-        return lieuService.update(lieu);
     }
 
     /**
@@ -72,9 +47,39 @@ public class LieuController {
     }
 
     /**
+     * Méthode pour créer un nouveau lieu
+     * @param lieu, le lieu à créer
+     * @return le lieu nouvellement créé
+     */
+    @PostMapping("/create")
+    public Lieu createLieu(@RequestBody Lieu lieu) {
+        return lieuService.create(lieu);
+    }
+
+    /**
+     * Méthode pour créer une liste de lieux
+     * @param lieux les lieux à créer
+     * @return la liste des lieux créée
+     */
+    @PostMapping("/createLieux")
+    public List<Lieu> createLieux(@RequestBody List<Lieu> lieux) {
+        return lieuService.createListe(lieux);
+    }
+
+    /**
+     * Méthode pour mettre à jour un lieu
+     * @param lieu le lieu à mettre à jour
+     * @return le lieu mis à jour
+     */
+    @PatchMapping("/update")
+    public Lieu updateLieu(@RequestBody Lieu lieu) {
+        return lieuService.update(lieu);
+    }
+
+    /**
      * Supprimer un lieu selon son id
-     * @param id l'identifiant de la session
-     * @return la session supprimée
+     * @param id l'identifiant du lieu
+     * @return le lieu supprimé
      */
     @DeleteMapping("/delete/{id}")
     public Lieu deleteLieuById(@PathVariable Long id) {
@@ -82,10 +87,10 @@ public class LieuController {
     }
 
     /**
-     * Supprimer tous les lieus
+     * Supprimer tous les lieux
      */
     @DeleteMapping("/delete/all")
-    public void deleteAllLieus() {
+    public void deleteAllLieux() {
         lieuService.deleteAll();
     }
 

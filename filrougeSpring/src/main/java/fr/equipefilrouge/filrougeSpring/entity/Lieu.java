@@ -36,9 +36,6 @@ public class Lieu {
     @Column(name = "pays", nullable = false)
     private String pays;
 
-    @OneToMany(mappedBy = "lieu", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    private List<Bootcamp> bootcamps = new ArrayList<>();
-
     public Lieu(String raisonSociale, String codePostal, String rue, String ville, String pays) {
         this.raisonSociale = raisonSociale;
         this.codePostal = codePostal;
