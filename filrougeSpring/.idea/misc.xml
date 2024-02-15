@@ -9,17 +9,17 @@
       <item index="4" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.PostMapping" />
       <item index="5" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.RestController" />
     </list>
+    <writeAnnotations>
+      <writeAnnotation name="jakarta.persistence.Column" />
+      <writeAnnotation name="jakarta.persistence.JoinColumn" />
+    </writeAnnotations>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/filrougeSpring/pom.xml" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/pom.xml" />
-=======
-        <option value="$PROJECT_DIR$/filrougeSpring/filrougeSpring/pom.xml" />
->>>>>>> cedric
       </list>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />

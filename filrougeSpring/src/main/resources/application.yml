@@ -1,18 +1,3 @@
-<<<<<<<< HEAD:filrougeSpring/src/main/resources/application.yml
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/filrouge?serverTimezone=UTC
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: create
-      dialect: org.hibernate.dialect.MySQL8Dialect
-    show-sql: true
-
-========
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/filrouge?serverTimezone=UTC
@@ -28,4 +13,3 @@ spring:
         hibernate.cache.use_second_level_cache: false
         hibernate.cache.use_query_cache: false
     show-sql: true
->>>>>>>> cedric:filrougeSpring/filrougeSpring/filrougeSpring/src/main/resources/application.yml

@@ -1,56 +1,61 @@
 package fr.equipefilrouge.filrougeSpring.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Classe CentreFormation pour gérer le centre de formation
- */
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@RequiredArgsConstructor
-@AllArgsConstructor
-@Entity
 @Table(name = "lieu")
 public class Lieu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JoinColumn(name = "idLieu")
     private Long id;
 
-    @Column(name = "raisonSociale", nullable = false)
+    @Column(name = "raisonSociale")
     private String raisonSociale;
 
-    @Column(name = "adresse", nullable = false)
-    private String adresse;
+    @Column(name = "codePostal", nullable = false)
+    private String codePostal;
 
-    @OneToMany(mappedBy = "lieu")
-    private List<Lier> liens;
+    @Column(name = "rue", nullable = false)
+    private String rue;
 
-    /**
-     * Constructeur du centre de formation
-     * @param raisonSociale, le nom du centre
-     * @param adresse, l'adresse du centre
-     */
-    public Lieu(String raisonSociale, String adresse) {
+    @Column(name = "ville", nullable = false)
+    private String ville;
+
+    @Column(name = "pays", nullable = false)
+    private String pays;
+
+    @OneToMany(mappedBy = "lieu", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private List<Bootcamp> bootcamps = new ArrayList<>();
+
+    public Lieu(String raisonSociale, String codePostal, String rue, String ville, String pays) {
         this.raisonSociale = raisonSociale;
-        this.adresse = adresse;
+        this.codePostal = codePostal;
+        this.rue = rue;
+        this.ville = ville;
+        this.pays = pays;
     }
 
-    /**
-     * Méthode pour afficher un centre de formation
-     * @return le centre de formation
-     */
     @Override
     public String toString() {
-        return "CentreFormation{" +
-                "idLieu=" + id +
-                ", raisonSociale='" + raisonSociale + '\'' +
-                ", adresse='" + adresse + '\'' +
+        return "Lieu{" +
+                "id=" + id +
+                ", RaisonSociale='" + raisonSociale + '\'' +
+                ", codePostal='" + codePostal + '\'' +
+                ", rue='" + rue + '\'' +
+                ", ville='" + ville + '\'' +
+                ", pays='" + pays + '\'' +
                 '}';
     }
-
 }
