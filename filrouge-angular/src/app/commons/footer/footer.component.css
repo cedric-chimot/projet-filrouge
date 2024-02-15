@@ -4,13 +4,17 @@
     text-align: center;
     padding: 10px 0;
     font-size: small;
+
 }  
 
 .footer1{
+    justify-content: center;
     text-align: center;
     position:static;
     display: flex;
+
 }
+
 
 .certificat{
     margin-left: 70px;

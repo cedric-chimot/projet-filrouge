@@ -1,0 +1,14 @@
+.box1{
+    width: 1200px;
+    height: 200px;
+    margin: 20px;
+    align-items: center;
+    text-align: center;
+    border: 10px solid var(--clr);
+    background-color:5065A8;
+    border-radius: 15px;
+    box-shadow: -15px -15px 15px rgba(255, 255, 255, 0.2),
+                15px 15px 15px rgb(0, 0,0,0.1),
+                inset -15px -15px 15px rgb(255, 255,255,0.2),
+                inset 15px 15px 15px  rgb(0, 0,0,0.1);
+            }

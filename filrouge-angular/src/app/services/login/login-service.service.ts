@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
 export class LoginServiceService {
   private apiUrl = 'http://localhost:8080';
 
-  // Pour suivre l'état de la connexion (true or false)
+  // Pour suivre l'état de la connexion (true or falaavse)
   private isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   // Observable permettant de surveiller l'état d'authentification

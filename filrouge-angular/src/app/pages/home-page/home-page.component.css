@@ -25,6 +25,12 @@ box-shadow: -15px -15px 15px rgb(255, 255,255,0.2),
             inset 15px 15px 15px  rgb(0, 0,0,0.1);  
 
 }
+@media screen and (max-width:1280px) {
+    /* Styles CSS pour les écrans de petite taille */
+    .presentation{
+        width: auto;
+    }
+}
 .container .box{
     position: static;
     background: var(--img);

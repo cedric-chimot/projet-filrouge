@@ -1,34 +1,50 @@
 
-
-<div >
-    <div >
-        <div >
-            <h1 >TABLEAU DE BORD ADMIN</h1>
-            <div >      
-                <div >
+<body>
+    <h1>TABLEAU DE BORD ADMIN</h1>
+            <div class="container" >   
+                <div class="box1" >
                     <button routerLink="/dashboard/formation" >
-                        <h5 >
+                        <h3 >
                             Formations
-                        </h5>
+                        </h3>
                         <span>(A venir)</span>
                     </button>
                 </div>
-                <div >
+                <div class="box1" >
                     <button routerLink="/dashboard/candidats" >
-                        <h5 >
+                        <h3 >
                             Candidats
-                        </h5>
+                        </h3>
                         <span>(Nb d'inscrits)</span>
-                        <div >
                             <p>{{ nbCandidats }}</p>
-                        </div>
+                        
                     </button>
                 </div>
-                <div >
+                <div class="box1">
                     <button routerLink="/dashboard/stagiaires" >
-                        <h5 >
+                        <h3>
                             Stagiaires
-                        </h5>
+                        </h3>
+                        <span>(Nb d'inscrits)</span>
+                        <p>{{ nbStagiaires }}</p>
+                    </button>
+                </div>
+            </div>
+            <div class="container" > 
+                <div class="box1">
+                    <button routerLink="/dashboard/stagiaires" >
+                        <h3>
+                            Formateur
+                        </h3>
+                        <span>(Nb d'inscrits)</span>
+                        <p>{{ nbStagiaires }}</p>
+                    </button>
+                </div>
+                <div class="box1">
+                    <button routerLink="/dashboard/stagiaires" >
+                        <h3>
+                            Messages
+                        </h3>
                         <span>(Nb d'inscrits)</span>
                         <p>{{ nbStagiaires }}</p>
                     </button>
@@ -46,9 +62,7 @@
                     </button>
                 </div> -->
             </div>
-    </div>    
-</div>
-
+</body>
     <!-- <mat-toolbar>
 
         <img [src]="img" routerLink="/home">
