@@ -10,23 +10,25 @@
                 </div>
                 <hr>
 
-                @if (!product.img) {
-                    <img class="cover" src="../../../../assets/images/photo2.jpg" alt="IT-Training" />
-                }
-                @if (product.img) {
-                    <img class="cover" [src]="product.img" [alt]="product.nom" />
-                }
+                <div class="image-container">
+                    @if (!product.img) {
+                        <img class="cover" src="../../../../assets/images/photo2.jpg" alt="IT-Training" />
+                    }
+                    @if (product.img) {
+                        <img class="cover" [src]="product.img" [alt]="product.nom" />
+                    }
+                        
+                </div>
 
                 @if (product.description) {
                     <div class="description">
-                        <p> {{ product.description | slice: 0:100 }}...</p>
+                        <p> {{ product.description }}</p>
                     </div>
                 }
             </div>
-
             <div class="actions">
                 @if (product) {
-                    <button routerLink="/products/formations/{{ product.id }}">Details</button>
+                  <button class="details-button" routerLink="/products/formations/{{ product.id }}">Details</button>
                 }
             </div>
         </div>
