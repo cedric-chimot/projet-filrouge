@@ -1,6 +1,6 @@
 .nav {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: large;
+    font-size:medium;
     /* position:fixed; */
     top: 0;
     left: 0;
@@ -14,18 +14,17 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
+
 }
 
 nav .logo {
     float: left;
-    display: flex;
-    align-items: center;
+
 }
 
 nav .logo h2 {
     margin: 0;
-    padding: 0px; /* Ajustez la valeur du padding si nécessaire */
+    padding: 0px;
     color: #5065A8;
 }
 
@@ -55,23 +54,14 @@ nav ul li a{
     text-transform: uppercase;
     transition: 0.5s;
 }
-hr{
-    height: 80px;
-    width: 25%;
-    margin: -95px 0;
-    background: linear-gradient(to right #5065A8 0%,#ff5432 100%);
-    border: none;
-    border-radius: 50px;
-    transition: .5s ease-in-out;
-
-}
 button {
-    padding: 20px 25px;
+    margin-right: 10px;
+    padding: 15px 25px;
     text-align: center;
     display: inline-block;
-    background-color: rgba(211, 235, 239, 0.6);
+    background-color: rgba(178, 202, 206, 0.6);
     color: #5065A8;
     border: 0.2em;
-    border-radius: 15px;
+    border-radius: 25px;
 
 }

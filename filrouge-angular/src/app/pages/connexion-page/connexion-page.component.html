@@ -10,12 +10,14 @@
                     <div class="form-group">
                         <div class="input-group" >
                                 <input  type="email" formControlName="email" placeholder="Email">
+                                <br>
                                 @if (submitted && !form['email'].valid) {
                                     <span class="text-danger small">*L'email est invalide ou n'existe pas</span>
                                 }
                                 </div>
                         <div class="input-group">
                             <input type="text" formControlName="mdp" placeholder="Mot de passe">
+                            <br>
                             @if (submitted && !form['mdp'].valid){
                             <span class="text-danger small">
                             *Le mot de passe est incorrect

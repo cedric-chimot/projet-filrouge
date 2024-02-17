@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
-import { Stagiaire } from '../../models/stagiaire.model';
+import { User } from '../../models/user.model';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavBarComponent } from "../../commons/navbar/nav-bar.component";
 import { FooterComponent } from "../../commons/footer/footer.component";
 import { RouterModule } from '@angular/router';
+import { UserService } from '../../services/users/user.service';
 
 
 @Component({
-    selector: 'app-stagiaire-formulaire',
+    selector: 'app-user-formulaire',
     standalone: true,
     templateUrl: './inscription-page.component.html',
     styleUrls: ['./inscription-page.component.css'],
     imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, NavBarComponent, FooterComponent, RouterModule]
 })
 
-export class StagiaireFormulaireComponent {
+export class UserFormulaireComponent {
   // Validateurs pour les champs du formulaire
-  stagiairesForm: FormGroup = this.formBuilder.group({
+  usersForm: FormGroup = this.formBuilder.group({
     nom: ['', Validators.required],
     prenom: ['', Validators.required],
     telephone: ['', Validators.required],
@@ -35,34 +35,34 @@ export class StagiaireFormulaireComponent {
   // Soumission du formulaire "false" de base
   submitted: boolean = false;
 
-  // Tableau de stagiaires
-  stagiaires: any[] = [];
-  // Un seul stagiaire
-  stagiaire!: Stagiaire;
+  // Tableau de users
+  users: any[] = [];
+  // Un seul user
+  user!: User;
 
   // Constructeur du formulaire
-  constructor(private formBuilder: FormBuilder, private stagiaireService: StagiaireService) {}; 
+  constructor(private formBuilder: FormBuilder, private userService: UserService) {}; 
 
-  // Méthode pour ajouter un stagiaire
-  addStagiaire(): void {
+  // Méthode pour ajouter un user
+  addUser(): void {
     // On push les valeurs des inputs du formulaire
-    this.stagiaires.push(this.stagiairesForm.value);
+    this.users.push(this.usersForm.value);
   
     // Appel du service pour la création
-    this.stagiaireService.createStagiaire(this.stagiairesForm.value)
+    this.userService.createUser(this.usersForm.value)
       .subscribe({
-        next: (stagiairesForm) => {
-          // Si c'est un succès le stagiaire est enregistré
-          this.stagiaire = stagiairesForm;
-          alert("Stagiaire créé avec succès !");
+        next: (usersForm) => {
+          // Si c'est un succès le user est enregistré
+          this.user = usersForm;
+          alert("User créé avec succès !");
         },
         error: (error) => {
           if (error.status === 409) {
             // Envoi une erreur "conflict" si l'email enregistré existe déjà en BDD
-            alert("Erreur lors de la création du stagiaire : Email déjà utilisé.");
+            alert("Erreur lors de la création du user : Email déjà utilisé.");
           } else {
             // Envoi une erreur si la création échoue
-            alert("Erreur lors de la création du stagiaire");
+            alert("Erreur lors de la création du user");
             console.log(error);
           }
         },
@@ -76,15 +76,15 @@ export class StagiaireFormulaireComponent {
     // A la soumission on passe le submit à "true"
     this.submitted = true;
 
-    if(this.stagiairesForm.invalid) {
+    if(this.usersForm.invalid) {
       // Si le formulaire est invalide(ex: champs vide), retourne "false"
       return false;
     } else {
-      // Sinon on ajoute le stagiaire et le "submit" repasse à false
-      this.addStagiaire();
+      // Sinon on ajoute le user et le "submit" repasse à false
+      this.addUser();
       this.submitted = false;
       // Reset du formulaire
-      this.stagiairesForm.reset();
+      this.usersForm.reset();
       return true;
     }
     
@@ -92,7 +92,7 @@ export class StagiaireFormulaireComponent {
 
   // Pour contrôler les validators
   get form() {
-    return this.stagiairesForm.controls;
+    return this.usersForm.controls;
   }
 
 }

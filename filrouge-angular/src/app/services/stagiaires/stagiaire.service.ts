@@ -25,16 +25,12 @@ export class StagiaireService {
   }
   // Récupère le nombre de stagiaires
   getNbStagiaires(): Observable<number> {
-    return this.httpClient.get<number>(`${this.apiUrl}/users/nbStagiaires`);
+    return this.httpClient.get<number>(`${this.apiUrl}/stagiaires/nbStagiaires`);
   }
   
   // Récupère le nombre de candidats
   getNbCandidats(): Observable<number> {
-    return this.httpClient.get<number>(`${this.apiUrl}/users/nbCandidats`);
-  }
-
-  getNbUsersByType(type: string): Observable<number> {
-    return this.httpClient.get<number>(`${this.apiUrl}/users/count/${type}`)
+    return this.httpClient.get<number>(`${this.apiUrl}/stagiaires/nbCandidats`);
   }
   
   // Création d'un stagiaire

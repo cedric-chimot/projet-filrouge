@@ -7,7 +7,6 @@ import { FooterComponent } from "../../commons/footer/footer.component";
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { LoginService } from '../../services/login/login.service';
-import { StagiaireService } from '../../services/stagiaires/stagiaire.service';
 
 @Component({
   selector: 'app-connexion-page',
@@ -26,7 +25,6 @@ export class LoginFormComponent {
 
   // Indique si le formulaire a été soumis
   submitted: boolean = false;  
-  user!: StagiaireService ;
   constructor(
     private formBuilder: FormBuilder, private loginService: LoginService, private router: Router
   ) {};
@@ -46,11 +44,17 @@ export class LoginFormComponent {
         .subscribe({
           next: (_) => {
             // Affiche une alerte en cas de connexion réussie
-            alert("Connexion réussie !");
+            
+            
             // met la variable observable a true pour confirmé la connexion et pouvoir vérifié
-            this.loginService.setLogin(true);
+            if(this.loginService.getLoginUser){
+              alert("Connexion réussie !");
+              this.loginService.setLogin(true);
+              this.router.navigate(['/home']);
+            }
+            //ToDo trouver la solution pour afficher une erreur dans le cas ou c'est login et mdp invalide
             // Redirection sur l'accueil en cas de succès
-            this.router.navigate(['/home']);
+            
           },
           error: (error) => {
             // Affiche une alerte en cas d'erreur lors de la connexion

@@ -1,214 +1,64 @@
 {
     "users": [
         {
-          "nom": "Chimot",
-          "prenom": "Cedric",
-          "telephone": "01/01/01/01/01",
-          "email": "cedric02@gmail.com",
-          "pseudo": "ced02830",
-          "mdp": "Ced@02830",
-          "role": "ADMIN",
-          "noteMoyenne": null
+            "nom": "Chimot",
+            "prenom": "Cedric",
+            "telephone": "01/01/01/01/01",
+            "email": "cedric02@gmail.com",
+            "pseudo": "ced02830",
+            "mdp": "Ced@02830",
+            "role": "ADMIN",
+            "noteMoyenne": null
         },
         {
-          "nom": "Lefevre",
-          "prenom": "Marie",
-          "telephone": "0123456789",
-          "email": "user2@example.com",
-          "pseudo": "mlefevre",
-          "mdp": "Elef@1234",
-          "role": "FORMATEUR",
-          "note_moyenne": 4.2
+            "nom": "Lefevre",
+            "prenom": "Marie",
+            "telephone": "0123456789",
+            "email": "user2@example.com",
+            "pseudo": "mlefevre",
+            "mdp": "Elef@1234",
+            "role": "FORMATEUR",
+            "note_moyenne": 4.2
         },
         {
-          "nom": "Petit",
-          "prenom": "Paul",
-          "telephone": "0987654321",
-          "email": "user3@example.com",
-          "pseudo": "ppetit",
-          "mdp": "Ppetit@1234",
-          "role": "CANDIDAT",
-          "note_moyenne": null
+            "nom": "Petit",
+            "prenom": "Paul",
+            "telephone": "0987654321",
+            "email": "user3@example.com",
+            "pseudo": "ppetit",
+            "mdp": "Ppetit@1234",
+            "role": "CANDIDAT",
+            "note_moyenne": null
         },
         {
-          "nom": "Roux",
-          "prenom": "Sophie",
-          "telephone": "0123456789",
-          "email": "user@example.com",
-          "pseudo": "sroux",
-          "mdp": "Sroux@1234",
-          "role": "STAGIAIRE",
-          "note_moyenne": null
+            "nom": "Roux",
+            "prenom": "Sophie",
+            "telephone": "0123456789",
+            "email": "admin2@example.com",
+            "pseudo": "sroux",
+            "mdp": "Sroux@1234",
+            "role": "STAGIAIRE",
+            "note_moyenne": null
         },
         {
-          "nom": "Moreau",
-          "prenom": "Lucas",
-          "telephone": "0987654321",
-          "email": "user4@example.com",
-          "pseudo": "lmoreau",
-          "mdp": "Lmoreau@1234",
-          "role": "FORMATEUR",
-          "note_moyenne": 4.1
+            "nom": "Moreau",
+            "prenom": "Lucas",
+            "telephone": "0987654321",
+            "email": "user4@example.com",
+            "pseudo": "lmoreau",
+            "mdp": "Lmoreau@1234",
+            "role": "FORMATEUR",
+            "note_moyenne": 4.1
         },
         {
-          "nom": "Girard",
-          "prenom": "Emma",
-          "telephone": "0123456789",
-          "email": "user5@example.com",
-          "pseudo": "egirard",
-          "mdp": "Egirard@1234",
-          "role": "STAGIAIRE",
-          "note_moyenne": null
-        },
-        {
-          "nom": "Dupont",
-          "prenom": "Jean",
-          "telephone": "0123456789",
-          "email": "user6@example.com",
-          "pseudo": "jdupont",
-          "mdp": "Jdupont@1234",
-          "role": "FORMATEUR",
-          "note_moyenne": 4.0
-        },
-        {
-          "nom": "Martin",
-          "prenom": "Sophie",
-          "telephone": "0123456789",
-          "email": "user7@example.com",
-          "pseudo": "smartin",
-          "mdp": "Smartin@1234",
-          "role": "STAGIAIRE",
-          "note_moyenne": null
-        },
-        {
-          "nom": "Bertrand",
-          "prenom": "Thomas",
-          "telephone": "0123456789",
-          "email": "user8@example.com",
-          "pseudo": "tbertrand",
-          "mdp": "Tbertrand@1234",
-          "role": "CANDIDAT",
-          "note_moyenne": null
-        },
-        {
-          "nom": "Lemoine",
-          "prenom": "Julie",
-          "telephone": "0123456789",
-          "email": "user9@example.com",
-          "pseudo": "jlemoine",
-          "mdp": "Jlemoine@1234",
-          "role": "FORMATEUR",
-          "note_moyenne": 3.9
-        },
-        {
-          "nom": "Lecomte",
-          "prenom": "Pauline",
-          "telephone": "0123456789",
-          "email": "user10@example.com",
-          "pseudo": "plecomte",
-          "mdp": "Plecomte@1234",
-          "role": "STAGIAIRE",
-          "note_moyenne": null
-        },
-        {
-          "nom": "Guerin",
-          "prenom": "Nicolas",
-          "telephone": "0123456789",
-          "email": "user11@example.com",
-          "pseudo": "nguerin",
-          "mdp": "Nguerin@1234",
-          "role": "CANDIDAT",
-          "note_moyenne": null
-        },
-        {
-          "nom": "Robert",
-          "prenom": "Catherine",
-          "telephone": "0123456789",
-          "email": "user12@example.com",
-          "pseudo": "crobert",
-          "mdp": "Crobert@1234",
-          "role": "FORMATEUR",
-          "note_moyenne": 4.3
-        },
-        {
-          "nom": "Lemoine",
-          "prenom": "Vincent",
-          "telephone": "0123456789",
-          "email": "user13@example.com",
-          "pseudo": "vlemoine",
-          "mdp": "Vlemoine@1234",
-          "role": "STAGIAIRE",
-          "note_moyenne": null
-        },
-        {
-          "nom": "Fournier",
-          "prenom": "Marine",
-          "telephone": "0123456789",
-          "email": "user14@example.com",
-          "pseudo": "mfournier",
-          "mdp": "Mfournier@1234",
-          "role": "CANDIDAT",
-          "note_moyenne": null
-        },
-        {
-          "nom": "Riviere",
-          "prenom": "David",
-          "telephone": "0123456789",
-          "email": "user15@example.com",
-          "pseudo": "driverie",
-          "mdp": "Driverie@1234",
-          "role": "FORMATEUR",
-          "note_moyenne": 4.5
-        },
-        {
-          "nom": "Lebrun",
-          "prenom": "Caroline",
-          "telephone": "0123456789",
-          "email": "user16@example.com",
-          "pseudo": "clebrun",
-          "mdp": "Clebrun@1234",
-          "role": "STAGIAIRE",
-          "note_moyenne": null
-        },
-        {
-          "nom": "Renard",
-          "prenom": "Louis",
-          "telephone": "0123456789",
-          "email": "user17@example.com",
-          "pseudo": "lrenard",
-          "mdp": "Lrenard@1234",
-          "role": "CANDIDAT",
-          "note_moyenne": null
-        },
-        {
-          "nom": "Dufour",
-          "prenom": "Isabelle",
-          "telephone": "0123456789",
-          "email": "user18@example.com",
-          "pseudo": "idufour",
-          "mdp": "Idufour@1234",
-          "role": "FORMATEUR",
-          "note_moyenne": 4.2
-        },
-        {
-          "nom": "Brunet",
-          "prenom": "Guillaume",
-          "telephone": "0123456789",
-          "email": "user19@example.com",
-          "pseudo": "gbrunet",
-          "mdp": "Gbrunet@1234",
-          "role": "STAGIAIRE",
-          "note_moyenne": null
-        },
-        {
-          "nom": "Leroux",
-          "prenom": "Camille",
-          "telephone": "0123456789",
-          "email": "user20@example.com",
-          "pseudo": "cleroux",
-          "mdp": "Cleroux@1234",
-          "role": "CANDIDAT",
-          "note_moyenne": null
+            "nom": "Girard",
+            "prenom": "Emma",
+            "telephone": "0123456789",
+            "email": "user5@example.com",
+            "pseudo": "egirard",
+            "mdp": "Egirard@1234",
+            "role": "STAGIAIRE",
+            "note_moyenne": null
         }
     ],
 
@@ -257,296 +107,113 @@
         }
     ],
 
-    "bootcamps" : [
-        {
-            "id": 1,
-            "dateDebut": "2024-01-01",
-            "dateFin": "2024-06-30",
-            "statut": "En cours",
-            "lieu_id": 3
-        },
-        {
-            "id": 2,
-            "dateDebut": "2024-02-01",
-            "dateFin": "2024-07-31",
-            "statut": "Terminé",
-            "lieu_id": 1
-        },
-        {
-            "id": 3,
-            "dateDebut": "2024-03-01",
-            "dateFin": "2024-08-31",
-            "statut": "En cours",
-            "lieu_id": 2
-        },
-        {
-            "id": 4,
-            "dateDebut": "2024-04-01",
-            "dateFin": "2024-09-30",
-            "statut": "Terminé",
-            "lieu_id": 4
-        },
-        {
-            "id": 5,
-            "dateDebut": "2024-05-01",
-            "dateFin": "2024-10-31",
-            "statut": "En cours",
-            "lieu_id": 5
-        },
-        {
-            "id": 6,
-            "dateDebut": "2024-06-01",
-            "dateFin": "2024-11-30",
-            "statut": "Terminé",
-            "lieu_id": 6
-        },
-        {
-            "id": 7,
-            "dateDebut": "2024-07-01",
-            "dateFin": "2025-01-31",
-            "statut": "En cours",
-            "lieu_id": 1
-        },
-        {
-            "id": 8,
-            "dateDebut": "2024-08-01",
-            "dateFin": "2025-02-28",
-            "statut": "Terminé",
-            "lieu_id": 2
-        },
-        {
-            "id": 9,
-            "dateDebut": "2024-09-01",
-            "dateFin": "2025-03-31",
-            "statut": "En cours",
-            "lieu_id": 3
-        },
-        {
-            "id": 10,
-            "dateDebut": "2024-10-01",
-            "dateFin": "2025-04-30",
-            "statut": "Terminé",
-            "lieu_id": 4
-        }
-    ],
-    
-    "lieux": [
-        {
-            "raisonSociale": "Formation Excellence",
-            "codePostal": "75001",
-            "rue": "Avenue des Champs-Élysées",
-            "ville": "Paris",
-            "pays": "France"
-        },
-        {
-            "raisonSociale": "Tech Innovations",
-            "codePostal": "69001",
-            "rue": "Rue de la République",
-            "ville": "Lyon",
-            "pays": "France"
-        },
-        {
-            "raisonSociale": "Académie TechSkills",
-            "codePostal": "31000",
-            "rue": "Place du Capitole",
-            "ville": "Toulouse",
-            "pays": "France"
-        },
-        {
-            "raisonSociale": "Compétences Dynamiques",
-            "codePostal": "13001",
-            "rue": "La Canebière",
-            "ville": "Marseille",
-            "pays": "France"
-        },
-        {
-            "raisonSociale": "Innovation Formation",
-            "codePostal": "33000",
-            "rue": "Cours de l'Intendance",
-            "ville": "Bordeaux",
-            "pays": "France"
-        },
-        {
-            "raisonSociale": "École TechAdvance",
-            "codePostal": "44000",
-            "rue": "Rue de la République",
-            "ville": "Nantes",
-            "pays": "France"
-        },
-        {
-            "raisonSociale": "Société Ingénierie",
-            "codePostal": "59000",
-            "rue": "Grand'Place",
-            "ville": "Lille",
-            "pays": "France"
-        },
-        {
-            "raisonSociale": "Expertise Tech",
-            "codePostal": "67000",
-            "rue": "Place Kléber",
-            "ville": "Strasbourg",
-            "pays": "France"
-        },
-        {
-            "raisonSociale": "Centre de Compétences",
-            "codePostal": "69002",
-            "rue": "Rue Mercière",
-            "ville": "Lyon",
-            "pays": "France"
-        },
-        {
-            "raisonSociale": "Société Innovante",
-            "codePostal": "75002",
-            "rue": "Rue Montorgueil",
-            "ville": "Paris",
-            "pays": "France"
-        }
-    ],
+    "bootcamps": [
+      {
+          "dateDebut": "2024-01-01",
+          "dateFin": "2024-06-30",
+          "statut": "En cours",
+          "lieuId": 1,
+          "formationId": 3
+      },
+      {
+          "dateDebut": "2024-02-01",
+          "dateFin": "2024-07-31",
+          "statut": "Terminé",
+          "lieuId": 2,
+          "formationId": 1
+      },
+      {
+          "dateDebut": "2024-03-01",
+          "dateFin": "2024-08-31",
+          "statut": "En cours",
+          "lieuId": 3,
+          "formationId": 2
+      },
+      {
+          "dateDebut": "2024-04-01",
+          "dateFin": "2024-09-30",
+          "statut": "Terminé",
+          "lieuId": 4,
+          "formationId": 4
+      },
+      {
+          "dateDebut": "2024-05-01",
+          "dateFin": "2024-10-31",
+          "statut": "En cours",
+          "lieuId": 5,
+          "formationId": 5
+      },
+      {
+          "dateDebut": "2024-06-01",
+          "dateFin": "2024-11-30",
+          "statut": "Terminé",
+          "lieuId": 6,
+          "formationId": 6
+      },
+      {
+          "dateDebut": "2024-07-01",
+          "dateFin": "2025-01-31",
+          "statut": "En cours",
+          "lieuId": 1,
+          "formationId": 1
+      },
+      {
+          "dateDebut": "2024-08-01",
+          "dateFin": "2025-02-28",
+          "statut": "Terminé",
+          "lieuId": 2,
+          "formationId": 2
+      },
+      {
+          "dateDebut": "2024-09-01",
+          "dateFin": "2025-03-31",
+          "statut": "En cours",
+          "lieuId": 3,
+          "formationId": 3
+      },
+      {
+          "dateDebut": "2024-10-01",
+          "dateFin": "2025-04-30",
+          "statut": "Terminé",
+          "lieuId": 4,
+          "formationId": 4
+      },
+      {
+          "dateDebut": "2024-11-01",
+          "dateFin": "2025-05-31",
+          "statut": "En attente",
+          "lieuId": 5,
+          "formationId": 5
+      },
+      {
+          "dateDebut": "2024-12-01",
+          "dateFin": "2025-06-30",
+          "statut": "En attente",
+          "lieuId": 6,
+          "formationId": 6
+      },
+      {
+          "dateDebut": "2025-01-01",
+          "dateFin": "2025-07-31",
+          "statut": "En cours",
+          "lieuId": 1,
+          "formationId": 1
+      },
+      {
+          "dateDebut": "2025-02-01",
+          "dateFin": "2025-08-31",
+          "statut": "En attente",
+          "lieuId": 2,
+          "formationId": 2
+      },
+      {
+          "dateDebut": "2025-03-01",
+          "dateFin": "2025-09-30",
+          "statut": "Terminé",
+          "lieuId": 3,
+          "formationId": 3
+      }
+  ]
+  
 
-    "sousThemes": [
-        {
-            "sousTheme": "Java",
-            "themeId": 4
-          },
-          {
-            "sousTheme": "C#",
-            "themeId": 8
-          },
-          {
-            "sousTheme": "C++",
-            "themeId": 8
-          },
-          {
-            "sousTheme": "Langages du WEB",
-            "themeId": 9            
-          },
-          {
-            "sousTheme": "JavaScript",
-            "themeId": 9
-          },
-          {
-            "sousTheme": "Python",
-            "themeId": 9
-          },
-          {
-            "sousTheme": "Langage web",
-            "themeId": 9
-          },
-          {
-            "sousTheme": "React",
-            "themeId": 9
-          },
-          {
-            "sousTheme": "NodeJS",
-            "themeId": 9
-          },
-          {
-            "sousTheme": "Spring",
-            "themeId": 9
-          }
-    ],
-
-    "themes": [
-        {
-          "nom": "Réseaux",
-          "description": "Thème lié aux réseaux informatiques.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Systèmes d’exploitation",
-          "description": "Thème lié aux systèmes d'exploitation informatiques.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Gestion de projets",
-          "description": "Thème lié à la gestion de projets informatiques.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Langages de développement",
-          "description": "Thème lié aux langages de programmation et développement informatique.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Base de données",
-          "description": "Thème lié aux bases de données informatiques.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Sécurité informatique",
-          "description": "Thème lié à la sécurité informatique.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Intelligence artificielle",
-          "description": "Thème lié à l'intelligence artificielle en informatique.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Développement web",
-          "description": "Thème lié au développement web.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Cloud computing",
-          "description": "Thème lié au cloud computing.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Analyse de données",
-          "description": "Thème lié à l'analyse de données informatiques.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Mobile development",
-          "description": "Thème lié au développement mobile.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Interface utilisateur",
-          "description": "Thème lié à la conception d'interfaces utilisateur.",
-          "categoryId": 1
-        },
-        {
-          "nom": "DevOps",
-          "description": "Thème lié à la culture et pratique DevOps.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Blockchain",
-          "description": "Thème lié à la technologie de la blockchain.",
-          "categoryId": 1
-        },
-        {
-          "nom": "IoT (Internet of Things)",
-          "description": "Thème lié à l'Internet des objets.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Big Data",
-          "description": "Thème lié au Big Data et aux mégadonnées.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Programmation fonctionnelle",
-          "description": "Thème lié à la programmation fonctionnelle.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Virtualisation",
-          "description": "Thème lié à la virtualisation.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Machine Learning",
-          "description": "Thème lié à l'apprentissage automatique.",
-          "categoryId": 1
-        },
-        {
-          "nom": "Cybersécurité",
-          "description": "Thème lié à la cybersécurité.",
-          "categoryId": 1
-        }
-      ]
-    
 }

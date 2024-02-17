@@ -33,6 +33,6 @@ export class FormationService {
   }
 
   deleteFormation(id: number): Observable<Formation> {
-    return this.httpClient.delete<Formation>(`${this.apiUrl}/formations/${id}`);
+    return this.httpClient.delete<Formation>(`${this.apiUrl}/formations/delete/${id}`);
   }
 }

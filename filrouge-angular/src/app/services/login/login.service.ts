@@ -2,8 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
-import { Stagiaire } from '../../models/stagiaire.model';
-import { StagiaireService } from '../stagiaires/stagiaire.service';
+import { User } from '../../models/user.model';
+import { UserService } from '../users/user.service';
+import { Router } from '@angular/router';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,23 +16,24 @@ export class LoginService{
   // Pour suivre l'état de la conneisLoggedxion (true or false)
   private isLogged : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   //private reponseBack!: Observable<any>;
-  private user! : Stagiaire;
+  private user : User | undefined = undefined;
   
   // Observable permettant de surveiller l'état d'authentification
   isAuthenticated$: Observable<boolean> = this.isLogged.asObservable();
-  reponseBack!: Observable<Object>;
+  reponseBack!: Observable<Object> | null;
 
-  constructor(private httpClient: HttpClient, private stagiaireService: StagiaireService) {}
+  constructor(private httpClient: HttpClient, private userService: UserService, private route: Router) {}
 
   // Fonction pour effectuer la connexion
   login(email: string, mdp: string): Observable<Object>{
+    this.reponseBack = null;
     const identite = { email, mdp };
     // Envoi de la requête HTTP POST pour la connexion
-    // le Back répond par un objet stagiaire donc je définis <Stagiaire> dans la reception de la réponse
-    this.reponseBack =  this.httpClient.post<Stagiaire>(`${this.apiUrl}/stagiaires/login`, identite);
+    // le Back répond par un objet user donc je définis <User> dans la reception de la réponse
+    this.reponseBack =  this.httpClient.post<User>(`${this.apiUrl}/users/login`, identite);
     if(this.reponseBack != null){ // si le réponse n'est pas null alors on créer l'observable user
-      this.httpClient.post<Stagiaire>(`${this.apiUrl}/stagiaires/login`, identite).subscribe({
-        next: (reponse) => this.user = reponse,// un StagiaireLoginDTO (sans mdp) si le serveur répond un stagiaireLoginDTO
+      this.httpClient.post<User>(`${this.apiUrl}/users/login`, identite).subscribe({
+        next: (reponse) => this.user = reponse,// un UserLoginDTO (sans mdp) si le serveur répond un userLoginDTO
         error: (err) => console.error('Erreur au chargement', err)
       });
       
@@ -44,14 +48,21 @@ export class LoginService{
   get getLogin(){
     return this.isLogged.asObservable();
   }
+  //Getter de user (private variable)
   get getLoginUser(){
     return this.user;
   }
   // Fonction de déconnexion
   logOut(): void {
-    // Met à jour l'état d'authentification à false lors de la déconnexion
+    // On averti l'utilisateur
     alert("Déconnecté !");
+    // on supprime l'utilisateur
+    this.user = undefined;
+    // Met à jour l'état d'authentification à false lors de la déconnexion
     this.setLogin(false);
+    // On redirige vers home
+    this.route.navigate(['/home']);
+
   }
   
   //Todo : créer le unsubscribe pour les observables, pour eviter les fuites de données 
