@@ -1,59 +1,64 @@
 {
     "users": [
         {
-            "note_moyenne": 4.2,
-            "id": 3,
-            "type": "F",
-            "email": "user2@example.com",
-            "mdp": "motdepasse",
+            "nom": "Chimot",
+            "prenom": "Cedric",
+            "telephone": "01/01/01/01/01",
+            "email": "cedric02@gmail.com",
+            "pseudo": "ced02830",
+            "mdp": "Ced@02830",
+            "role": "ADMIN",
+            "noteMoyenne": null
+        },
+        {
             "nom": "Lefevre",
             "prenom": "Marie",
+            "telephone": "0123456789",
+            "email": "user2@example.com",
             "pseudo": "mlefevre",
-            "telephone": "0123456789"
+            "mdp": "Elef@1234",
+            "role": "FORMATEUR",
+            "note_moyenne": 4.2
         },
         {
-            "note_moyenne": 3.9,
-            "id": 4,
-            "type": "S",
-            "email": "user3@example.com",
-            "mdp": "motdepasse",
             "nom": "Petit",
             "prenom": "Paul",
+            "telephone": "0987654321",
+            "email": "user3@example.com",
             "pseudo": "ppetit",
-            "telephone": "0987654321"
+            "mdp": "Ppetit@1234",
+            "role": "CANDIDAT",
+            "note_moyenne": null
         },
         {
-            "note_moyenne": 4.7,
-            "id": 5,
-            "type": "A",
-            "email": "admin2@example.com",
-            "mdp": "motdepasse",
             "nom": "Roux",
             "prenom": "Sophie",
+            "telephone": "0123456789",
+            "email": "admin2@example.com",
             "pseudo": "sroux",
-            "telephone": "0123456789"
+            "mdp": "Sroux@1234",
+            "role": "STAGIAIRE",
+            "note_moyenne": null
         },
         {
-            "note_moyenne": 4.1,
-            "id": 6,
-            "type": "F",
-            "email": "user4@example.com",
-            "mdp": "motdepasse",
             "nom": "Moreau",
             "prenom": "Lucas",
+            "telephone": "0987654321",
+            "email": "user4@example.com",
             "pseudo": "lmoreau",
-            "telephone": "0987654321"
+            "mdp": "Lmoreau@1234",
+            "role": "FORMATEUR",
+            "note_moyenne": 4.1
         },
         {
-            "note_moyenne": 4.3,
-            "id": 7,
-            "type": "S",
-            "email": "user5@example.com",
-            "mdp": "motdepasse",
             "nom": "Girard",
             "prenom": "Emma",
+            "telephone": "0123456789",
+            "email": "user5@example.com",
             "pseudo": "egirard",
-            "telephone": "0123456789"
+            "mdp": "Egirard@1234",
+            "role": "STAGIAIRE",
+            "note_moyenne": null
         }
     ],
 
@@ -92,6 +97,123 @@
             "prix": 800,
             "description": "Explorez Node.js, un environnement d'exécution JavaScript côté serveur pour le développement d'applications web évolutives.",
             "img": "../../../../assets/images/photo2.jpg"
+        },
+        {
+            "id": 6,
+            "nom": "Formation Express.js",
+            "prix": 900,
+            "description": "Découvrez Express.js, un framework pour Node.js, idéal pour développer des applications web et des API rapidement et efficacement.",
+            "img": "../../../../assets/images/photo3.jpg"
         }
-    ]
+    ],
+
+    "bootcamps": [
+      {
+          "dateDebut": "2024-01-01",
+          "dateFin": "2024-06-30",
+          "statut": "En cours",
+          "lieuId": 1,
+          "formationId": 3
+      },
+      {
+          "dateDebut": "2024-02-01",
+          "dateFin": "2024-07-31",
+          "statut": "Terminé",
+          "lieuId": 2,
+          "formationId": 1
+      },
+      {
+          "dateDebut": "2024-03-01",
+          "dateFin": "2024-08-31",
+          "statut": "En cours",
+          "lieuId": 3,
+          "formationId": 2
+      },
+      {
+          "dateDebut": "2024-04-01",
+          "dateFin": "2024-09-30",
+          "statut": "Terminé",
+          "lieuId": 4,
+          "formationId": 4
+      },
+      {
+          "dateDebut": "2024-05-01",
+          "dateFin": "2024-10-31",
+          "statut": "En cours",
+          "lieuId": 5,
+          "formationId": 5
+      },
+      {
+          "dateDebut": "2024-06-01",
+          "dateFin": "2024-11-30",
+          "statut": "Terminé",
+          "lieuId": 6,
+          "formationId": 6
+      },
+      {
+          "dateDebut": "2024-07-01",
+          "dateFin": "2025-01-31",
+          "statut": "En cours",
+          "lieuId": 1,
+          "formationId": 1
+      },
+      {
+          "dateDebut": "2024-08-01",
+          "dateFin": "2025-02-28",
+          "statut": "Terminé",
+          "lieuId": 2,
+          "formationId": 2
+      },
+      {
+          "dateDebut": "2024-09-01",
+          "dateFin": "2025-03-31",
+          "statut": "En cours",
+          "lieuId": 3,
+          "formationId": 3
+      },
+      {
+          "dateDebut": "2024-10-01",
+          "dateFin": "2025-04-30",
+          "statut": "Terminé",
+          "lieuId": 4,
+          "formationId": 4
+      },
+      {
+          "dateDebut": "2024-11-01",
+          "dateFin": "2025-05-31",
+          "statut": "En attente",
+          "lieuId": 5,
+          "formationId": 5
+      },
+      {
+          "dateDebut": "2024-12-01",
+          "dateFin": "2025-06-30",
+          "statut": "En attente",
+          "lieuId": 6,
+          "formationId": 6
+      },
+      {
+          "dateDebut": "2025-01-01",
+          "dateFin": "2025-07-31",
+          "statut": "En cours",
+          "lieuId": 1,
+          "formationId": 1
+      },
+      {
+          "dateDebut": "2025-02-01",
+          "dateFin": "2025-08-31",
+          "statut": "En attente",
+          "lieuId": 2,
+          "formationId": 2
+      },
+      {
+          "dateDebut": "2025-03-01",
+          "dateFin": "2025-09-30",
+          "statut": "Terminé",
+          "lieuId": 3,
+          "formationId": 3
+      }
+  ]
+  
+
 }

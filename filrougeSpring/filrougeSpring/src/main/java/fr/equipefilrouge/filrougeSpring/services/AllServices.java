@@ -15,6 +15,7 @@ public interface AllServices<TypeObj, PK> {
 
     /**
      * Méthode pour trouver un objet par son identifiant
+     *
      * @param id l'identifiant recherché
      * @return l'objet recherché
      */
@@ -22,6 +23,7 @@ public interface AllServices<TypeObj, PK> {
 
     /**
      * Méthode pour créer un nouvel objet
+     *
      * @param newObj le nouvel objet
      * @return l'objet nouvellement créé
      */

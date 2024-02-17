@@ -1,8 +1,9 @@
 package fr.equipefilrouge.filrougeSpring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "bootcamp")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Bootcamp {
 
     @Id
@@ -35,11 +37,15 @@ public class Bootcamp {
     @Column(name = "statut", nullable = false)
     private String statut;
 
-    @OneToMany(mappedBy = "bootcamp")
-    private List<Lier> liens;
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "lieu_id")
+    private Lieu lieu;
 
-    @OneToMany(mappedBy = "bootcamp", fetch = FetchType.EAGER)
-    private List<Participation> participations = new ArrayList<>();
+    @ManyToMany(mappedBy = "bootcamps")
+    private List<Users> users = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "bootcamps", cascade = CascadeType.MERGE)
+    private List<Formation> formations = new ArrayList<>();
 
     /**
      * Constructeur pour une session de formation
@@ -47,10 +53,11 @@ public class Bootcamp {
      * @param dateFin, date de fin du bootcamp
      * @param statut, le statut
      */
-    public Bootcamp(Date dateDebut, Date dateFin, String statut) {
+    public Bootcamp(Date dateDebut, Date dateFin, String statut, Lieu lieu) {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.statut = statut;
+        this.lieu = lieu;
     }
 
     /**
@@ -67,4 +74,3 @@ public class Bootcamp {
                 '}';
     }
 }
-

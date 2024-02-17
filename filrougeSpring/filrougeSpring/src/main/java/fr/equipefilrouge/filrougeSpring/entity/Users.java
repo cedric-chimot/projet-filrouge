@@ -1,5 +1,6 @@
 package fr.equipefilrouge.filrougeSpring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import fr.equipefilrouge.filrougeSpring.enums.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -9,19 +10,19 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringJoiner;
 
 /**
- * Classe abstraite Users regroupant les données communes aux formateurs et aux stagiaires
- * qui vont en hériter
+ * Classe Users regroupant les données communes aux utilisateurs, formateurs ou stagiaires
  */
 @Getter
 @Setter
 @Entity
 @RequiredArgsConstructor
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
-public abstract class Users {
+@Table(name = "user")
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,16 +38,13 @@ public abstract class Users {
     @Column(name = "telephone", nullable = false)
     private String telephone;
 
-    @Email
-    @Column(name = "email", nullable = false)
+    @Email @Column(name = "email", nullable = false)
     private String email;
 
     @Column(name = "pseudo", nullable = false)
     private String pseudo;
 
-    // Définit la taille minimum du mot de passe
     @Size(min = 8, message = "Le mot de passe doit avoir au minimum 8 caractères")
-    // Définit le format de mot de passe attendu avec une regex
     @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$",
             message = "Le mot de passe doit contenir 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial")
     @Column(name = "mdp", nullable = false)
@@ -55,6 +53,16 @@ public abstract class Users {
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @Column(name = "noteMoyenne")
+    private Double noteMoyenne;
+
+    @ManyToMany
+    @JoinTable(name = "participer-bootcamp",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "bootcamp_id"))
+    @JsonIdentityReference(alwaysAsId = true)
+    private List<Bootcamp> bootcamps = new ArrayList<>();
 
     /**
      * Constructeur d'un utilisateur
@@ -65,8 +73,10 @@ public abstract class Users {
      * @param pseudo, son pseudo
      * @param mdp, son mot de passe
      * @param role, son rôle
+     * @param noteMoyenne, sa note moyenne si c'est un formateur
      */
-    public Users(String nom, String prenom, String telephone, String email, String pseudo, String mdp, UserRole role) {
+    public Users(String nom, String prenom, String telephone, String email, String pseudo, String mdp,
+                 UserRole role, Double noteMoyenne) {
         this.nom = nom;
         this.prenom = prenom;
         this.telephone = telephone;
@@ -74,6 +84,7 @@ public abstract class Users {
         this.pseudo = pseudo;
         this.mdp = mdp;
         this.role = role;
+        this.noteMoyenne = noteMoyenne;
     }
 
     /**
@@ -92,12 +103,5 @@ public abstract class Users {
                 .add("mdp='" + mdp + "'")
                 .add("role=" + role)
                 .toString();
-    }
-
-    /* Méthode de récupération du type
-     * @return le type d'utilisateur
-    */
-    public String getType() {
-        return this.getClass().getAnnotation(DiscriminatorValue.class).value();
     }
 }

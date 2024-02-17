@@ -3,7 +3,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { StagiaireServiceService } from '../../services/stagiaires/stagiaire-service.service';
+import { UserService } from '../../services/users/user.service';
+import { LoginService } from '../../services/login/login.service';
+import { User } from '../../models/user.model';
+import { FormateurService } from '../../services/users/formateur.service';
 
 
 @Component({
@@ -16,10 +19,13 @@ import { StagiaireServiceService } from '../../services/stagiaires/stagiaire-ser
 export class AdminPageComponent {
     nbStagiaires: number = 0; 
     nbCandidats: number = 0;
+    nbFormateurs: number = 0;
+    isAuthentificated!: boolean;
+    user!: User | undefined;
 
-    constructor(private stagiaireService: StagiaireServiceService) {}
+    constructor(private userService: UserService, private loginService: LoginService, private formateurService: FormateurService) {}
     ngOnInit(): void {
-        this.stagiaireService.getNbStagiaires()
+        this.userService.getNbStagiaires()
         .subscribe({
             next: (nbStagiaires: number) => {
                 this.nbStagiaires = nbStagiaires;
@@ -31,11 +37,22 @@ export class AdminPageComponent {
                 console.log("Récupération complète");
             }
         });
-
-        this.stagiaireService.getNbCandidats()
+        this.userService.getNbCandidats()
         .subscribe({
             next: (nbCandidats: number) => {
                 this.nbCandidats = nbCandidats;
+            },
+            error: (error) => {
+                console.error('Erreur lors de la récupération du nombre de users', error);
+            },
+            complete: () => {
+                console.log("Récupération complète");
+            }
+        });
+        this.formateurService.getNbFormateurs()
+        .subscribe({
+            next: (nbFormateurs: number) => {
+                this.nbFormateurs = nbFormateurs;
             },
             error: (error) => {
                 console.error('Erreur lors de la récupération du nombre de stagiaires', error);
@@ -44,6 +61,26 @@ export class AdminPageComponent {
                 console.log("Récupération complète");
             }
         });
+        // On s'inscrit à l'observable getLogin pour connaitre l'état de connexion en temps réel (Boolean)
+        // On observe si la connexion change
+        // On enregistre le User connecté dans la variable du composant 
+        // (Getter d'un observable ouvert) dans login.service lors de la connexion
+        // ToDo: appel l'objet user lors de la connexion
+        this.loginService.getLogin.
+        subscribe({
+            next: (isLogged) => this.isAuthentificated = isLogged,
+            error: (err) => console.error('Erreur au chargement', err)
+        });
     }
+        // ngDoCheck verifie si isAuthentificated change
+        // si elle change on récupére la variable User pour la version local
+    ngDoCheck():void{
+        if(this.isAuthentificated){
+        this.user = this.loginService.getLoginUser;
+        }
+    }
+
+    
+        
 
 }

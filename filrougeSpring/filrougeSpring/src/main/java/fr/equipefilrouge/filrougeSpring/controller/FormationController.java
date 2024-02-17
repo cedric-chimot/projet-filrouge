@@ -1,8 +1,12 @@
 package fr.equipefilrouge.filrougeSpring.controller;
 
-import fr.equipefilrouge.filrougeSpring.dto.FormationReduitDTO;
+import fr.equipefilrouge.filrougeSpring.dto.FormationDTO;
+import fr.equipefilrouge.filrougeSpring.dto.SousThemeDTO;
 import fr.equipefilrouge.filrougeSpring.entity.Formation;
+import fr.equipefilrouge.filrougeSpring.entity.SousTheme;
+import fr.equipefilrouge.filrougeSpring.entity.Theme;
 import fr.equipefilrouge.filrougeSpring.services.impl.FormationServiceImpl;
+import fr.equipefilrouge.filrougeSpring.services.impl.SousThemeServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,21 +24,30 @@ public class FormationController {
      */
     private final FormationServiceImpl formationServiceImpl;
 
+    private final SousThemeServiceImpl sousThemeService;
+
     /**
      * Constructeur du controller Formation
      * @param formationServiceImpl le service de la formation
      */
-    public FormationController(FormationServiceImpl formationServiceImpl) {
+    public FormationController(FormationServiceImpl formationServiceImpl, SousThemeServiceImpl sousThemeService) {
         this.formationServiceImpl = formationServiceImpl;
+        this.sousThemeService = sousThemeService;
     }
 
     /**
      * Méthode pour créer une nouvelle formation
-     * @param formation La formation à créer
-     * @return l formation nouvellement créée
+     * @param formationDTO La formation à créer
+     * @return la formation nouvellement créée
      */
     @PostMapping("/create")
-    public Formation createFormation(@RequestBody Formation formation) {
+    public Formation createFormation(@RequestBody FormationDTO formationDTO) {
+        // Récupère le sous-thème correspondant à l'ID
+        SousTheme sousTheme = sousThemeService.findById(formationDTO.getSousThemeId());
+        // Crée une nouvelle formation
+        Formation formation = new Formation(formationDTO.getNom(), formationDTO.getPrix(),
+                formationDTO.getDescription(), formationDTO.getImg(), sousTheme);
+        // Enregistre la formation
         return formationServiceImpl.create(formation);
     }
 
@@ -64,9 +77,10 @@ public class FormationController {
      * @return la liste des formations
      */
     @GetMapping("/all")
-    public List<FormationReduitDTO> getAllFormations() {
-        return formationServiceImpl.findAllFormationReduit();
+    public List<Formation> getAllFormations() {
+        return formationServiceImpl.findAll();
     }
+
     /**
      * Méthode pour rechercher une session avec son identifiant
      * @param id l'identifiant de la session

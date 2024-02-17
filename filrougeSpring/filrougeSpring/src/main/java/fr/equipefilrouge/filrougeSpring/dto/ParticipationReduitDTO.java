@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 public class ParticipationReduitDTO {
     private Long id;
-    private Bootcamp session;
+    private Bootcamp bootcamp;
 }

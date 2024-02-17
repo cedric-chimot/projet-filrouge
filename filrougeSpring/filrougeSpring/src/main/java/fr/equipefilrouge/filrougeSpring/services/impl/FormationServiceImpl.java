@@ -1,8 +1,10 @@
 package fr.equipefilrouge.filrougeSpring.services.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.equipefilrouge.filrougeSpring.dto.FormationReduitDTO;
+import fr.equipefilrouge.filrougeSpring.dto.FormationDTO;
 import fr.equipefilrouge.filrougeSpring.entity.Formation;
+import fr.equipefilrouge.filrougeSpring.entity.SousTheme;
+import fr.equipefilrouge.filrougeSpring.entity.Theme;
 import fr.equipefilrouge.filrougeSpring.exceptions.CustomException;
 import fr.equipefilrouge.filrougeSpring.repository.FormationRepository;
 import fr.equipefilrouge.filrougeSpring.services.AllServices;
@@ -24,6 +26,8 @@ public class FormationServiceImpl implements AllServices<Formation, Long> {
      */
     private final FormationRepository formationRepository;
 
+    private final SousThemeServiceImpl sousThemeService;
+
     /**
      * API pour gérer les opérations sur la BDD
      */
@@ -35,8 +39,9 @@ public class FormationServiceImpl implements AllServices<Formation, Long> {
      * Le constructeur du service
      * @param formationRepository le repository correspondant
      */
-    public FormationServiceImpl(FormationRepository formationRepository, JdbcTemplate jdbcTemplate, ObjectMapper objectMapper) {
+    public FormationServiceImpl(FormationRepository formationRepository, SousThemeServiceImpl sousThemeService, JdbcTemplate jdbcTemplate, ObjectMapper objectMapper) {
         this.formationRepository = formationRepository;
+        this.sousThemeService = sousThemeService;
         this.jdbcTemplate = jdbcTemplate;
         this.objectMapper = objectMapper;
     }
@@ -54,10 +59,10 @@ public class FormationServiceImpl implements AllServices<Formation, Long> {
      *
      * @return la liste des formations
      */
-    public List<FormationReduitDTO> findAllFormationReduit() {
+    public List<FormationDTO> findAllFormationReduit() {
         List<Formation> formations = formationRepository.findAll();
         return formations.stream()
-                .map(formation -> objectMapper.convertValue(formation, FormationReduitDTO.class))
+                .map(formation -> objectMapper.convertValue(formation, FormationDTO.class))
                 .toList();
     }
 
@@ -79,6 +84,13 @@ public class FormationServiceImpl implements AllServices<Formation, Long> {
     @Override
     public Formation create(Formation newObj) {
         return formationRepository.save(newObj);
+    }
+
+    public Formation createFormation(Formation formation, Long sousThemeId) {
+        SousTheme sousTheme = sousThemeService.findById(sousThemeId);
+        create(new Formation(formation.getNom(), formation.getPrix(), formation.getDescription(),
+                formation.getImg(), sousTheme));
+        return formation;
     }
 
     /**
