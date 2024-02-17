@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 import { User } from '../../models/user.model';
 import { UserService } from '../users/user.service';
+import { Router } from '@angular/router';
 
 
 
@@ -15,13 +16,13 @@ export class LoginService{
   // Pour suivre l'état de la conneisLoggedxion (true or false)
   private isLogged : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   //private reponseBack!: Observable<any>;
-  private user! : User;
+  private user : User | undefined = undefined;
   
   // Observable permettant de surveiller l'état d'authentification
   isAuthenticated$: Observable<boolean> = this.isLogged.asObservable();
   reponseBack!: Observable<Object> | null;
 
-  constructor(private httpClient: HttpClient, private userService: UserService) {}
+  constructor(private httpClient: HttpClient, private userService: UserService, private route: Router) {}
 
   // Fonction pour effectuer la connexion
   login(email: string, mdp: string): Observable<Object>{
@@ -47,14 +48,21 @@ export class LoginService{
   get getLogin(){
     return this.isLogged.asObservable();
   }
+  //Getter de user (private variable)
   get getLoginUser(){
     return this.user;
   }
   // Fonction de déconnexion
   logOut(): void {
-    // Met à jour l'état d'authentification à false lors de la déconnexion
+    // On averti l'utilisateur
     alert("Déconnecté !");
+    // on supprime l'utilisateur
+    this.user = undefined;
+    // Met à jour l'état d'authentification à false lors de la déconnexion
     this.setLogin(false);
+    // On redirige vers home
+    this.route.navigate(['/home']);
+
   }
   
   //Todo : créer le unsubscribe pour les observables, pour eviter les fuites de données 

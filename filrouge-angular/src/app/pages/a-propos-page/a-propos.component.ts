@@ -17,11 +17,12 @@ export class AProposComponent implements OnInit{
 
   //test pour récupéré les données de l'utilisateur et l'afficher dans une page
   isAuthentificated: boolean = false;
-  user!: User;
+  user!: User | undefined;
   constructor(private loginService: LoginService, private userService: UserService) {}
   
   ngOnInit(): void {
-    this.user = this.loginService.getLoginUser;
+        
+    if(this.user){this.user = this.loginService.getLoginUser;}
     this.loginService.getLogin.
     subscribe({
       next: (isLogged) => this.isAuthentificated = isLogged,

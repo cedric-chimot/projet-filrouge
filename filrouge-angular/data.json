@@ -107,77 +107,113 @@
         }
     ],
 
-    "bootcamps" : [
-        {
-            "id": 1,
-            "dateDebut": "2024-01-01",
-            "dateFin": "2024-06-30",
-            "statut": "En cours",
-            "formation": 3
-        },
-        {
-            "id": 2,
-            "dateDebut": "2024-02-01",
-            "dateFin": "2024-07-31",
-            "statut": "Terminé",
-            "formation": 1
-        },
-        {
-            "id": 3,
-            "dateDebut": "2024-03-01",
-            "dateFin": "2024-08-31",
-            "statut": "En cours",
-            "formation": 2
-        },
-        {
-            "id": 4,
-            "dateDebut": "2024-04-01",
-            "dateFin": "2024-09-30",
-            "statut": "Terminé",
-            "formation": 4
-        },
-        {
-            "id": 5,
-            "dateDebut": "2024-05-01",
-            "dateFin": "2024-10-31",
-            "statut": "En cours",
-            "formation": 5
-        },
-        {
-            "id": 6,
-            "dateDebut": "2024-06-01",
-            "dateFin": "2024-11-30",
-            "statut": "Terminé",
-            "formation": 6
-        },
-        {
-            "id": 7,
-            "dateDebut": "2024-07-01",
-            "dateFin": "2025-01-31",
-            "statut": "En cours",
-            "formation": 1
-        },
-        {
-            "id": 8,
-            "dateDebut": "2024-08-01",
-            "dateFin": "2025-02-28",
-            "statut": "Terminé",
-            "formation": 2
-        },
-        {
-            "id": 9,
-            "dateDebut": "2024-09-01",
-            "dateFin": "2025-03-31",
-            "statut": "En cours",
-            "formation": 3
-        },
-        {
-            "id": 10,
-            "dateDebut": "2024-10-01",
-            "dateFin": "2025-04-30",
-            "statut": "Terminé",
-            "formation": 4
-        }
-    ]
+    "bootcamps": [
+      {
+          "dateDebut": "2024-01-01",
+          "dateFin": "2024-06-30",
+          "statut": "En cours",
+          "lieuId": 1,
+          "formationId": 3
+      },
+      {
+          "dateDebut": "2024-02-01",
+          "dateFin": "2024-07-31",
+          "statut": "Terminé",
+          "lieuId": 2,
+          "formationId": 1
+      },
+      {
+          "dateDebut": "2024-03-01",
+          "dateFin": "2024-08-31",
+          "statut": "En cours",
+          "lieuId": 3,
+          "formationId": 2
+      },
+      {
+          "dateDebut": "2024-04-01",
+          "dateFin": "2024-09-30",
+          "statut": "Terminé",
+          "lieuId": 4,
+          "formationId": 4
+      },
+      {
+          "dateDebut": "2024-05-01",
+          "dateFin": "2024-10-31",
+          "statut": "En cours",
+          "lieuId": 5,
+          "formationId": 5
+      },
+      {
+          "dateDebut": "2024-06-01",
+          "dateFin": "2024-11-30",
+          "statut": "Terminé",
+          "lieuId": 6,
+          "formationId": 6
+      },
+      {
+          "dateDebut": "2024-07-01",
+          "dateFin": "2025-01-31",
+          "statut": "En cours",
+          "lieuId": 1,
+          "formationId": 1
+      },
+      {
+          "dateDebut": "2024-08-01",
+          "dateFin": "2025-02-28",
+          "statut": "Terminé",
+          "lieuId": 2,
+          "formationId": 2
+      },
+      {
+          "dateDebut": "2024-09-01",
+          "dateFin": "2025-03-31",
+          "statut": "En cours",
+          "lieuId": 3,
+          "formationId": 3
+      },
+      {
+          "dateDebut": "2024-10-01",
+          "dateFin": "2025-04-30",
+          "statut": "Terminé",
+          "lieuId": 4,
+          "formationId": 4
+      },
+      {
+          "dateDebut": "2024-11-01",
+          "dateFin": "2025-05-31",
+          "statut": "En attente",
+          "lieuId": 5,
+          "formationId": 5
+      },
+      {
+          "dateDebut": "2024-12-01",
+          "dateFin": "2025-06-30",
+          "statut": "En attente",
+          "lieuId": 6,
+          "formationId": 6
+      },
+      {
+          "dateDebut": "2025-01-01",
+          "dateFin": "2025-07-31",
+          "statut": "En cours",
+          "lieuId": 1,
+          "formationId": 1
+      },
+      {
+          "dateDebut": "2025-02-01",
+          "dateFin": "2025-08-31",
+          "statut": "En attente",
+          "lieuId": 2,
+          "formationId": 2
+      },
+      {
+          "dateDebut": "2025-03-01",
+          "dateFin": "2025-09-30",
+          "statut": "Terminé",
+          "lieuId": 3,
+          "formationId": 3
+      }
+  ]
+  
 
 }

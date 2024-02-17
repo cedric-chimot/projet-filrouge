@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
 import { Formateurs } from '../../models/formateurs.model';
-import { FormateurServiceService } from '../../services/users/formateur-service.service';
 import { CommonModule } from '@angular/common';
+import { FormateurService } from '../../services/users/formateur.service';
 
 @Component({
   selector: 'app-formateurs-page',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './formateurs-page.component.html',
-  styleUrl: './formateurs-page.component.css'
+  styleUrls: ['./formateurs-page.component.css', "../../../../node_modules/@fortawesome/fontawesome-free/css/all.css"]
 })
 export class FormateursPageComponent {
+
   formateurs!: Formateurs[];
 
-  constructor(private formateurService: FormateurServiceService) {}
+  constructor(private formateurService: FormateurService) {}
 
-  onInit(): void {
+  ngOnInit(): void {
     this.findFormateurs();
   }
 
@@ -25,4 +26,12 @@ export class FormateursPageComponent {
     })
   }
 
+  supprimerUtilisateur(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
+
+  modifierUtilisateur(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
+  
 }

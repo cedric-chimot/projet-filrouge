@@ -44,12 +44,17 @@ export class LoginFormComponent {
         .subscribe({
           next: (_) => {
             // Affiche une alerte en cas de connexion réussie
-            alert("Connexion réussie !");
+            
             
             // met la variable observable a true pour confirmé la connexion et pouvoir vérifié
-            this.loginService.setLogin(true);
+            if(this.loginService.getLoginUser){
+              alert("Connexion réussie !");
+              this.loginService.setLogin(true);
+              this.router.navigate(['/home']);
+            }
+            //ToDo trouver la solution pour afficher une erreur dans le cas ou c'est login et mdp invalide
             // Redirection sur l'accueil en cas de succès
-            this.router.navigate(['/home']);
+            
           },
           error: (error) => {
             // Affiche une alerte en cas d'erreur lors de la connexion

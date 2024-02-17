@@ -24,8 +24,8 @@ export class UserService {
     return this.httpClient.get<User>(`${this.apiUrl}/stagiaires/${id}`);
   }
   // Récupère le nombre de stagiaires
-  getNbUsers(): Observable<number> {
-    return this.httpClient.get<number>(`${this.apiUrl}/users/nbUsers`);
+  getNbStagiaires(): Observable<number> {
+    return this.httpClient.get<number>(`${this.apiUrl}/users/nbStagiaires`);
   }
   
   // Récupère le nombre de candidats

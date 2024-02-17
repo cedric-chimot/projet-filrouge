@@ -22,6 +22,7 @@
                 <a routerLink="/contacter">Contactez-Nous</a>
             </li>
         </ul>
+        <!-- Si nous ne sommes pas connecter alors on affiche les boutons connexion et inscription -->
         @if(!isAuthentificated){
         <ul class="d-flex align-items-center">
             <li>
@@ -33,17 +34,22 @@
             <hr>
         </ul>
     }
+    <!-- Si nous sommes authentifié -->
         @if(isAuthentificated){
         <ul >
-            @if(user.role === "CANDIDAT"){
-                <li>
-                    <button routerLink="/dashboard">Panneau Administrateur</button>
-                </li>
-            }
-            @if(user.nom){
-                <li>
-                    <button routerLink="/monProfil">{{user.nom}} {{user.prenom}}</button>
-                </li>
+            <!-- Et que User existe -->
+            @if (user) {
+                <!-- Si nous sommes définis comem admin on affiche le bouton DashBoard -->
+                @if(user.role === "ADMIN"){
+                    <li>
+                        <button routerLink="/dashboard">Panneau Administrateur</button>
+                    </li>
+                }
+                @if(user.nom){
+                    <li>
+                        <button routerLink="/monProfil">Bienvenue {{user.pseudo}} !</button>
+                    </li>
+                }
             }
             <li>
                 <button (click)="deconnexion()">Deconnexion</button>

@@ -1,62 +1,63 @@
-<div >
-    <div >
-        <div >
-            <h1 >TABLEAU DE BORD ADMIN</h1>
-            <div >      
-                <div >
-                    <button routerLink="/dashboard/formation" >
-                        <h5 >
-                            Formations
-                        </h5>
-                        <span>(A venir)</span>
-                    </button>
-                </div>
-                <div >
-                    <button routerLink="/dashboard/candidats" >
-                        <h5 >
-                            Candidats
-                        </h5>
-                        <span>(Nb d'inscrits)</span>
-                        <div >
-                            <p>{{ nbCandidats }}</p>
+@if(user){
+    @if(user.role === "ADMIN"){
+        <body>
+            <h1>TABLEAU DE BORD ADMIN</h1>
+                    <div class="container" >   
+                        <div class="box1" >
+                            <button routerLink="/dashboard/formation" >
+                                <h3 >
+                                    Formations
+                                </h3>
+                                <span>(A venir)</span>
+                                <br>
+                            </button>
                         </div>
-                    </button>
-                </div>
-                <div >
-                    <button routerLink="/dashboard/users" >
-                        <h5 >
-                            Users
-                        </h5>
-                        <span>(Nb d'inscrits)</span>
-                        <p>{{ nbUsers }}</p>
-                    </button>
-                </div>
-                <!-- <div >
-                    <button routerLink="/dashboard/formateurs" >
-                        <h5 >Formateurs</h5>
-                        <span>(Disponible)</span>
-                    </button>
-                </div> -->
-                <!-- <div >
-                    <button routerLink="/dashboard/messages">Messages
-                        <h5 >Messages</h5>
-                        <span>(A venir)</span>
-                    </button>
-                </div> -->
-            </div>
-    </div>    
-</div>
-
-    <!-- <mat-toolbar>
-
-        <img [src]="img" routerLink="/home">
-        <h2>Bonjour admin</h2>
-    
-        <button mat-button routerLink="/home" class="nav-button">Accueil</button>
-        <button mat-button routerLink="/dashboard" class="nav-button">Tableau de bord</button>
-        <button mat-button routerLink="/dashboard/formations" class="nav-button">Formations</button>
-        <button mat-button routerLink="/dashboard/users" class="nav-button">Users</button>
-        <button mat-button routerLink="/dashboard/formateurs" class="nav-button">Formateurs</button>
-        <button mat-button routerLink="/dashboard/messages" class="nav-button">Messages</button>
-    
-    </mat-toolbar> -->
+                        <div class="box1" >
+                            <button routerLink="/dashboard/candidats" >
+                                <h3 >
+                                    Candidats
+                                </h3>
+                                <span>(Nb d'inscrits)</span>
+                                <br>
+                                    <p>{{ nbCandidats }}</p>
+                                
+                            </button>
+                        </div>
+                        <div class="box1">
+                            <button routerLink="/dashboard/stagiaires" >
+                                <h3>
+                                    Stagiaires
+                                </h3>
+                                <span>(Nb d'inscrits)</span>
+                                <br>
+                                <p>{{ nbStagiaires }}</p>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="container" > 
+                        <div class="box1">
+                            <button routerLink="/dashboard/formateurs" >
+                                <h3>
+                                    Formateur
+                                </h3>
+                                <span>(Nb d'inscrits)</span>
+                                    <br>
+                                <p>{{ nbFormateurs }}</p>
+                            </button>
+                        </div>
+                        <div class="container" >
+                            <div class="box1">
+                                <button routerLink="/dashboard/stagiaires" >
+                                    <h3>
+                                        Messages
+                                    </h3>
+                                    <span>(Nb d'inscrits)</span>
+                                    <p>0</p>
+                                    <br>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+        </body>
+    }
+}
