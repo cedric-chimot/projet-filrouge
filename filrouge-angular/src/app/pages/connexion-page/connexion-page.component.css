@@ -7,7 +7,7 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height:97vh;
+    height:108.5vh;
     background: linear-gradient(to bottom,#F2EEE4,#90a3e2);
 }
 
@@ -41,7 +41,7 @@ section.color:nth-child(3){
 .container{
     position:relative;
     width: 700px;
-    height: 775px;
+    height: 700px;
     background:rgba(213, 238, 241, 0.1) ;
     border-radius: 10px;
     display: flex;
