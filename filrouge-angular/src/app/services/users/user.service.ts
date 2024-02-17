@@ -17,11 +17,11 @@ export class UserService {
   }
   // Récupère tous les stagiaires
   getUsers(): Observable<User[]>{
-    return this.httpClient.get<User[]>(`${this.apiUrl}/stagiaires/all`);
+    return this.httpClient.get<User[]>(`${this.apiUrl}/users/all/stagiaires`);
   }
 
   getUsersById(id: number): Observable<User> {
-    return this.httpClient.get<User>(`${this.apiUrl}/stagiaires/${id}`);
+    return this.httpClient.get<User>(`${this.apiUrl}/users/${id}`);
   }
   // Récupère le nombre de stagiaires
   getNbStagiaires(): Observable<number> {
