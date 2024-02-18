@@ -31,6 +31,11 @@ public interface BootcampRepository extends JpaRepository<Bootcamp, Long> {
     @Query("SELECT b.id, COUNT(u) FROM Bootcamp b LEFT JOIN b.users u GROUP BY b.id")
     List<Object[]> countUsersByBootcamp();
 
+    /**
+     * Liste des bootcamps par statut
+     * @param statut le statut recherché
+     * @return une liste de bootcamps
+     */
     List<Bootcamp> findByStatut(String statut);
 
 }

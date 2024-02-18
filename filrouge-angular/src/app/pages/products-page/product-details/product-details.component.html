@@ -61,7 +61,9 @@
                                     <td>{{ bootcamps.lieu.raisonSociale }}</td>
                                     <td>{{ bootcamps.statut }}</td>
                                     <td>
-                                        <button class="inscription-button" routerLink="/home" [disabled]="bootcamps.statut !== 'En attente'">
+                                        <button class="inscription-button" 
+                                                [attr.disabled]="bootcamps.statut !== 'En attente' ? true : null"
+                                                (click)="selectBootcampForInscription(bootcamps)">
                                             Inscription
                                         </button>
                                     </td>

@@ -1,10 +1,8 @@
-export class User {
+export class Candidats {
     id!: number;
     nom!: string;
     prenom!: string;
     telephone!: string;
     email!: string;
-    pseudo!: string;
-    mdp!: string;
     role!: string;
 }

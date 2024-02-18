@@ -6,8 +6,8 @@ import { FormationService } from '../../../services/formation/formation.service'
 import { RouterModule } from '@angular/router';
 import { ProductAdminListComponent } from '../../products-page/product-admin-list/product-admin-list.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { SousThemeService } from '../../../services/SousTheme/sousTheme.service';
 import { SousTheme } from '../../../models/sousTheme.model';
+import { SousThemeService } from '../../../services/SousTheme/sousTheme.service';
 
 
 @Component({
@@ -19,14 +19,11 @@ import { SousTheme } from '../../../models/sousTheme.model';
 })
 export class AdminFormationComponent implements OnInit {
   formationForm: FormGroup = this.formBuilder.group({
-    
     nom: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9\s]*$/)]],
     prix: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     description: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9\s]*$/)]],
     img: [''],
     sousThemeId: ['']
-    
-    //img: ['', Validators.required]
   });
 
 
@@ -36,6 +33,8 @@ export class AdminFormationComponent implements OnInit {
   bootcamps: Bootcamp[] = [];
   formationCreate!: Formation;
   formationsCreates: Formation[] = [];
+  afficherForm: boolean = false;
+  formationSuppr!: Formation;
   constructor(
     private formBuilder: FormBuilder,
     private formationService: FormationService,
@@ -79,9 +78,13 @@ export class AdminFormationComponent implements OnInit {
   this.formationService.createFormation(this.formationForm.value)
     .subscribe({
       next: (formationForm) => {
-        // Si c'est un succès le user est enregistré
+        // Si c'est un succès la formation est enregistré
         this.formationCreate = formationForm;
-        alert("Formation créé avec succès !");
+        this.formationService.getFormations()
+        .subscribe((formations: Formation[]) => 
+          this.formations = formations
+          );
+        // alert("Formation créé avec succès !");
       },
       error: (error) => {
           // Envoi une erreur si la création échoue
@@ -94,11 +97,4 @@ export class AdminFormationComponent implements OnInit {
     });
   }
 
-  modifierFormation(id: number):void{
-
-  }
-
-  supprimerFormation(id: number):void{
-
-  }
 }

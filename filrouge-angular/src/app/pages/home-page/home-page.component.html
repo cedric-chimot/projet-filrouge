@@ -5,12 +5,14 @@
     les bonnes class CSS sont intégré dans un tableau nommé box
 -->
 <div class="container">
-    <div *ngFor="let productElement of productSlice; let i = index" 
-        routerLink="/products/formations/{{ productElement.id }}" 
-        [class]="'box ' + box[i % box.length]" 
-        [style.--img]="'url(./../..' + productElement.img + ')'" 
-        [attr.data-text]="productElement.nom">
-    </div>
+    @for ( productElement of productSlice; track productSlice; let i = $index) {
+        <div 
+            routerLink="/products/formations/{{ productElement.id }}" 
+            [class]="box[i % box.length]"
+            [style.--img]="'url(' + productElement.img + ')'" 
+            [attr.data-text]="productElement.nom">
+        </div>
+    }
 </div>
 
 <br>

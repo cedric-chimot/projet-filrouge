@@ -1,10 +1,7 @@
 package fr.equipefilrouge.filrougeSpring.services.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.equipefilrouge.filrougeSpring.dto.UserFormateurDTO;
-import fr.equipefilrouge.filrougeSpring.dto.UserLoginDTO;
-import fr.equipefilrouge.filrougeSpring.dto.UserStagiaireDTO;
-import fr.equipefilrouge.filrougeSpring.dto.UsersDTO;
+import fr.equipefilrouge.filrougeSpring.dto.*;
 import fr.equipefilrouge.filrougeSpring.entity.Users;
 import fr.equipefilrouge.filrougeSpring.enums.UserRole;
 import fr.equipefilrouge.filrougeSpring.exceptions.CustomException;
@@ -60,6 +57,17 @@ public class UsersServiceImpl implements AllServices<Users, Long> {
     }
 
     /**
+     * Retrouver tous les candidats
+     * @return la liste des candidats
+     */
+    public List<UserCandidatDTO> findAllCandidats() {
+        List<Users> candidats = usersRepository.findByRole(UserRole.CANDIDAT);
+        return candidats.stream()
+                .map(users -> objectMapper.convertValue(users, UserCandidatDTO.class))
+                .toList();
+    }
+
+    /**
      * Retrouver tous les formateurs
      * @return la liste des formateurs
      */
@@ -92,22 +100,10 @@ public class UsersServiceImpl implements AllServices<Users, Long> {
     }
 
     /**
-     * Trouver l'id d'un utilisateur par son email
-     * @param email l'email de l'utilisateur
-     * @return l'identifiant recherché
-     */
-    public Long findByEmail(String email) {
-        if (usersRepository.findByEmail(email) != null) {
-            return usersRepository.findByEmail(email).getId();
-        } else {
-            throw new CustomException("Users", "email", email);
-        }
-    }
-
-    /**
      * Trouver un utilisateur par son email
      * @param mail le mail recherché
-     * @return l'utilisateur trouvé*/
+     * @return l'utilisateur trouvé
+     */
     public UserLoginDTO userLoginByMail(String mail) {
         Users user = usersRepository.findByEmail(mail);
         return objectMapper.convertValue(user, UserLoginDTO.class);

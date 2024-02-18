@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 export class BootcampsPageComponent implements OnInit {
   bootcamps!: Bootcamp[];
   searchResults: Formation[] = [];
+  isPresent: boolean = false;
 
   constructor(private bootcampService: BootcampService, private formationService: FormationService) {}
 
@@ -39,22 +40,6 @@ export class BootcampsPageComponent implements OnInit {
         });
       });
     });
-  }
-
-  performSearch(searchTerm: string) {
-    this.formationService.searchFormationsByName(searchTerm)
-      .subscribe(results => {
-        this.searchResults = results;
-
-        // Ajouter la vérification estPresentDansFormation
-        this.searchResults.forEach((result) => {
-          this.bootcamps.forEach((bootcamp) => {
-            this.bootcampService.estPresentDansFormation(bootcamp.id, result.id).subscribe((isPresent) => {
-              result.isPresent = isPresent;
-            });
-          });
-        });
-      });
   }
 
   supprimerBootcamp(arg0: any) {

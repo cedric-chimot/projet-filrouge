@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.equipefilrouge.filrougeSpring.dto.FormationDTO;
 import fr.equipefilrouge.filrougeSpring.entity.Bootcamp;
 import fr.equipefilrouge.filrougeSpring.entity.Formation;
-import fr.equipefilrouge.filrougeSpring.entity.SousTheme;
-import fr.equipefilrouge.filrougeSpring.entity.Theme;
 import fr.equipefilrouge.filrougeSpring.exceptions.CustomException;
 import fr.equipefilrouge.filrougeSpring.repository.FormationRepository;
 import fr.equipefilrouge.filrougeSpring.services.AllServices;
@@ -27,22 +25,22 @@ public class FormationServiceImpl implements AllServices<Formation, Long> {
      */
     private final FormationRepository formationRepository;
 
-    private final SousThemeServiceImpl sousThemeService;
-
     /**
      * API pour gérer les opérations sur la BDD
      */
     private final JdbcTemplate jdbcTemplate;
 
+    /**
+     * Sérialisation d'objet Java au format Json
+     */
     private final ObjectMapper objectMapper;
 
     /**
      * Le constructeur du service
-     * @param formationRepository le repository correspondant
+     * @param formationRepository etc... les repository injectés
      */
-    public FormationServiceImpl(FormationRepository formationRepository, SousThemeServiceImpl sousThemeService, JdbcTemplate jdbcTemplate, ObjectMapper objectMapper) {
+    public FormationServiceImpl(FormationRepository formationRepository, JdbcTemplate jdbcTemplate, ObjectMapper objectMapper) {
         this.formationRepository = formationRepository;
-        this.sousThemeService = sousThemeService;
         this.jdbcTemplate = jdbcTemplate;
         this.objectMapper = objectMapper;
     }
@@ -57,7 +55,6 @@ public class FormationServiceImpl implements AllServices<Formation, Long> {
 
     /**
      * Méthode pour retourner toutes les formations avec les informations choisies
-     *
      * @return la liste des formations
      */
     public List<FormationDTO> findAllFormationReduit() {
@@ -81,13 +78,17 @@ public class FormationServiceImpl implements AllServices<Formation, Long> {
     /**
      * Récupérer tous les bootcamps liés à une formation donnée
      * @param formationId l'identifiant du bootcamp
-     * @return la liste des bootcamps associées
+     * @return la liste des bootcamps associés
      */
     public List<Bootcamp> getBootcampsInFormations(Long formationId) {
         return formationRepository.getBootcampsInFormations(formationId);
     }
 
-
+    /**
+     * Méthode pour trouver une formation par son nom
+     * @param nom le nom de la formation
+     * @return la formation recherchée
+     */
     public List<Formation> findByNomContaining(String nom) {
         return formationRepository.findByNomContaining(nom);
     }

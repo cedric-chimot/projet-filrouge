@@ -31,10 +31,11 @@ p {
 }
 
 h1 {
-    padding: 20px;
-    color: #5065A8;
+    font-size: 50px;
+    margin-bottom: 50px;
+    margin-top: 50px;
     text-align: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #90a3e2;
 }
 
 .container {

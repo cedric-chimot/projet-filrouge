@@ -22,9 +22,11 @@ export class LoginFormComponent {
     email: ['', [Validators.required, Validators.email]],
     mdp: ['', Validators.required],
   })
-
+  private email!: string;
+  private password!: string;
   // Indique si le formulaire a été soumis
-  submitted: boolean = false;  
+  submitted: boolean = false;
+  isAuthentificated: boolean = false;  
   constructor(
     private formBuilder: FormBuilder, private loginService: LoginService, private router: Router
   ) {};
@@ -32,29 +34,26 @@ export class LoginFormComponent {
   // Fonction appelée lors de la soumission du formulaire
   onSubmit() {
     this.submitted = true;
-
     // Vérifie si le formulaire est valide
     if(this.loginForm.valid) {
       // Récupération des valeurs des champs email et mdp
-      const email = this.form['email'].value;
-      const password = this.form['mdp'].value;
+      this.email = this.form['email'].value;
+      this.password = this.form['mdp'].value;
 
       // Appel du service de connexion
-      this.loginService.login(email, password)
+      this.loginService.login(this.email, this.password)
         .subscribe({
           next: (_) => {
             // Affiche une alerte en cas de connexion réussie
-            
-            
             // met la variable observable a true pour confirmé la connexion et pouvoir vérifié
             if(this.loginService.getLoginUser){
-              alert("Connexion réussie !");
               this.loginService.setLogin(true);
               this.router.navigate(['/home']);
+            }else{
+              alert("Identifiants erronés ou utilisateur inconnu !");
             }
             //ToDo trouver la solution pour afficher une erreur dans le cas ou c'est login et mdp invalide
             // Redirection sur l'accueil en cas de succès
-            
           },
           error: (error) => {
             // Affiche une alerte en cas d'erreur lors de la connexion

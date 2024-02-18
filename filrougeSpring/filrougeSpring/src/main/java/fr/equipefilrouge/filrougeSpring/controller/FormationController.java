@@ -4,7 +4,6 @@ import fr.equipefilrouge.filrougeSpring.dto.FormationDTO;
 import fr.equipefilrouge.filrougeSpring.entity.Bootcamp;
 import fr.equipefilrouge.filrougeSpring.entity.Formation;
 import fr.equipefilrouge.filrougeSpring.entity.SousTheme;
-import fr.equipefilrouge.filrougeSpring.services.impl.BootcampServiceImpl;
 import fr.equipefilrouge.filrougeSpring.services.impl.FormationServiceImpl;
 import fr.equipefilrouge.filrougeSpring.services.impl.SousThemeServiceImpl;
 import org.springframework.http.HttpStatus;
@@ -26,17 +25,17 @@ public class FormationController {
      */
     private final FormationServiceImpl formationServiceImpl;
 
-    private final BootcampServiceImpl bootcampService;
-
+    /**
+     * Déclaration du service SousTheme
+     */
     private final SousThemeServiceImpl sousThemeService;
 
     /**
      * Constructeur du controller Formation
      * @param formationServiceImpl le service de la formation
      */
-    public FormationController(FormationServiceImpl formationServiceImpl, BootcampServiceImpl bootcampService, SousThemeServiceImpl sousThemeService) {
+    public FormationController(FormationServiceImpl formationServiceImpl, SousThemeServiceImpl sousThemeService) {
         this.formationServiceImpl = formationServiceImpl;
-        this.bootcampService = bootcampService;
         this.sousThemeService = sousThemeService;
     }
 
@@ -59,6 +58,11 @@ public class FormationController {
         return formationServiceImpl.findById(id);
     }
 
+    /**
+     * Méthode pour retrouver une liste de bootcamps dans les formations
+     * @param formationId l'identifiant de la formation liée au bootcamp
+     * @return la liste des bootcamps liés à la formation
+     */
     @GetMapping("/{formationId}/bootcamps")
     public ResponseEntity<List<Bootcamp>> getBootcampsInFormation(@PathVariable Long formationId) {
         List<Bootcamp> bootcamps = formationServiceImpl.getBootcampsInFormations(formationId);

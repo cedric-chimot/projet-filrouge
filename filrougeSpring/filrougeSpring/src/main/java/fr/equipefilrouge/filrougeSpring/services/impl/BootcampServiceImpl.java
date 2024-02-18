@@ -26,6 +26,10 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
 
     private final SousThemeRepository sousThemeRepository;
 
+    /**
+     * Le constructeur du service
+     * @param formationRepository etc... les repository injectés
+     */
     public BootcampServiceImpl(BootcampRepository bootcampRepository, UsersRepository usersRepository, FormationRepository formationRepository,
                                SousThemeRepository sousThemeRepository) {
         this.bootcampRepository = bootcampRepository;
@@ -104,13 +108,13 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
      * @param user l'utilisateur à ajouter
      */
     @Transactional
-    public void addUserBootcamp(BootcampDTO bootcampDTO, Users user) {
+    public void addUserBootcamp(BootcampDTO bootcampDTO, Long userId) {
         Long bootcampId = bootcampDTO.getId();
         Bootcamp bootcamp = findById(bootcampId);
 
         if (bootcamp != null) {
             // Vérifier si l'utilisateur existe déjà en base de données
-            Users existingUser = usersRepository.findByEmail(user.getEmail());
+            Users existingUser = usersRepository.findById(userId).orElse(null);
 
             if (existingUser != null) {
                 // Vérifier si l'utilisateur n'est pas déjà associé à un autre bootcamp
@@ -122,10 +126,10 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
                     // Mettre à jour le bootcamp
                     update(bootcamp);
                 } else {
-                    throw new CustomException("User", "User with email ", user.getEmail() + " is already associated with another bootcamp.");
+                    throw new CustomException("User", "User with ID ", userId + " is already associated with another bootcamp.");
                 }
             } else {
-                throw new CustomException("User", "User with email ", user.getEmail() + " does not exist.");
+                throw new CustomException("User", "User with ID ", userId + " does not exist.");
             }
         } else {
             throw new CustomException("Bootcamp", "id", bootcampId);

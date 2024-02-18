@@ -13,6 +13,8 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { FormateursPageComponent } from './pages/admin-page/formateurs-page/formateurs-page.component';
 import { BootcampsPageComponent } from './pages/admin-page/bootcamps-page/bootcamps-page.component';
 import { StagiairesPageComponent } from './pages/admin-page/stagiaires-page/stagiaires-page.component';
+import { CandidatsPageComponent } from './pages/admin-page/candidats-page/candidats-page.component';
+import { InscriptionFormPageComponent } from './pages/inscription-form/inscription-form-page/inscription-form-page.component';
 
 
 export const routes: Routes = [
@@ -25,6 +27,8 @@ export const routes: Routes = [
     { path:'dashboard/formateurs', component: FormateursPageComponent},
     { path:'dashboard/bootcamps', component: BootcampsPageComponent},
     { path:'dashboard/stagiaires', component: StagiairesPageComponent},
+    { path:'dashboard/candidats', component: CandidatsPageComponent},
+    { path:'inscriptionForm', component: InscriptionFormPageComponent},
     { path:'aPropos', component: AProposComponent},
     { path:'contacter', component: ContactPageComponent },
     { path:'products', component: ProductsPageComponent},

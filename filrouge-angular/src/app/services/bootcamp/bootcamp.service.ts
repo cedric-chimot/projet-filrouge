@@ -15,7 +15,7 @@ export class BootcampService {
 
   // Récupère les bootcamps par leur id
   getBootcampById(id: number): Observable<Bootcamp> {
-    return this.httpClient.get<Bootcamp>(`${this.apiUrl}/bootcamps/${id}`);
+    return this.httpClient.get<Bootcamp>(`${this.apiUrl}/bootcamps/find/${id}`);
   }
 
   // Récupère les bootcamps
@@ -46,6 +46,13 @@ export class BootcampService {
   // Création d'un bootcamp
   createBootcamp(bootcamp: Bootcamp): Observable<Bootcamp> {
     return this.httpClient.post<Bootcamp>(`${this.apiUrl}/bootcamps/createBootcamp`, bootcamp);
+  }
+
+  // Ajouter un user à un bootcamp
+  addUserToBootcamp(bootcampId: number, userId: number): Observable<string> {
+    const url = `${this.apiUrl}/bootcamps/${bootcampId}/addUser`;
+    
+    return this.httpClient.post<string>(url, { userId });
   }
 
 }

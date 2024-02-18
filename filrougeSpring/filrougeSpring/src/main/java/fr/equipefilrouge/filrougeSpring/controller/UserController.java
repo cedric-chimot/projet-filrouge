@@ -1,15 +1,10 @@
 package fr.equipefilrouge.filrougeSpring.controller;
 
-import fr.equipefilrouge.filrougeSpring.dto.UserFormateurDTO;
-import fr.equipefilrouge.filrougeSpring.dto.UserLoginDTO;
-import fr.equipefilrouge.filrougeSpring.dto.UserStagiaireDTO;
-import fr.equipefilrouge.filrougeSpring.dto.UsersDTO;
+import fr.equipefilrouge.filrougeSpring.dto.*;
 import fr.equipefilrouge.filrougeSpring.entity.Users;
 import fr.equipefilrouge.filrougeSpring.enums.UserRole;
 import fr.equipefilrouge.filrougeSpring.services.impl.UsersServiceImpl;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -96,6 +91,15 @@ public class UserController {
     }
 
     /**
+     * Méthode pour retrouver les candidats
+     * @return les candidats recherchés filtrés avec le DTO
+     */
+    @GetMapping("/all/candidats")
+    public List<UserCandidatDTO> findCandidats() {
+        return usersService.findAllCandidats();
+    }
+
+    /**
      * Méthode pour retrouver les formateurs
      * @return les formateurs recherchés filtrés avec le DTO
      */
@@ -105,8 +109,8 @@ public class UserController {
     }
 
     /**
-     * Méthode pour retrouver un formateur
-     * @return le formateur recherché filtré avec le DTO
+     * Méthode pour retrouver les stagiaires
+     * @return les stagiaires recherchés filtré avec le DTO
      */
     @GetMapping("/all/stagiaires")
     public List<UserStagiaireDTO> findStagiaires() {

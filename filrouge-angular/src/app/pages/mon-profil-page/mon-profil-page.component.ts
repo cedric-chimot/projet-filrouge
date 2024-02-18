@@ -10,7 +10,6 @@ import { User } from '../../models/user.model';
 })
 export class MonProfilPageComponent {
 
-
   isAuthentificated!: boolean;
   user!: User | undefined;
 

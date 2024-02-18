@@ -1,6 +1,5 @@
 <div class="table-container">
     <h1>Liste des Bootcamps</h1>
-    <app-search-bar (searchEvent)="performSearch($event)"></app-search-bar>
     <table>
         <thead>
           <tr>
@@ -22,7 +21,7 @@
                     <td>{{ bootcamps.lieu.raisonSociale }}</td>
                     <td>
                         @for (formation of bootcamps.formation; track formation) {
-                            {{ formation.nom  + ', '}}
+                            {{ formation.nom }}
                         }
                     </td>
                     <td>{{ bootcamps.userCount }}</td>

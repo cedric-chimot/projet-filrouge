@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface UsersRepository extends JpaRepository<Users, Long> {
+
     /**
      * Requête pour vérifier l'existence de l'email en BDD
      * @param email l'email à vérifier

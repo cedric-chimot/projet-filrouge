@@ -6,6 +6,8 @@ import { User } from '../../models/user.model';
 import { UserService } from '../users/user.service';
 import { Router } from '@angular/router';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +21,7 @@ export class LoginService{
   // Observable permettant de surveiller l'état d'authentification
   isAuthenticated$: Observable<boolean> = this.isLogged.asObservable();
   reponseBack!: Observable<Object> | null;
-  observable!: any;
+
   constructor(private httpClient: HttpClient, private userService: UserService, private route: Router) {}
 
   // Fonction pour effectuer la connexion
@@ -30,10 +32,11 @@ export class LoginService{
     // le Back répond par un objet user donc je définis <User> dans la reception de la réponse
     this.reponseBack =  this.httpClient.post<User>(`${this.apiUrl}/users/login`, identite);
     if(this.reponseBack != null){ // si le réponse n'est pas null alors on créer l'observable user
-      this.observable = this.httpClient.post<User>(`${this.apiUrl}/users/login`, identite).subscribe({
+      this.httpClient.post<User>(`${this.apiUrl}/users/login`, identite).subscribe({
         next: (reponse) => this.user = reponse,// un UserLoginDTO (sans mdp) si le serveur répond un userLoginDTO
         error: (err) => console.error('Erreur au chargement', err)
       });
+      
     }
     return this.reponseBack;
   }
@@ -49,20 +52,23 @@ export class LoginService{
   get getLoginUser(){
     return this.user;
   }
-
   // Fonction de déconnexion
   logOut(): void {
+    // On averti l'utilisateur
+    alert("Déconnecté !");
     // on supprime l'utilisateur
     this.user = undefined;
     // Met à jour l'état d'authentification à false lors de la déconnexion
     this.setLogin(false);
-    // on destroy l'observable pour eviter les fuites
-    this.ngOnDestroy;
-    // On redirige vers connexion
-    this.route.navigate(['/connexion']);
+    // On redirige vers home
+    this.route.navigate(['/home']);
+
   }
-  ngOnDestroy(){
-      this.observable.unsubscribe;
-  }
+  
+  //Todo : créer le unsubscribe pour les observables, pour eviter les fuites de données 
+  
+  
+  
+  
   
 }
