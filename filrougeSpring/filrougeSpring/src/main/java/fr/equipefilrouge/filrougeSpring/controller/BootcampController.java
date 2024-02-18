@@ -4,6 +4,7 @@ import fr.equipefilrouge.filrougeSpring.dto.BootcampDTO;
 import fr.equipefilrouge.filrougeSpring.dto.SousThemeDTO;
 import fr.equipefilrouge.filrougeSpring.entity.*;
 import fr.equipefilrouge.filrougeSpring.services.impl.BootcampServiceImpl;
+import fr.equipefilrouge.filrougeSpring.services.impl.FormationServiceImpl;
 import fr.equipefilrouge.filrougeSpring.services.impl.LieuServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Controller des bootcamps
@@ -27,6 +29,8 @@ public class BootcampController {
      */
     private final BootcampServiceImpl bootcampService;
 
+    private final FormationServiceImpl formationService;
+
     /**
      * Le service des lieux
      */
@@ -37,8 +41,9 @@ public class BootcampController {
      * @param bootcampService le service bootcamp
      * @param lieuService le service lieu
      */
-    public BootcampController(BootcampServiceImpl bootcampService, LieuServiceImpl lieuService) {
+    public BootcampController(BootcampServiceImpl bootcampService, FormationServiceImpl formationService, LieuServiceImpl lieuService) {
         this.bootcampService = bootcampService;
+        this.formationService = formationService;
         this.lieuService = lieuService;
     }
 
@@ -59,6 +64,45 @@ public class BootcampController {
     @GetMapping("/find/{id}")
     public Bootcamp findById(@PathVariable long id){
         return bootcampService.findById(id);
+    }
+
+    /**
+     * Renvoyer le nombre de bootcamps en BDD
+     * @return le nombre de bootcamps
+     */
+    @GetMapping("/nbBootcamps")
+    public Long nbBootcamps() {
+        return bootcampService.countBootcamps();
+    }
+
+    /**
+     * Méthode pour récupérer toutes les formations liées à un bootcamp
+     * @param bootcampId l'identifiant du bootcamp
+     * @return la liste des formations associées
+     */
+    @GetMapping("/{bootcampId}/formations")
+    public ResponseEntity<List<Formation>> getFormationsInBootcamp(@PathVariable Long bootcampId) {
+        List<Formation> formations = bootcampService.getFormationsInBootcamp(bootcampId);
+        return new ResponseEntity<>(formations, HttpStatus.OK);
+    }
+
+    /**
+     * Méthode pour récupérer le nombre d'utilisateurs inscrits à un bootcamp
+     * @return le nombre d'utilisateurs
+     */
+    @GetMapping("/nbUsers")
+    public ResponseEntity<Map<Long, Long>> countUsersInBootcamps() {
+        Map<Long, Long> userCounts = bootcampService.countUsersInBootcamps();
+        return new ResponseEntity<>(userCounts, HttpStatus.OK);
+    }
+
+    /** Recherche les bootcamps par nom
+     * @param statut Le statut à rechercher dans les bootcamps
+     * @return Liste des bootcamps correspondants au statut recherché
+     */
+    @GetMapping("/search")
+    public List<Bootcamp> searchByStatut(@RequestParam String statut) {
+        return bootcampService.findByStatut(statut);
     }
 
     /**

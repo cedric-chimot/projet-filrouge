@@ -13,15 +13,15 @@ export class UserService {
   constructor(private httpClient: HttpClient) {}
 
   getUserByLogin(email: string): Observable<User>{
-    return this.httpClient.get<User>(`${this.apiUrl}/stagiaires/${email}`);
+    return this.httpClient.get<User>(`${this.apiUrl}/users/${email}`);
   }
   // Récupère tous les stagiaires
   getUsers(): Observable<User[]>{
-    return this.httpClient.get<User[]>(`${this.apiUrl}/stagiaires/all`);
+    return this.httpClient.get<User[]>(`${this.apiUrl}/users/all`);
   }
 
   getUsersById(id: number): Observable<User> {
-    return this.httpClient.get<User>(`${this.apiUrl}/stagiaires/${id}`);
+    return this.httpClient.get<User>(`${this.apiUrl}/users/${id}`);
   }
   // Récupère le nombre de stagiaires
   getNbStagiaires(): Observable<number> {
@@ -38,8 +38,8 @@ export class UserService {
   }
   
   // Création d'un stagiaire
-  createUser(stagiaire: User): Observable<User>{
-    return this.httpClient.post<User>(`${this.apiUrl}/stagiaires/create`, stagiaire);
+  createUser(user: User): Observable<User>{
+    return this.httpClient.post<User>(`${this.apiUrl}/users/create`, user);
   }
 
 }

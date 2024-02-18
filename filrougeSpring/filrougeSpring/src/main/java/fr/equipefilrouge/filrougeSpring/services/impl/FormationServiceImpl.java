@@ -2,6 +2,7 @@ package fr.equipefilrouge.filrougeSpring.services.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.equipefilrouge.filrougeSpring.dto.FormationDTO;
+import fr.equipefilrouge.filrougeSpring.entity.Bootcamp;
 import fr.equipefilrouge.filrougeSpring.entity.Formation;
 import fr.equipefilrouge.filrougeSpring.entity.SousTheme;
 import fr.equipefilrouge.filrougeSpring.entity.Theme;
@@ -78,19 +79,26 @@ public class FormationServiceImpl implements AllServices<Formation, Long> {
     }
 
     /**
+     * Récupérer tous les bootcamps liés à une formation donnée
+     * @param formationId l'identifiant du bootcamp
+     * @return la liste des bootcamps associées
+     */
+    public List<Bootcamp> getBootcampsInFormations(Long formationId) {
+        return formationRepository.getBootcampsInFormations(formationId);
+    }
+
+
+    public List<Formation> findByNomContaining(String nom) {
+        return formationRepository.findByNomContaining(nom);
+    }
+
+    /**
      * @param newObj le nouvel objet formation
      * @return la formation nouvellement créée
      */
     @Override
     public Formation create(Formation newObj) {
         return formationRepository.save(newObj);
-    }
-
-    public Formation createFormation(Formation formation, Long sousThemeId) {
-        SousTheme sousTheme = sousThemeService.findById(sousThemeId);
-        create(new Formation(formation.getNom(), formation.getPrix(), formation.getDescription(),
-                formation.getImg(), sousTheme));
-        return formation;
     }
 
     /**
@@ -137,4 +145,13 @@ public class FormationServiceImpl implements AllServices<Formation, Long> {
     public void deleteAll() {
         formationRepository.deleteAll();
     }
+
+    /**
+     * Compteur de formations dans la BDD
+     * @return number
+     */
+    public Long countFormations() {
+        return formationRepository.countFormation();
+    }
+
 }

@@ -40,7 +40,6 @@
                     </div>
                 }
             </div>
-
             <div class="sessions">
                 <h3 class="center-text">Sessions</h3>
                 <table class="center-text">
@@ -54,18 +53,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>01/01/2023</td>
-                            <td>01/03/2023</td>
-                            <td>Paris</td>
-                            <td>En cours</td>
-                            <td><button class="inscription-button">Inscription</button></td>
-                        </tr>
-                        <!-- Ajoutez d'autres sessions ici -->
+                        @if (bootcamps && bootcamps.length > 0) {
+                            @for (bootcamps of bootcamps; track bootcamps) {
+                                <tr>
+                                    <td>{{ bootcamps.dateDebut }}</td>
+                                    <td>{{ bootcamps.dateFin }}</td>
+                                    <td>{{ bootcamps.lieu.raisonSociale }}</td>
+                                    <td>{{ bootcamps.statut }}</td>
+                                    <td>
+                                        <button class="inscription-button" routerLink="/home" [disabled]="bootcamps.statut !== 'En attente'">
+                                            Inscription
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        }  
                     </tbody>
                 </table>
             </div>
-
             <div class="actions">
                 <button routerLink="/products" class="inscription-button">Retour</button>
             </div>

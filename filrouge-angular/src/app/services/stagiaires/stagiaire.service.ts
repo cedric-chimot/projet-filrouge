@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { Stagiaire } from '../../models/stagiaire.model';
+import { Stagiaire } from '../../models/stagiaires.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,10 @@ export class StagiaireService {
   // Récupère le nombre de candidats
   getNbCandidats(): Observable<number> {
     return this.httpClient.get<number>(`${this.apiUrl}/stagiaires/nbCandidats`);
+  }
+
+  getUserStagiaires(): Observable<Stagiaire[]> {
+    return this.httpClient.get<Stagiaire[]>(`${this.apiUrl}/users/all/stagiaires`);
   }
   
   // Création d'un stagiaire

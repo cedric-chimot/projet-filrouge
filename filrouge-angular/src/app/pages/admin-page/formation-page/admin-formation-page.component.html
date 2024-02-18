@@ -1,16 +1,71 @@
+<div class="table-container">
+    <h1>Liste des Formations</h1>
+    <table>
+        <thead>
+          <tr>
+            <th>Nom de la formation</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th>Sous-Theme</th>
+            <th>image</th>
+            <th>Ajouter/Supprimer</th>
+          </tr>
+        </thead>
+        <tbody>
+            @for (formation of formations; track formations) {
+                <tr>
+                    <td>{{ formation.nom }}</td>
+                    <td>{{ formation.description }}</td>
+                    <td>{{ formation.prix }}</td>
+                    <td>{{ formation.sousThemeId.nomSousTheme }}</td>
+                    <img [src]="formation.img" [alt]="formation.nom" style="width: 80px; height: 80px;">
 
-<!-- <app-product-card [product]="productElement"></app-product-card> -->
-
-
-<div class="container">
-    <div class="container">
-        <app-product-admin-list></app-product-admin-list>
-        <h2>Liste des formations</h2>
-        <!-- @for(session of sessionsFormation; track session.id){
-            <p>{{session.id}}</p>
-            <p>{{session.dateDebut}}</p>
-            <p>{{session.dateFin}}</p>
-            <p>{{session.formation}}</p>
-            <p>{{session.statut}}</p>
-        } -->
-</div>
+                    <td>
+                      <button (click)="modifierFormation(formation.id)" class="modifier">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      
+                      <button (click)="supprimerFormation(formation.id)" class="supprimer">
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </td>                  
+                </tr>
+            }
+        </tbody>
+    </table>
+    <form [formGroup]="formationForm" (ngSubmit)="onSubmit()">
+        <label>
+            Nom :
+        </label>
+            <input type="text" formControlName="nom" />
+        <label>
+            Description :
+        </label>
+            <input type="text" formControlName="description" />
+        <label>
+            Prix :
+        </label>
+            <input type="number" formControlName="prix" />
+        <label>
+            img :
+        </label>
+            <input type="file" formControlName="img" />
+        <label>
+            Sous-Theme :
+        </label>
+         <select formControlName="sousThemeId">
+        @for (sousTheme of sousThemes; track sousThemes) {
+            
+                <option [value]="sousTheme.id" >{{sousTheme.nomSousTheme}}</option>
+            
+        }
+        </select> 
+            Modification du bouton Sumbit, qui sera désactivé si le formulaire n'est pas valide <br>
+        <button type="submit" [disabled]="!formationForm.valid">Ajouter une Formation</button>
+    </form>
+    <h1>{{formationForm.value.nom}}</h1>
+    <h1>{{formationForm.value.description}}</h1>
+    <h1>{{formationForm.value.img}}</h1>
+    <h1>{{formationForm.value.sousThemeId}}</h1>
+    <h1>{{formationForm.value.prix}}</h1>
+  </div>

@@ -1,5 +1,5 @@
-@if(user){
-    @if(user.role === "ADMIN"){
+<!-- @if(user){
+    @if(user.role === "ADMIN"){ -->
         <body>
             <h1>TABLEAU DE BORD ADMIN</h1>
                     <div class="container" >   
@@ -8,8 +8,9 @@
                                 <h3 >
                                     Formations
                                 </h3>
-                                <span>(A venir)</span>
+                                <span>(Nb de formations)</span>
                                 <br>
+                                <p>{{ nbFormations }}</p>
                             </button>
                         </div>
                         <div class="box1" >
@@ -47,17 +48,17 @@
                         </div>
                         <div class="container" >
                             <div class="box1">
-                                <button routerLink="/dashboard/stagiaires" >
+                                <button routerLink="/dashboard/bootcamps" >
                                     <h3>
-                                        Messages
+                                        Bootcamps
                                     </h3>
-                                    <span>(Nb d'inscrits)</span>
-                                    <p>0</p>
+                                    <span>(Nb de bootcamps)</span>
+                                    <p>{{ nbBootcamps }}</p>
                                     <br>
                                 </button>
                             </div>
                         </div>
                     </div>
         </body>
-    }
-}
+    <!-- }
+} -->

@@ -10,7 +10,9 @@ import { UserFormulaireComponent } from './pages/inscription-page/inscription-pa
 import { LoginFormComponent } from './pages/connexion-page/connexion-page.component';
 import { AdminFormationComponent } from './pages/admin-page/formation-page/admin-formation-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
-import { FormateursPageComponent } from './pages/formateurs-page/formateurs-page.component';
+import { FormateursPageComponent } from './pages/admin-page/formateurs-page/formateurs-page.component';
+import { BootcampsPageComponent } from './pages/admin-page/bootcamps-page/bootcamps-page.component';
+import { StagiairesPageComponent } from './pages/admin-page/stagiaires-page/stagiaires-page.component';
 
 
 export const routes: Routes = [
@@ -21,6 +23,8 @@ export const routes: Routes = [
     { path:'dashboard', component: AdminPageComponent},
     { path:'dashboard/formation', component: AdminFormationComponent},
     { path:'dashboard/formateurs', component: FormateursPageComponent},
+    { path:'dashboard/bootcamps', component: BootcampsPageComponent},
+    { path:'dashboard/stagiaires', component: StagiairesPageComponent},
     { path:'aPropos', component: AProposComponent},
     { path:'contacter', component: ContactPageComponent },
     { path:'products', component: ProductsPageComponent},

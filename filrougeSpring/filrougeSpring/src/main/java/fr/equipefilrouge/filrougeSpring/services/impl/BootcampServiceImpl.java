@@ -9,9 +9,7 @@ import fr.equipefilrouge.filrougeSpring.services.AllServices;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -54,6 +52,41 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
     public Bootcamp findById(Long id){
         return bootcampRepository.findById(id)
                 .orElseThrow(()-> new CustomException("Formation id : ", "id", id));
+    }
+
+    /**
+     * Récupérer toutes les formations liées à un bootcamp donné
+     * @param bootcampId l'identifiant du bootcamp
+     * @return la liste des formations associées
+     */
+    public List<Formation> getFormationsInBootcamp(Long bootcampId) {
+        return bootcampRepository.getFormationsInBootcamp(bootcampId);
+    }
+
+    /**
+     * Trouver un bootcamp par son statut
+     * @param statut le statut recherché
+     * @return la liste des bootcamps
+     */
+    public List<Bootcamp> findByStatut(String statut) {
+        return bootcampRepository.findByStatut(statut);
+    }
+
+    /**
+     * Récupérer le nombre d'utilisateurs par bootcamp
+     * @return le nombre d'utilisateurs
+     */
+    public Map<Long, Long> countUsersInBootcamps() {
+        List<Object[]> results = bootcampRepository.countUsersByBootcamp();
+        Map<Long, Long> userCounts = new HashMap<>();
+
+        for (Object[] result : results) {
+            Long bootcampId = (Long) result[0];
+            Long userCount = (Long) result[1];
+            userCounts.put(bootcampId, userCount);
+        }
+
+        return userCounts;
     }
 
     /**
@@ -163,6 +196,14 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
      */
     public void deleteAll(){
         bootcampRepository.deleteAll();
+    }
+
+    /**
+     * Compteur de bootcamps dans la BDD
+     * @return nombre de bootcamps
+     */
+    public Long countBootcamps() {
+        return bootcampRepository.countBootcamps();
     }
 
 }

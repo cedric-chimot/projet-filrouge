@@ -1,76 +1,104 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Bootcamp } from '../../../models/bootcampmodel';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Bootcamp } from '../../../models/bootcamp.model';
 import Formation  from '../../../models/formation.model';
-import { BootcampService } from '../../../services/bootcamp/bootcamp.service';
 import { FormationService } from '../../../services/formation/formation.service';
 import { RouterModule } from '@angular/router';
 import { ProductAdminListComponent } from '../../products-page/product-admin-list/product-admin-list.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { SousThemeService } from '../../../services/SousTheme/sousTheme.service';
+import { SousTheme } from '../../../models/sousTheme.model';
 
 
 @Component({
   selector: 'app-admin-formation',
   templateUrl: './admin-formation-page.component.html',
-  styleUrls: ['./admin-formation-page.component.css'],
+  styleUrls: ['./admin-formation-page.component.css', "../../../../../node_modules/@fortawesome/fontawesome-free/css/all.css"],
   standalone: true,
-  imports: [ProductAdminListComponent, RouterModule]
+  imports: [ProductAdminListComponent, RouterModule, ReactiveFormsModule, MatFormFieldModule]
 })
 export class AdminFormationComponent implements OnInit {
-
-  bootcampForm: FormGroup = this.formBuilder.group({
-    dateDebut: ['', Validators.required],
-    dateFin: ['', Validators.required],
-    centreFormation: ['', Validators.required],
-    formation: ['', Validators.required],
-    statut: ['', Validators.required]
-  });
   formationForm: FormGroup = this.formBuilder.group({
-    nom: ['', Validators.required],
-    prix: ['', Validators.required],
-    description: ['', Validators.required]
+    
+    nom: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9\s]*$/)]],
+    prix: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+    description: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9\s]*$/)]],
+    img: [''],
+    sousThemeId: ['']
+    
+    //img: ['', Validators.required]
   });
 
 
   submitted = false;
   formations: Formation[] = [];
+  sousThemes: SousTheme[] = [];
   bootcamps: Bootcamp[] = [];
-
+  formationCreate!: Formation;
+  formationsCreates: Formation[] = [];
   constructor(
     private formBuilder: FormBuilder,
-    private bootcampService: BootcampService,
-    private formationService: FormationService
+    private formationService: FormationService,
+    private sousThemeService: SousThemeService
   ){};
 
   ngOnInit(): void {
       this.formationService.getFormations()
-        .subscribe((formations: Formation[]) => this.formations = formations); 
-
-      this.bootcampService.getBootcamp()
-        .subscribe((BootcampServiceService: Bootcamp[]) => this.bootcamps = BootcampServiceService); 
-  
-      };
-
-  onSubmit(): void {
-    this.submitted = true;
-    if (this.bootcampForm.invalid) {
-      return;
-    }
-    // Soumission du formulaire de session de formation
-    console.log(this.bootcampForm.value);
+        .subscribe((formations: Formation[]) => 
+          this.formations = formations
+          );
+      this.sousThemeService.getSousThemes()
+        .subscribe((sousThemes: SousTheme[]) => 
+          this.sousThemes = sousThemes
+          );
   }
-
-  onSubmitFormation(): void {
+  onSubmit() {
     this.submitted = true;
     if (this.formationForm.invalid) {
-      return;
+      // Si le formulaire est invalide(ex: champs vide), retourne "false"
+      return false;
+    }else{
+      // Sinon on ajoute le user et le "submit" repasse à false
+      this.addFormation();
+      this.submitted = false;
+      // Reset du formulaire
+      this.formationForm.reset();
+      return true;
     }
-  }
 
+  }
   get formationFormControls(): any {
     return this.formationForm.controls;
   }
 
-  get sessionFormationFormControls(): any {
-    return this.bootcampForm.controls;
+  addFormation(): void {
+  // On push les valeurs des inputs du formulaire
+  this.formationsCreates.push(this.formationForm.value);
+
+  // Appel du service pour la création
+  this.formationService.createFormation(this.formationForm.value)
+    .subscribe({
+      next: (formationForm) => {
+        // Si c'est un succès le user est enregistré
+        this.formationCreate = formationForm;
+        alert("Formation créé avec succès !");
+      },
+      error: (error) => {
+          // Envoi une erreur si la création échoue
+          alert("Erreur lors de la création de la formation");
+          console.log(error);
+        },
+      complete: () => {
+        console.log("Formation inséré");
+      }
+    });
+  }
+
+  modifierFormation(id: number):void{
+
+  }
+
+  supprimerFormation(id: number):void{
+
   }
 }

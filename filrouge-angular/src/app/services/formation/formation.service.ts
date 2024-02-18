@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import Formation from '../../models/formation.model';
+import { SousThemeService } from '../SousTheme/sousTheme.service';
+import { Bootcamp } from '../../models/bootcamp.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,20 +14,30 @@ export class FormationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getFormationById(id: number): Observable<Formation> {
-    return this.httpClient.get<Formation>(`${this.apiUrl}/formations/${id}`);
+  getFormation(id: number): Observable<Formation> {
+    return this.httpClient.get<Formation>(`${this.apiUrl}/formations/${id}`)
+  }
+
+  getFormationNb(): Observable<number> {
+    return this.httpClient.get<number>(`${this.apiUrl}/formations/nbFormations`);
   }
 
   getFormations(): Observable<Formation[]> {
     return this.httpClient.get<Formation[]>(`${this.apiUrl}/formations/all`);
   }
 
-  getFormation(id: number): Observable<Formation> {
-    return this.httpClient.get<Formation>(`${this.apiUrl}/formations/${id}`)
+  // Récupérer les bootcamps liés à une formation
+  getBootcampsInFormation(formationId: number): Observable<Bootcamp[]> {
+    return this.httpClient.get<Bootcamp[]>(`${this.apiUrl}/formations/${formationId}/bootcamps`);
+  }
+
+  searchFormationsByName(nom: string): Observable<Formation[]> {
+    const url = `${this.apiUrl}/formations/search?nom=${nom}`;
+    return this.httpClient.get<Formation[]>(url);
   }
 
   createFormation(formation: Formation): Observable<Formation> {
-    return this.httpClient.post<Formation>(`${this.apiUrl}/formations`,formation);
+    return this.httpClient.post<Formation>(`${this.apiUrl}/formations/create`,formation);
   }
 
   updateFormation(formation: Formation): Observable<Formation> {
@@ -35,4 +47,9 @@ export class FormationService {
   deleteFormation(id: number): Observable<Formation> {
     return this.httpClient.delete<Formation>(`${this.apiUrl}/formations/delete/${id}`);
   }
+
+  getFormationSousTheme(id: number): Observable<SousThemeService> {
+    return this.httpClient.get<SousThemeService>(`${this.apiUrl}/formations/sousTheme/${id}`);
+  }
+  
 }

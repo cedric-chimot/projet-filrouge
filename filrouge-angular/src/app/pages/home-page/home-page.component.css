@@ -36,7 +36,7 @@ box-shadow: -15px -15px 15px rgb(255, 255,255,0.2),
     position: static;
     background: var(--img);
     background-position: center;
-    background-size: center;
+    background-size: cover;
     transition: 0.25s;
     justify-content: center;
     align-items:end;

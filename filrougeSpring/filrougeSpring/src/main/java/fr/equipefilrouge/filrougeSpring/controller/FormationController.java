@@ -1,12 +1,14 @@
 package fr.equipefilrouge.filrougeSpring.controller;
 
 import fr.equipefilrouge.filrougeSpring.dto.FormationDTO;
-import fr.equipefilrouge.filrougeSpring.dto.SousThemeDTO;
+import fr.equipefilrouge.filrougeSpring.entity.Bootcamp;
 import fr.equipefilrouge.filrougeSpring.entity.Formation;
 import fr.equipefilrouge.filrougeSpring.entity.SousTheme;
-import fr.equipefilrouge.filrougeSpring.entity.Theme;
+import fr.equipefilrouge.filrougeSpring.services.impl.BootcampServiceImpl;
 import fr.equipefilrouge.filrougeSpring.services.impl.FormationServiceImpl;
 import fr.equipefilrouge.filrougeSpring.services.impl.SousThemeServiceImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,15 +26,43 @@ public class FormationController {
      */
     private final FormationServiceImpl formationServiceImpl;
 
+    private final BootcampServiceImpl bootcampService;
+
     private final SousThemeServiceImpl sousThemeService;
 
     /**
      * Constructeur du controller Formation
      * @param formationServiceImpl le service de la formation
      */
-    public FormationController(FormationServiceImpl formationServiceImpl, SousThemeServiceImpl sousThemeService) {
+    public FormationController(FormationServiceImpl formationServiceImpl, BootcampServiceImpl bootcampService, SousThemeServiceImpl sousThemeService) {
         this.formationServiceImpl = formationServiceImpl;
+        this.bootcampService = bootcampService;
         this.sousThemeService = sousThemeService;
+    }
+
+    /**
+     * Affiche toutes les formations
+     * @return la liste des formations
+     */
+    @GetMapping("/all")
+    public List<Formation> getAllFormations() {
+        return formationServiceImpl.findAll();
+    }
+
+    /**
+     * Méthode pour rechercher une session avec son identifiant
+     * @param id l'identifiant de la session
+     * @return la session recherchée
+     */
+    @GetMapping("/{id}")
+    public Formation getFormationById(@PathVariable Long id) {
+        return formationServiceImpl.findById(id);
+    }
+
+    @GetMapping("/{formationId}/bootcamps")
+    public ResponseEntity<List<Bootcamp>> getBootcampsInFormation(@PathVariable Long formationId) {
+        List<Bootcamp> bootcamps = formationServiceImpl.getBootcampsInFormations(formationId);
+        return new ResponseEntity<>(bootcamps, HttpStatus.OK);
     }
 
     /**
@@ -61,7 +91,6 @@ public class FormationController {
         return formationServiceImpl.createListe(formations);
     }
 
-
     /**
      * Méthode pour mettre à jour une formation
      * @param formation la formation à mettre à jour
@@ -73,22 +102,20 @@ public class FormationController {
     }
 
     /**
-     * Affiche toutes les formations
-     * @return la liste des formations
+     * Renvoyer le nombre de formations en BDD
+     * @return le nombre de formations
      */
-    @GetMapping("/all")
-    public List<Formation> getAllFormations() {
-        return formationServiceImpl.findAll();
+    @GetMapping("/nbFormations")
+    public Long nbFormations() {
+        return formationServiceImpl.countFormations();
     }
 
-    /**
-     * Méthode pour rechercher une session avec son identifiant
-     * @param id l'identifiant de la session
-     * @return la session recherchée
-     */
-    @GetMapping("/{id}")
-    public Formation getFormationById(@PathVariable Long id) {
-        return formationServiceImpl.findById(id);
+    /**Recherche les formations par nom
+    * @param nom Le nom à rechercher dans les formations
+    * @return Liste des formations correspondantes au nom recherché*/
+    @GetMapping("/search")
+    public List<Formation> searchFormationsByName(@RequestParam String nom) {
+        return formationServiceImpl.findByNomContaining(nom);
     }
 
     /**
