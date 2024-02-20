@@ -19,9 +19,9 @@ import { SousThemeService } from '../../../services/SousTheme/sousTheme.service'
 })
 export class AdminFormationComponent implements OnInit {
   formationForm: FormGroup = this.formBuilder.group({
-    nom: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9\s]*$/)]],
+    nom: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9\s@#*+\-=éèàùîôûç]*$/)]],
     prix: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-    description: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9\s]*$/)]],
+    description: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9\s@#*+\-=éèàùîôûç]*$/)]],
     img: [''],
     sousThemeId: ['']
   });
@@ -66,6 +66,7 @@ export class AdminFormationComponent implements OnInit {
     }
 
   }
+
   get formationFormControls(): any {
     return this.formationForm.controls;
   }
@@ -84,7 +85,7 @@ export class AdminFormationComponent implements OnInit {
         .subscribe((formations: Formation[]) => 
           this.formations = formations
           );
-        // alert("Formation créé avec succès !");
+        alert("Formation créé avec succès !");
       },
       error: (error) => {
           // Envoi une erreur si la création échoue

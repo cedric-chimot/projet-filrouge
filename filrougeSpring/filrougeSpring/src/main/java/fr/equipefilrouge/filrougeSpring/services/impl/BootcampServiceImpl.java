@@ -1,7 +1,6 @@
 package fr.equipefilrouge.filrougeSpring.services.impl;
 
 import fr.equipefilrouge.filrougeSpring.dto.BootcampDTO;
-import fr.equipefilrouge.filrougeSpring.dto.FormationDTO;
 import fr.equipefilrouge.filrougeSpring.entity.*;
 import fr.equipefilrouge.filrougeSpring.exceptions.CustomException;
 import fr.equipefilrouge.filrougeSpring.repository.*;
@@ -105,31 +104,28 @@ public class BootcampServiceImpl implements AllServices<Bootcamp, Long> {
     /**
      * Méthode pour ajouter un utilisateur au bootcamp
      * @param bootcampDTO l'identifiant du bootcamp
-     * @param user l'utilisateur à ajouter
+     * @param idUser l'utilisateur à ajouter
      */
     @Transactional
-    public void addUserBootcamp(BootcampDTO bootcampDTO, Long userId) {
+    public void addUserBootcamp(BootcampDTO bootcampDTO, Long idUser) {
         Long bootcampId = bootcampDTO.getId();
         Bootcamp bootcamp = findById(bootcampId);
 
         if (bootcamp != null) {
             // Vérifier si l'utilisateur existe déjà en base de données
-            Users existingUser = usersRepository.findById(userId).orElse(null);
+            Users existingUser = usersRepository.findById(idUser)
+                    .orElseThrow(() -> new CustomException("User not found with id: ", "id", idUser));
 
-            if (existingUser != null) {
-                // Vérifier si l'utilisateur n'est pas déjà associé à un autre bootcamp
-                if (existingUser.getBootcamps() == null || !existingUser.getBootcamps().contains(bootcamp)) {
-                    // L'utilisateur existe déjà, on l'ajoute au bootcamp
-                    bootcamp.getUsers().add(existingUser);
-                    existingUser.getBootcamps().add(bootcamp);
+            // Vérifier si l'utilisateur n'est pas déjà associé à un autre bootcamp
+            if (existingUser.getBootcamps() == null || !existingUser.getBootcamps().contains(bootcamp)) {
+                // L'utilisateur existe déjà, on l'ajoute au bootcamp
+                bootcamp.getUsers().add(existingUser);
+                existingUser.getBootcamps().add(bootcamp);
 
-                    // Mettre à jour le bootcamp
-                    update(bootcamp);
-                } else {
-                    throw new CustomException("User", "User with ID ", userId + " is already associated with another bootcamp.");
-                }
+                // Mettre à jour le bootcamp
+                update(bootcamp);
             } else {
-                throw new CustomException("User", "User with ID ", userId + " does not exist.");
+                throw new CustomException("User", "User with id ", idUser + " is already associated with another bootcamp.");
             }
         } else {
             throw new CustomException("Bootcamp", "id", bootcampId);

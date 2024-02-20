@@ -6,6 +6,8 @@ import { User } from '../../models/user.model';
 import { UserService } from '../users/user.service';
 import { Router } from '@angular/router';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -49,7 +51,6 @@ export class LoginService{
   get getLoginUser(){
     return this.user;
   }
-
   // Fonction de déconnexion
   logOut(): void {
     // on supprime l'utilisateur
@@ -63,6 +64,6 @@ export class LoginService{
   }
   ngOnDestroy(){
       this.observable.unsubscribe;
-  }
+  }  
   
 }

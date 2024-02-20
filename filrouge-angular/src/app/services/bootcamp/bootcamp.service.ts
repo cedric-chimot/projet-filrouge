@@ -48,9 +48,9 @@ export class BootcampService {
     return this.httpClient.post<Bootcamp>(`${this.apiUrl}/bootcamps/createBootcamp`, bootcamp);
   }
 
-  // Ajouter un user à un bootcamp
-  addUserToBootcamp(bootcampId: number, userId: number): Observable<string> {
-    return this.httpClient.post<string>(`${this.apiUrl}/bootcamps/${bootcampId}/addUser`, { userId });
+  // Ajouter un utilisateur à un bootcamp
+  addUserToBootcamp(bootcampId: number,  idUser: number): Observable<string> {
+    return this.httpClient.post<string>(`${this.apiUrl}/bootcamps/bootcamps/${bootcampId}/addUser/${idUser}`, {bootcampId, idUser});
   }
 
 }

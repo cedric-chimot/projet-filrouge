@@ -21,8 +21,21 @@
                     <div class="form-group">
                         <label for="bootcampFin">Lieu</label>
                         <input type="text" id="bootcampLieu" [(ngModel)]="bootcamp.lieu.raisonSociale"
-                            placeholder="Date de fin" disabled [ngModelOptions]="{standalone: true}">
+                            placeholder="Lieu" disabled [ngModelOptions]="{standalone: true}">
                     </div>
+                    @if (user) {
+                        <div class="form-group" *ngIf="user">
+                            <label for="userNomPrenom">Nom et Prénom</label>
+                            <input type="text" id="userNomPrenom" [value]="user.nom + ' ' + user.prenom"
+                                placeholder="Nom et Prénom" disabled>
+                          </div>
+                        <div class="form-group">
+                            <label for="userEmail">Email</label>
+                            <input type="text" id="userEmail" [(ngModel)]="user.email"
+                                placeholder="Email" disabled [ngModelOptions]="{standalone: true}">
+                        </div>
+                    }
+
                     <div class="form-group">
                         <h4>Valider votre inscription</h4>
                         <button type="submit" class="btn btn-success">Confirmer Inscription</button>

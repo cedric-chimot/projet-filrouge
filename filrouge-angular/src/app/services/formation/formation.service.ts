@@ -14,8 +14,8 @@ export class FormationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getFormation(id: number): Observable<Formation> {
-    return this.httpClient.get<Formation>(`${this.apiUrl}/formations/${id}`)
+  getFormationById(id: number): Observable<Formation> {
+    return this.httpClient.get<Formation>(`${this.apiUrl}/formations/${id}`);
   }
 
   getFormationNb(): Observable<number> {
@@ -26,14 +26,8 @@ export class FormationService {
     return this.httpClient.get<Formation[]>(`${this.apiUrl}/formations/all`);
   }
 
-  // Récupérer les bootcamps liés à une formation
-  getBootcampsInFormation(formationId: number): Observable<Bootcamp[]> {
-    return this.httpClient.get<Bootcamp[]>(`${this.apiUrl}/formations/${formationId}/bootcamps`);
-  }
-
-  searchFormationsByName(nom: string): Observable<Formation[]> {
-    const url = `${this.apiUrl}/formations/search?nom=${nom}`;
-    return this.httpClient.get<Formation[]>(url);
+  getFormation(id: number): Observable<Formation> {
+    return this.httpClient.get<Formation>(`${this.apiUrl}/formations/${id}`)
   }
 
   createFormation(formation: Formation): Observable<Formation> {
@@ -51,5 +45,8 @@ export class FormationService {
   getFormationSousTheme(id: number): Observable<SousThemeService> {
     return this.httpClient.get<SousThemeService>(`${this.apiUrl}/formations/sousTheme/${id}`);
   }
-  
+    // Récupérer les bootcamps liés à une formation
+    getBootcampsInFormation(formationId: number): Observable<Bootcamp[]> {
+      return this.httpClient.get<Bootcamp[]>(`${this.apiUrl}/formations/${formationId}/bootcamps`);
+    }
 }

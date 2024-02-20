@@ -2,8 +2,11 @@ package fr.equipefilrouge.filrougeSpring.controller;
 
 import fr.equipefilrouge.filrougeSpring.dto.BootcampDTO;
 import fr.equipefilrouge.filrougeSpring.entity.*;
+import fr.equipefilrouge.filrougeSpring.exceptions.CustomException;
+import fr.equipefilrouge.filrougeSpring.repository.UsersRepository;
 import fr.equipefilrouge.filrougeSpring.services.impl.BootcampServiceImpl;
 import fr.equipefilrouge.filrougeSpring.services.impl.LieuServiceImpl;
+import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Controller des bootcamps
@@ -33,14 +37,17 @@ public class BootcampController {
      */
     private final LieuServiceImpl lieuService;
 
+    private final UsersRepository usersRepository;
+
     /**
      * Le constructeur
      * @param bootcampService le service bootcamp
      * @param lieuService le service lieu
      */
-    public BootcampController(BootcampServiceImpl bootcampService, LieuServiceImpl lieuService) {
+    public BootcampController(BootcampServiceImpl bootcampService, LieuServiceImpl lieuService, UsersRepository usersRepository) {
         this.bootcampService = bootcampService;
         this.lieuService = lieuService;
+        this.usersRepository = usersRepository;
     }
 
     /**
@@ -162,16 +169,17 @@ public class BootcampController {
     /**
      * Ajouter un user à un bootcamp
      * @param bootcampId l'id du bootcamp
-     * @param requestData la donnée recherchée
-     * @return Réponse ok si l'utilisateur a été ajouté
+     * @param idUser la donnée recherchée
      */
-    @PostMapping("/{bootcampId}/addUser")
-    public ResponseEntity<String> addUserToBootcamp(@PathVariable Long bootcampId, @RequestBody Map<String, Long> requestData) {
-        Long userId = requestData.get("userId");
+    @PostMapping("/bootcamps/{bootcampId}/addUser/{idUser}")
+    public ResponseEntity<String> addUserToBootcamp(
+            @PathVariable Long bootcampId,
+            @PathVariable Long idUser
+    ) {
         BootcampDTO bootcampDTO = new BootcampDTO();
         bootcampDTO.setId(bootcampId);
 
-        bootcampService.addUserBootcamp(bootcampDTO, userId);
+        bootcampService.addUserBootcamp(bootcampDTO, idUser);
 
         return new ResponseEntity<>("User ajouté au bootcamp " + bootcampId, HttpStatus.OK);
     }

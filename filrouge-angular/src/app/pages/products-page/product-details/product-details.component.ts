@@ -37,16 +37,16 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Obtenez l'ID de la formation Ã  partir de l'URL
+    // Obtenez l'ID de la formation à partir de l'URL
     const formationIdString = this.route.snapshot.paramMap.get('id');
     this.formationId = formationIdString ? +formationIdString : 0;
     
-    // Utilisez l'ID de la formation pour rÃ©cupÃ©rer les bootcamps et les dÃ©tails de la formation
+    // Utilisez l'ID de la formation pour récupérer les bootcamps et les détails de la formation
     this.getBootcampsAndFormationDetails(this.formationId);
   } 
 
   getBootcampsAndFormationDetails(formationId: number): void {
-    // Utilisez forkJoin pour effectuer plusieurs appels en parallÃ¨le
+    // Utilisez forkJoin pour effectuer plusieurs appels en parallèle
     forkJoin([
       this.formationService.getBootcampsInFormation(formationId),
       this.formationService.getFormation(formationId)
@@ -56,7 +56,7 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  // Ajoutez la mÃ©thode pour sÃ©lectionner le bootcamp
+  // Ajoutez la méthode pour sélectionner le bootcamp
   selectBootcampForInscription(bootcamp: any) {
     this.showFormForBootcampId = bootcamp.id;
     // Naviguez vers la page d'inscription avec l'ID du bootcamp

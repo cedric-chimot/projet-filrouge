@@ -18,25 +18,24 @@
                     <td>{{ formation.description }}</td>
                     <td>{{ formation.prix }}</td>
                     <td>{{ formation.sousThemeId.nomSousTheme }}</td>
-                    <!-- <img [src]="formation.img" [alt]="formation.nom" style="width: 80px; height: 80px;"> -->
-
+                    <!-- <td>
+                        <img [src]="formation.img" [alt]="formation.nom"style="width: 80px; height: 80px;">
+                    </td> -->
                     <td>
                         <button class="modifier">
-                        <i class="fas fa-edit"></i>
+                            <i class="fas fa-edit"></i>
                         </button>
                         <button class="supprimer">
-                        <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>                  
                 </tr>
             }
         </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="5" ><button (click)="afficherForm = !afficherForm">Ajouter une formation ?</button></td>
-            </tr>
-        </tfoot>
     </table>
+    <div class="ajouter-button">
+        <button (click)="afficherForm = !afficherForm">Ajouter une formation ?</button>
+    </div>
     @if(afficherForm){
     <form [formGroup]="formationForm" (ngSubmit)="onSubmit()">
         <label>
@@ -54,7 +53,7 @@
         <!-- <label>
             img :
         </label>
-            <input type="text" formControlName="img" /> -->
+            <input type="file" formControlName="img" /> -->
         <label>
             Sous-Theme :
         </label>
@@ -65,8 +64,10 @@
             
         }
         </select> 
+        <div href="#" class="ajouter-button">
             <!-- Modification du bouton Sumbit, qui sera désactivé si le formulaire n'est pas valide-->
-        <button type="submit">Ajouter une Formation</button>
+            <button type="submit">Ajouter une Formation</button>
+        </div>
     </form>
 }
 <a class="retour-button">
